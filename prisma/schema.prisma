@@ -1,14 +1,51 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
 
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+model User {
+  id            Int       @id @default(autoincrement())
+  name          String
+  email         String    @unique
+  password      String
+  referralCode  String    @unique @default(uuid())
+  // Relationship: Who referred this user
+  referredBy    User?     @relation("Referral", fields: [referredById], references: [id])
+  referredById  Int?
+  // Relationship: Users referred by this user
+  referredUsers User[]    @relation("Referral")
+  orders        Order[]   // A user can place multiple orders
+  commissions   Commission[] // A user can earn multiple commissions
 }
+
+model Order {
+  id          Int        @id @default(autoincrement())
+  // Relationship: User who placed the order
+  user        User       @relation(fields: [userId], references: [id])
+  userId      Int
+  amount      Float
+  createdAt   DateTime   @default(now())
+  commissions Commission[] // Commissions linked to this order
+
+}
+model Commission {
+  id             Int       @id @default(autoincrement())
+  // Relationship: Order associated with the commission
+  order          Order     @relation(fields: [orderId], references: [id])
+  orderId        Int
+  // Relationship: User who earned the commission
+  referrer       User      @relation(fields: [referrerId], references: [id])
+  referrerId     Int
+  commissionAmount Float
+  level          Int       // Referral level (e.g., 1st level, 2nd level)
+  createdAt      DateTime  @default(now())
+
+  @@index([orderId])
+  @@index([referrerId])
+}
+
+

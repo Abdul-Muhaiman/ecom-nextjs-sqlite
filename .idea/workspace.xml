@@ -4,21 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="">
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="Prisma and DB added">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ecommerce-next-app.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.idea/app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.sqlite" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/eslint.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ProductDetail.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Products.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/postcss.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/file.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/globe.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/next.svg" beforeDir="false" />
@@ -34,13 +42,29 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="tsconfig.json" />
+        <option value="TypeScript JSX File" />
       </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="false" />
+    <option name="myAllFileTypesSelected" value="true" />
+    <option name="mySelectedFileTypes">
+      <set />
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -57,7 +81,9 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/NODE JS/nextJS/ecommerce-next-app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -65,13 +91,14 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "editor.preferences.completion",
     "ts.external.directory.path": "C:\\NODE JS\\nextJS\\ecommerce-next-app\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\styles" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app" />
     </key>
   </component>
@@ -99,11 +126,46 @@
       <workItem from="1741589134388" duration="3100000" />
       <workItem from="1741608466496" duration="7833000" />
       <workItem from="1741684517559" duration="13097000" />
-      <workItem from="1742979409442" duration="846000" />
+      <workItem from="1742979409442" duration="13624000" />
+      <workItem from="1743002659362" duration="320000" />
+      <workItem from="1743002994628" duration="378000" />
+      <workItem from="1743003399179" duration="59000" />
+      <workItem from="1743003466109" duration="70000" />
+      <workItem from="1743003556979" duration="3134000" />
     </task>
+    <task id="LOCAL-00001" summary="First commit, initial app">
+      <option name="closed" value="true" />
+      <created>1742983961461</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742983961461</updated>
+    </task>
+    <task id="LOCAL-00002" summary="First commit, initial app">
+      <option name="closed" value="true" />
+      <created>1742983975306</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1742983975306</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Prisma and DB added">
+      <option name="closed" value="true" />
+      <created>1742984286191</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1742984286191</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First commit, initial app" />
+    <MESSAGE value="Prisma and DB added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prisma and DB added" />
   </component>
 </project>
