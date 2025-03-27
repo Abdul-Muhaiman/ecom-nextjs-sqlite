@@ -7,31 +7,74 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// USER MODEL
 model User {
   id            Int       @id @default(autoincrement())
   name          String
   email         String    @unique
   password      String
   referralCode  String    @unique @default(uuid())
-  // Relationship: Who referred this user
   referredBy    User?     @relation("Referral", fields: [referredById], references: [id])
   referredById  Int?
-  // Relationship: Users referred by this user
   referredUsers User[]    @relation("Referral")
-  orders        Order[]   // A user can place multiple orders
-  commissions   Commission[] // A user can earn multiple commissions
+  orders        Order[]
+  commissions   Commission[]
+  role          String    @default("user") // Roles: "user", "admin"
 }
 
+// PRODUCTS MODEL
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  products Product[] // Relationship: A category can have many products
+}
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  price       Float
+  stock       Int
+  image       String
+  category    Category? @relation(fields: [categoryId], references: [id])
+  categoryId  Int?
+  orders      OrderItem[]
+}
+
+// ORDERS MODEL
+// ORDER
 model Order {
   id          Int        @id @default(autoincrement())
-  // Relationship: User who placed the odr
   user        User       @relation(fields: [userId], references: [id])
   userId      Int
   amount      Float
+  status      String     @default("PENDING") // PENDING, SHIPPED, DELIVERED
   createdAt   DateTime   @default(now())
-  commissions Commission[] // Commissions linked to this oder
-
+  commissions Commission[]
+  items       OrderItem[] // Products in this order
 }
+// ORDER ITEM
+model OrderItem {
+  id        Int      @id @default(autoincrement())
+  order     Order    @relation(fields: [orderId], references: [id])
+  orderId   Int
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  quantity  Int      // Quantity of the product in the order
+  price     Float    // Capture product price at the time of the order
+}
+
+// WISHLIST/CART MODEL
+// model CartItem {
+//   id        Int      @id @default(autoincrement())
+//   user      User     @relation(fields: [userId], references: [id])
+//   userId    Int
+//   product   Product  @relation(fields: [productId], references: [id])
+//   productId Int
+//   quantity  Int
+//   addedAt   DateTime @default(now())
+// }
+
+// COMMISSION MODEL
 model Commission {
   id             Int       @id @default(autoincrement())
   // Relationship: Order associated with the commission

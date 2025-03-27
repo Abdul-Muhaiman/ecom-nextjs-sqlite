@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="Added User Registration logic">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/60ce2258-c720-41f9-a398-ec2e139a3a85.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/60ce2258-c720-41f9-a398-ec2e139a3a85.xml" afterDir="false" />
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="Prisma schema modified for ecommerce functionality and logic.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/register/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/user/route.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +106,7 @@
       <workItem from="1743002994628" duration="378000" />
       <workItem from="1743003399179" duration="59000" />
       <workItem from="1743003466109" duration="70000" />
-      <workItem from="1743003556979" duration="15519000" />
+      <workItem from="1743003556979" duration="16890000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -147,7 +140,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743007215352</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added commission calculation logic">
+      <option name="closed" value="true" />
+      <created>1743068563889</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1743068563889</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Prisma schema modified for ecommerce functionality and logic.">
+      <option name="closed" value="true" />
+      <created>1743069614029</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1743069614029</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +166,8 @@
     <MESSAGE value="First commit, initial app" />
     <MESSAGE value="Prisma and DB added" />
     <MESSAGE value="Added User Registration logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added User Registration logic" />
+    <MESSAGE value="Added commission calculation logic" />
+    <MESSAGE value="Prisma schema modified for ecommerce functionality and logic." />
+    <option name="LAST_COMMIT_MESSAGE" value="Prisma schema modified for ecommerce functionality and logic." />
   </component>
 </project>
