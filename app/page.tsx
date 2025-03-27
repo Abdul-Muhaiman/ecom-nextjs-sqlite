@@ -1,4 +1,4 @@
-import Link from "next/link"; // For revalidation after submission
+import Link from "next/link";
 export default function Page() {
     return (
         <div className={"text-center flex flex-col items-center justify-center pt-10"}>

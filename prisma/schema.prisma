@@ -24,12 +24,12 @@ model User {
 
 model Order {
   id          Int        @id @default(autoincrement())
-  // Relationship: User who placed the order
+  // Relationship: User who placed the odr
   user        User       @relation(fields: [userId], references: [id])
   userId      Int
   amount      Float
   createdAt   DateTime   @default(now())
-  commissions Commission[] // Commissions linked to this order
+  commissions Commission[] // Commissions linked to this oder
 
 }
 model Commission {
