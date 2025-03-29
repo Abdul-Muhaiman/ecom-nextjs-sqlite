@@ -1,94 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
-// USER MODEL
 model User {
-  id            Int       @id @default(autoincrement())
+  id            Int          @id @default(autoincrement())
   name          String
-  email         String    @unique
+  email         String       @unique
   password      String
-  referralCode  String    @unique @default(uuid())
-  referredBy    User?     @relation("Referral", fields: [referredById], references: [id])
+  referralCode  String       @unique @default(uuid())
   referredById  Int?
-  referredUsers User[]    @relation("Referral")
-  orders        Order[]
+  role          String       @default("user")
   commissions   Commission[]
-  role          String    @default("user") // Roles: "user", "admin"
+  orders        Order[]
+  referredBy    User?        @relation("Referral", fields: [referredById], references: [id])
+  referredUsers User[]       @relation("Referral")
+  cart          CartItem[]
 }
 
-// PRODUCTS MODEL
 model Category {
   id       Int       @id @default(autoincrement())
   name     String    @unique
-  products Product[] // Relationship: A category can have many products
+  products Product[]
 }
+
 model Product {
-  id          Int       @id @default(autoincrement())
+  id          Int         @id @default(autoincrement())
   name        String
   description String?
   price       Float
   stock       Int
   image       String
-  category    Category? @relation(fields: [categoryId], references: [id])
   categoryId  Int?
   orders      OrderItem[]
+  category    Category?   @relation(fields: [categoryId], references: [id])
+  cart        CartItem[]
 }
 
-// ORDERS MODEL
-// ORDER
 model Order {
-  id          Int        @id @default(autoincrement())
-  user        User       @relation(fields: [userId], references: [id])
+  id          Int          @id @default(autoincrement())
   userId      Int
   amount      Float
-  status      String     @default("PENDING") // PENDING, SHIPPED, DELIVERED
-  createdAt   DateTime   @default(now())
+  status      String       @default("PENDING")
+  createdAt   DateTime     @default(now())
   commissions Commission[]
-  items       OrderItem[] // Products in this order
+  user        User         @relation(fields: [userId], references: [id])
+  items       OrderItem[]
 }
-// ORDER ITEM
+
 model OrderItem {
-  id        Int      @id @default(autoincrement())
-  order     Order    @relation(fields: [orderId], references: [id])
+  id        Int     @id @default(autoincrement())
   orderId   Int
-  product   Product  @relation(fields: [productId], references: [id])
   productId Int
-  quantity  Int      // Quantity of the product in the order
-  price     Float    // Capture product price at the time of the order
+  quantity  Int
+  price     Float
+  product   Product @relation(fields: [productId], references: [id])
+  order     Order   @relation(fields: [orderId], references: [id])
 }
 
-// WISHLIST/CART MODEL
-// model CartItem {
-//   id        Int      @id @default(autoincrement())
-//   user      User     @relation(fields: [userId], references: [id])
-//   userId    Int
-//   product   Product  @relation(fields: [productId], references: [id])
-//   productId Int
-//   quantity  Int
-//   addedAt   DateTime @default(now())
-// }
-
-// COMMISSION MODEL
 model Commission {
-  id             Int       @id @default(autoincrement())
-  // Relationship: Order associated with the commission
-  order          Order     @relation(fields: [orderId], references: [id])
-  orderId        Int
-  // Relationship: User who earned the commission
-  referrer       User      @relation(fields: [referrerId], references: [id])
-  referrerId     Int
+  id               Int      @id @default(autoincrement())
+  orderId          Int
+  referrerId       Int
   commissionAmount Float
-  level          Int       // Referral level (e.g., 1st level, 2nd level)
-  createdAt      DateTime  @default(now())
+  level            Int
+  createdAt        DateTime @default(now())
+  referrer         User     @relation(fields: [referrerId], references: [id])
+  order            Order    @relation(fields: [orderId], references: [id])
 
   @@index([orderId])
   @@index([referrerId])
 }
 
+model CartItem {
+  id        Int      @id @default(autoincrement())
+  user      User?    @relation(fields: [userId], references: [id]) // Nullable for guest carts
+  userId    Int?
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  quantity  Int
+  addedAt   DateTime @default(now())
+}
 
