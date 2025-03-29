@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import bcrypt from "bcrypt";
-import {generateUniqueReferralCode} from "@/utils/utils";
+import {generateUniqueReferralCode} from "@/utils/helper";
 import {NextResponse} from "next/server";
 
 export async function POST(req: Request) {
