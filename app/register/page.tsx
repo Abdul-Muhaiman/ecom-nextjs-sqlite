@@ -1,14 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
+import Link from "next/link";
+import {useRouter} from "next/navigation";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function Page() {
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+
 
     const handleSubmit = async (data: FormData) => {
         try {
-            const res = await fetch("/api/register", {
+            setLoading(true);
+            const res = await fetch("/api/auth/register", {
                 method: "POST",
                 body: data,
             });
@@ -16,14 +23,18 @@ export default function Page() {
             if (res.ok) {
                 setSuccessMessage("User registered successfully!");
                 setErrorMessage(null); // Clear any previous errors
+                setLoading(false);
+                router.push("/login");
             } else {
                 const errorData = await res.json();
                 setErrorMessage(errorData.error || "Something went wrong");
                 setSuccessMessage(null);
+                setLoading(false);
             }
         } catch (e) {
             setErrorMessage("An unexpected error occurred.");
             setSuccessMessage(null);
+            setLoading(false);
         }
     };
 
@@ -95,10 +106,18 @@ export default function Page() {
 
                     <button
                         type="submit"
-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded"
+                        className="w-full bg-gray-800 hover:bg-gray-900 text-white py-3 rounded disabled:bg-gray-900"
+                        disabled={loading}
                     >
-                        Submit
+                        {loading ? (
+                            <>
+                                <LoadingSpinner /> <span className={"pl-1"}>Loading</span>
+                            </>
+                        ) : "Register"}
                     </button>
+                    <div className={"text-center"}>
+                        Already have an account?<Link href="/login" className={"pl-1 text-blue-600 underline underline-offset-2"}>Login here</Link>
+                    </div>
                 </form>
             </div>
         </div>

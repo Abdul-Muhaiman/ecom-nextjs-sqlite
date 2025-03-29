@@ -1,27 +1,28 @@
 import "next-auth";
 import "next-auth/jwt";
+import {User as NextAuthUser} from "next-auth";
 
-declare module "next-auth" {
-    // interface User {
-    //     id: number;
-    //     name: string;
-    //     email: string;
-    //     // password?: string; // Exclude sensitive fields in responses
-    //     role: string;
-    //     referralCode: string;
-    // }
-    //
-    // interface Session {
-    //     user: User;
-    // }
+declare module 'next-auth' {
+    interface Session {
+        user: {
+            id: number;
+            role: string;
+        } & NextAuthUser;
+    }
+    interface User { // No 'extends NextAuthUser' here
+        id: number;
+        role: string;
+        name?: string | null;
+        email?: string | null;
+        image?: string | null;
+    }
 }
-
-// declare module "next-auth/jwt" {
-//     interface JWT {
-//         id: string;
-//         name: string;
-//         email: string;
-//         role: string;
-//         referralCode: string;
-//     }
-// }
+declare module 'next-auth/jwt' {
+    interface JWT {
+        id: number;
+        role: string;
+        name?: string | null;
+        email?: string | null;
+        picture?: string | null;
+    }
+}

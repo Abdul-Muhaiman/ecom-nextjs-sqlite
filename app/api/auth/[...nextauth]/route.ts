@@ -1,37 +1,11 @@
 // app/api/auth/[...nextauth]/route.ts
 
-import NextAuth, { AuthOptions, User as NextAuthUser } from 'next-auth';
+import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 // --- Corrected Adapter Import for v4 ---
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import prisma from '@/lib/prisma'; // Adjust path if needed
 import bcrypt from 'bcrypt';
-
-// --- Type Augmentations (Keep as they were in the previous good version) ---
-declare module 'next-auth' {
-    interface Session {
-        user: {
-            id: number;
-            role: string;
-        } & NextAuthUser;
-    }
-    interface User { // No 'extends NextAuthUser' here
-        id: number;
-        role: string;
-        name?: string | null;
-        email?: string | null;
-        image?: string | null;
-    }
-}
-declare module 'next-auth/jwt' {
-    interface JWT {
-        id: number;
-        role: string;
-        name?: string | null;
-        email?: string | null;
-        picture?: string | null;
-    }
-}
 
 export const authOptions: AuthOptions = {
     // --- Use the correct adapter instance ---
