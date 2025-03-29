@@ -1,7 +1,7 @@
 // utils/user.ts
 import prisma from "@/lib/prisma";
 import bcrypt from "bcrypt";
-import { generateUniqueReferralCode } from "@/utils/utils";
+import { generateUniqueReferralCode } from "@/utils/helper";
 
 export async function registerUser(
     name: string,

@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const LoginPage = () => {
     const { data: session } = useSession();
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -16,7 +16,7 @@ const LoginPage = () => {
         // Trigger NextAuth sign-in with credentials
         const res = await signIn("credentials", {
             redirect: false, // Prevent automatic redirection
-            username,
+            email,
             password,
         });
 
@@ -25,8 +25,8 @@ const LoginPage = () => {
         }
     };
 
-    const handleLogout = () => {
-        signOut();
+    const handleLogout = async () => {
+        await signOut();
     };
 
     return (
@@ -46,11 +46,11 @@ const LoginPage = () => {
                                     Username
                                 </label>
                                 <input
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     className="w-full p-2 border border-gray-300 rounded"
                                     required
                                 />
