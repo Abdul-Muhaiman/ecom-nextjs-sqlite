@@ -1,18 +1,14 @@
 import Link from "next/link";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"; // Adjust path as needed
-import CartDropdown from "@/components/CartDropdown";
 
 const navbarContent = [
-    { title: "Home", href: "/" },
-    { title: "Products", href: "/products" },
-    { title: "About", href: "#" },
-    { title: "Contact", href: "#" },
+    {title: "Home", href: "/"},
+    {title: "Products", href: "/products"},
+    {title: "About", href: "#"},
+    {title: "Contact", href: "#"},
 ];
 
 export default async function Navbar() {
     // Fetch session on the server-side
-    const session = await getServerSession(authOptions);
 
     return (
         <header className="bg-gray-800 text-gray-100 body-font">
@@ -42,15 +38,18 @@ export default async function Navbar() {
                 <div className="flex items-center space-x-4 relative">
 
                     {/* Login Button */}
-                    {!session ? (
-                        <Link href="/login">
-                            <button className="bg-gray-900 hover:bg-gray-700 border-1 text-white py-1 px-3 rounded focus:outline-none">
-                                Login
-                            </button>
-                        </Link>
-                    ) : (
-                        <p className="text-gray-400 text-sm">Welcome, {session.user?.name}</p>
-                    )}
+                    <Link href="/cart">
+                        <button
+                            className="bg-gray-900 hover:bg-gray-700 border-1 text-white py-1 px-3 rounded focus:outline-none">
+                            Cart
+                        </button>
+                    </Link>
+                    <Link href="/login">
+                        <button
+                            className="bg-gray-900 hover:bg-gray-700 border-1 text-white py-1 px-3 rounded focus:outline-none">
+                            Login
+                        </button>
+                    </Link>
                 </div>
             </div>
         </header>
