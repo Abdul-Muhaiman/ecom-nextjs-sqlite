@@ -1,0 +1,87 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"9182bf0c-6f2b-45c9-8d4a-76e7aea66325\" name=\"Changes\" comment=\"DB setup correctly in the master branch\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"tsconfig.json\" />\r\n        <option value=\"TypeScript JSX File\" />\r\n        <option value=\"TypeScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"FormatOnSaveOptions\">\r\n    <option name=\"myRunOnSave\" value=\"false\" />\r\n    <option name=\"myAllFileTypesSelected\" value=\"true\" />\r\n    <option name=\"mySelectedFileTypes\">\r\n      <set />\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"auth\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"JsbtTreeLayoutManager\">\r\n    <layout place=\"tools.popupGrunt\">\r\n      <scroll-view-position x=\"0\" y=\"0\" />\r\n    </layout>\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"ProjectErrors\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2u1ySfD0LARefTF8AsWscTqHtpa\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Node.js.route.ts.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"com.codeium.enabled\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"last_opened_file_path\": \"C:/NODE JS/nextJS/ecommerce-next-app\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_interpreter_path\": \"node\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"run.code.analysis.last.selected.profile\": \"pProject Default\",\r\n    \"settings.editor.selected.configurable\": \"editor.preferences.completion\",\r\n    \"ts.external.directory.path\": \"C:\\\\NODE JS\\\\nextJS\\\\ecommerce-next-app\\\\node_modules\\\\typescript\\\\lib\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\NODE JS\\nextJS\\ecommerce-next-app\\app\" />\r\n      <recent name=\"C:\\NODE JS\\nextJS\\ecommerce-next-app\\app\\api\\auth\" />\r\n      <recent name=\"C:\\NODE JS\\nextJS\\ecommerce-next-app\\app\\api\\auth\\[...nextauth]\" />\r\n      <recent name=\"C:\\NODE JS\\nextJS\\ecommerce-next-app\\app\\api\" />\r\n      <recent name=\"C:\\NODE JS\\nextJS\\ecommerce-next-app\\app\\api\\(auth)\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunAnythingCache\">\r\n    <option name=\"myCommands\">\r\n      <command value=\"pnpm install swr\" />\r\n    </option>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.25659.40\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"9182bf0c-6f2b-45c9-8d4a-76e7aea66325\" name=\"Changes\" comment=\"\" />\r\n      <created>1741430375467</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1741430375467</updated>\r\n      <workItem from=\"1741430376480\" duration=\"2435000\" />\r\n      <workItem from=\"1741589134388\" duration=\"3100000\" />\r\n      <workItem from=\"1741608466496\" duration=\"7833000\" />\r\n      <workItem from=\"1741684517559\" duration=\"13097000\" />\r\n      <workItem from=\"1742979409442\" duration=\"13624000\" />\r\n      <workItem from=\"1743002659362\" duration=\"320000\" />\r\n      <workItem from=\"1743002994628\" duration=\"378000\" />\r\n      <workItem from=\"1743003399179\" duration=\"59000\" />\r\n      <workItem from=\"1743003466109\" duration=\"70000\" />\r\n      <workItem from=\"1743003556979\" duration=\"16890000\" />\r\n      <workItem from=\"1743163730639\" duration=\"252000\" />\r\n      <workItem from=\"1743163999714\" duration=\"3032000\" />\r\n      <workItem from=\"1743205840315\" duration=\"718000\" />\r\n      <workItem from=\"1743238823377\" duration=\"6901000\" />\r\n      <workItem from=\"1743348409147\" duration=\"2618000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"First commit, initial app\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742983961461</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742983961461</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"First commit, initial app\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742983975306</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742983975306</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Prisma and DB added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1742984286191</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1742984286191</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Added User Registration logic\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743007215352</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743007215352</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Added commission calculation logic\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743068563889</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743068563889</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Prisma schema modified for ecommerce functionality and logic.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743069614029</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743069614029</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"NextAuth Added with help of Gemini 2.5 using Google AI Studio\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743243803188</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743243803188</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"DB setup correctly in the master branch\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743248803990</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743248803990</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"DB setup correctly in the master branch\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1743250295906</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1743250295906</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"10\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"First commit, initial app\" />\r\n    <MESSAGE value=\"Prisma and DB added\" />\r\n    <MESSAGE value=\"Added User Registration logic\" />\r\n    <MESSAGE value=\"Added commission calculation logic\" />\r\n    <MESSAGE value=\"Prisma schema modified for ecommerce functionality and logic.\" />\r\n    <MESSAGE value=\"Added NextAuth with just boilerplate code&#10;Recovered registration page UI\" />\r\n    <MESSAGE value=\"NextAuth Added with help of Gemini 2.5 using Google AI Studio\" />\r\n    <MESSAGE value=\"DB setup correctly in the master branch\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"DB setup correctly in the master branch\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c449aefa1dbafcf84e159b87e6e6f28bd9d77041)
++++ b/.idea/workspace.xml	(date 1743358957383)
+@@ -6,6 +6,7 @@
+   <component name="ChangeListManager">
+     <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="DB setup correctly in the master branch">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -31,7 +32,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="auth" />
++        <entry key="$PROJECT_DIR$" value="master" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -61,7 +62,7 @@
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "RunOnceActivity.git.unshallow": "true",
+     "com.codeium.enabled": "true",
+-    "git-widget-placeholder": "master",
++    "git-widget-placeholder": "cart",
+     "ignore.virus.scanning.warn.message": "true",
+     "last_opened_file_path": "C:/NODE JS/nextJS/ecommerce-next-app",
+     "node.js.detected.package.eslint": "true",
+@@ -193,7 +194,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1743250295906</updated>
+     </task>
+-    <option name="localTasksCounter" value="10" />
++    <task id="LOCAL-00010" summary="Added Middleware">
++      <option name="closed" value="true" />
++      <created>1743358842781</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1743358842781</updated>
++    </task>
++    <task id="LOCAL-00011" summary="Added Middleware">
++      <option name="closed" value="true" />
++      <created>1743358855932</created>
++      <option name="number" value="00011" />
++      <option name="presentableId" value="LOCAL-00011" />
++      <option name="project" value="LOCAL" />
++      <updated>1743358855932</updated>
++    </task>
++    <option name="localTasksCounter" value="12" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -219,6 +236,7 @@
+     <MESSAGE value="Added NextAuth with just boilerplate code&#10;Recovered registration page UI" />
+     <MESSAGE value="NextAuth Added with help of Gemini 2.5 using Google AI Studio" />
+     <MESSAGE value="DB setup correctly in the master branch" />
+-    <option name="LAST_COMMIT_MESSAGE" value="DB setup correctly in the master branch" />
++    <MESSAGE value="Added Middleware" />
++    <option name="LAST_COMMIT_MESSAGE" value="Added Middleware" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: middleware.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {getToken} from \"next-auth/jwt\";\r\nimport {NextRequest, NextResponse} from \"next/server\";\r\n\r\nexport async function middleware(req: NextRequest) {\r\n    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET});\r\n    if (!token) {\r\n        return NextResponse.redirect(new URL(\"/login\", req.url));\r\n    }\r\n\r\n    return NextResponse.next();\r\n}\r\n\r\nexport const config = {\r\n    matcher: [\"/cart/:path*\", \"/profile/:path*\"],\r\n}
+===================================================================
+diff --git a/middleware.ts b/middleware.ts
+--- a/middleware.ts	(revision c449aefa1dbafcf84e159b87e6e6f28bd9d77041)
++++ b/middleware.ts	(date 1743358958820)
+@@ -11,5 +11,5 @@
+ }
+ 
+ export const config = {
+-    matcher: ["/cart/:path*", "/profile/:path*"],
++    matcher: ["/cart/:path*", "/profile/:path*",],
+ }
+\ No newline at end of file

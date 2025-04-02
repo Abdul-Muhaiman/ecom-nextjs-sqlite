@@ -499,7 +499,7 @@
     <routine id="190" parent="1" name="fts5"/>
     <schema id="191" parent="1" name="main">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2025-03-28.13:02:26</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-03-29.12:11:24</LastIntrospectionLocalTimestamp>
     </schema>
     <argument id="192" parent="16">
       <ArgumentDirection>R</ArgumentDirection>
@@ -1590,217 +1590,217 @@
     <argument id="554" parent="190">
       <Position>1</Position>
     </argument>
-    <table id="555" parent="191" name="Category"/>
-    <table id="556" parent="191" name="Commission"/>
-    <table id="557" parent="191" name="Order"/>
-    <table id="558" parent="191" name="OrderItem"/>
-    <table id="559" parent="191" name="Product"/>
-    <table id="560" parent="191" name="User"/>
-    <table id="561" parent="191" name="_prisma_migrations"/>
-    <table id="562" parent="191" name="sqlite_master">
+    <table id="555" parent="191" name="CartItem"/>
+    <table id="556" parent="191" name="Category"/>
+    <table id="557" parent="191" name="Commission"/>
+    <table id="558" parent="191" name="Order"/>
+    <table id="559" parent="191" name="OrderItem"/>
+    <table id="560" parent="191" name="Product"/>
+    <table id="561" parent="191" name="User"/>
+    <table id="562" parent="191" name="_prisma_migrations"/>
+    <table id="563" parent="191" name="sqlite_master">
       <System>1</System>
     </table>
-    <table id="563" parent="191" name="sqlite_sequence">
+    <table id="564" parent="191" name="sqlite_sequence">
       <System>1</System>
     </table>
-    <column id="564" parent="555" name="id">
+    <column id="565" parent="555" name="id">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="565" parent="555" name="name">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>TEXT|0s</StoredType>
-    </column>
-    <index id="566" parent="555" name="Category_name_key">
-      <ColNames>name</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="567" parent="555">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="568" parent="556" name="id">
-      <AutoIncrement>1</AutoIncrement>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>INTEGER|0s</StoredType>
-    </column>
-    <column id="569" parent="556" name="orderId">
-      <NotNull>1</NotNull>
+    <column id="566" parent="555" name="userId">
       <Position>2</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="570" parent="556" name="referrerId">
+    <column id="567" parent="555" name="productId">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="571" parent="556" name="commissionAmount">
+    <column id="568" parent="555" name="quantity">
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StoredType>REAL|0s</StoredType>
-    </column>
-    <column id="572" parent="556" name="level">
-      <NotNull>1</NotNull>
-      <Position>5</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="573" parent="556" name="createdAt">
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <NotNull>1</NotNull>
-      <Position>6</Position>
-      <StoredType>DATETIME|0s</StoredType>
-    </column>
-    <foreign-key id="574" parent="556" name="Commission_orderId_fkey">
-      <ColNames>orderId</ColNames>
-      <OnDelete>restrict</OnDelete>
-      <OnUpdate>cascade</OnUpdate>
-      <RefColNames>id</RefColNames>
-      <RefTableName>Order</RefTableName>
-    </foreign-key>
-    <foreign-key id="575" parent="556" name="Commission_referrerId_fkey">
-      <ColNames>referrerId</ColNames>
-      <OnDelete>restrict</OnDelete>
-      <OnUpdate>cascade</OnUpdate>
-      <RefColNames>id</RefColNames>
-      <RefTableName>User</RefTableName>
-    </foreign-key>
-    <index id="576" parent="556" name="Commission_orderId_idx">
-      <ColNames>orderId</ColNames>
-    </index>
-    <index id="577" parent="556" name="Commission_referrerId_idx">
-      <ColNames>referrerId</ColNames>
-    </index>
-    <key id="578" parent="556">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="579" parent="557" name="id">
-      <AutoIncrement>1</AutoIncrement>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>INTEGER|0s</StoredType>
-    </column>
-    <column id="580" parent="557" name="userId">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>INTEGER|0s</StoredType>
-    </column>
-    <column id="581" parent="557" name="amount">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StoredType>REAL|0s</StoredType>
-    </column>
-    <column id="582" parent="557" name="status">
-      <DefaultExpression>&apos;PENDING&apos;</DefaultExpression>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StoredType>TEXT|0s</StoredType>
-    </column>
-    <column id="583" parent="557" name="createdAt">
+    <column id="569" parent="555" name="addedAt">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>DATETIME|0s</StoredType>
     </column>
-    <foreign-key id="584" parent="557" name="Order_userId_fkey">
+    <foreign-key id="570" parent="555" name="CartItem_userId_fkey">
       <ColNames>userId</ColNames>
-      <OnDelete>restrict</OnDelete>
+      <OnDelete>set-null</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <key id="585" parent="557">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="586" parent="558" name="id">
-      <AutoIncrement>1</AutoIncrement>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>INTEGER|0s</StoredType>
-    </column>
-    <column id="587" parent="558" name="orderId">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>INTEGER|0s</StoredType>
-    </column>
-    <column id="588" parent="558" name="productId">
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StoredType>INTEGER|0s</StoredType>
-    </column>
-    <column id="589" parent="558" name="quantity">
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StoredType>INTEGER|0s</StoredType>
-    </column>
-    <column id="590" parent="558" name="price">
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StoredType>REAL|0s</StoredType>
-    </column>
-    <foreign-key id="591" parent="558" name="OrderItem_orderId_fkey">
-      <ColNames>orderId</ColNames>
-      <OnDelete>restrict</OnDelete>
-      <OnUpdate>cascade</OnUpdate>
-      <RefColNames>id</RefColNames>
-      <RefTableName>Order</RefTableName>
-    </foreign-key>
-    <foreign-key id="592" parent="558" name="OrderItem_productId_fkey">
+    <foreign-key id="571" parent="555" name="CartItem_productId_fkey">
       <ColNames>productId</ColNames>
       <OnDelete>restrict</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>id</RefColNames>
       <RefTableName>Product</RefTableName>
     </foreign-key>
-    <key id="593" parent="558">
+    <key id="572" parent="555">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="594" parent="559" name="id">
+    <column id="573" parent="556" name="id">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="595" parent="559" name="name">
+    <column id="574" parent="556" name="name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="596" parent="559" name="description">
-      <Position>3</Position>
-      <StoredType>TEXT|0s</StoredType>
+    <index id="575" parent="556" name="Category_name_key">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="576" parent="556">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="577" parent="557" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="597" parent="559" name="price">
+    <column id="578" parent="557" name="orderId">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="579" parent="557" name="referrerId">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="580" parent="557" name="commissionAmount">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>REAL|0s</StoredType>
     </column>
-    <column id="598" parent="559" name="stock">
+    <column id="581" parent="557" name="level">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="599" parent="559" name="image">
+    <column id="582" parent="557" name="createdAt">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>6</Position>
-      <StoredType>TEXT|0s</StoredType>
+      <StoredType>DATETIME|0s</StoredType>
     </column>
-    <column id="600" parent="559" name="categoryId">
-      <Position>7</Position>
-      <StoredType>INTEGER|0s</StoredType>
-    </column>
-    <foreign-key id="601" parent="559" name="Product_categoryId_fkey">
-      <ColNames>categoryId</ColNames>
-      <OnDelete>set-null</OnDelete>
+    <foreign-key id="583" parent="557" name="Commission_orderId_fkey">
+      <ColNames>orderId</ColNames>
+      <OnDelete>restrict</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>id</RefColNames>
-      <RefTableName>Category</RefTableName>
+      <RefTableName>Order</RefTableName>
+    </foreign-key>
+    <foreign-key id="584" parent="557" name="Commission_referrerId_fkey">
+      <ColNames>referrerId</ColNames>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>id</RefColNames>
+      <RefTableName>User</RefTableName>
+    </foreign-key>
+    <index id="585" parent="557" name="Commission_orderId_idx">
+      <ColNames>orderId</ColNames>
+    </index>
+    <index id="586" parent="557" name="Commission_referrerId_idx">
+      <ColNames>referrerId</ColNames>
+    </index>
+    <key id="587" parent="557">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="588" parent="558" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="589" parent="558" name="userId">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="590" parent="558" name="amount">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>REAL|0s</StoredType>
+    </column>
+    <column id="591" parent="558" name="status">
+      <DefaultExpression>&apos;PENDING&apos;</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>TEXT|0s</StoredType>
+    </column>
+    <column id="592" parent="558" name="createdAt">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>DATETIME|0s</StoredType>
+    </column>
+    <foreign-key id="593" parent="558" name="Order_userId_fkey">
+      <ColNames>userId</ColNames>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>id</RefColNames>
+      <RefTableName>User</RefTableName>
+    </foreign-key>
+    <key id="594" parent="558">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="595" parent="559" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="596" parent="559" name="orderId">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="597" parent="559" name="productId">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="598" parent="559" name="quantity">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="599" parent="559" name="price">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>REAL|0s</StoredType>
+    </column>
+    <foreign-key id="600" parent="559" name="OrderItem_orderId_fkey">
+      <ColNames>orderId</ColNames>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>id</RefColNames>
+      <RefTableName>Order</RefTableName>
+    </foreign-key>
+    <foreign-key id="601" parent="559" name="OrderItem_productId_fkey">
+      <ColNames>productId</ColNames>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>id</RefColNames>
+      <RefTableName>Product</RefTableName>
     </foreign-key>
     <key id="602" parent="559">
       <ColNames>id</ColNames>
@@ -1817,123 +1817,168 @@
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="605" parent="560" name="email">
+    <column id="605" parent="560" name="description">
+      <Position>3</Position>
+      <StoredType>TEXT|0s</StoredType>
+    </column>
+    <column id="606" parent="560" name="price">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>REAL|0s</StoredType>
+    </column>
+    <column id="607" parent="560" name="stock">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="608" parent="560" name="image">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StoredType>TEXT|0s</StoredType>
+    </column>
+    <column id="609" parent="560" name="categoryId">
+      <Position>7</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <foreign-key id="610" parent="560" name="Product_categoryId_fkey">
+      <ColNames>categoryId</ColNames>
+      <OnDelete>set-null</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>id</RefColNames>
+      <RefTableName>Category</RefTableName>
+    </foreign-key>
+    <key id="611" parent="560">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="612" parent="561" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <column id="613" parent="561" name="name">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>TEXT|0s</StoredType>
+    </column>
+    <column id="614" parent="561" name="email">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="606" parent="560" name="password">
+    <column id="615" parent="561" name="password">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="607" parent="560" name="referralCode">
+    <column id="616" parent="561" name="referralCode">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="608" parent="560" name="referredById">
+    <column id="617" parent="561" name="referredById">
       <Position>6</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="609" parent="560" name="role">
+    <column id="618" parent="561" name="role">
       <DefaultExpression>&apos;user&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <foreign-key id="610" parent="560" name="User_referredById_fkey">
+    <foreign-key id="619" parent="561" name="User_referredById_fkey">
       <ColNames>referredById</ColNames>
       <OnDelete>set-null</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <index id="611" parent="560" name="User_email_key">
+    <index id="620" parent="561" name="User_email_key">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="612" parent="560" name="User_referralCode_key">
+    <index id="621" parent="561" name="User_referralCode_key">
       <ColNames>referralCode</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="613" parent="560">
+    <key id="622" parent="561">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="614" parent="561" name="id">
+    <column id="623" parent="562" name="id">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="615" parent="561" name="checksum">
+    <column id="624" parent="562" name="checksum">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="616" parent="561" name="finished_at">
+    <column id="625" parent="562" name="finished_at">
       <Position>3</Position>
       <StoredType>DATETIME|0s</StoredType>
     </column>
-    <column id="617" parent="561" name="migration_name">
+    <column id="626" parent="562" name="migration_name">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="618" parent="561" name="logs">
+    <column id="627" parent="562" name="logs">
       <Position>5</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="619" parent="561" name="rolled_back_at">
+    <column id="628" parent="562" name="rolled_back_at">
       <Position>6</Position>
       <StoredType>DATETIME|0s</StoredType>
     </column>
-    <column id="620" parent="561" name="started_at">
+    <column id="629" parent="562" name="started_at">
       <DefaultExpression>current_timestamp</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StoredType>DATETIME|0s</StoredType>
     </column>
-    <column id="621" parent="561" name="applied_steps_count">
+    <column id="630" parent="562" name="applied_steps_count">
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>8</Position>
       <StoredType>INTEGER UNSIGNED|0s</StoredType>
     </column>
-    <index id="622" parent="561" name="sqlite_autoindex__prisma_migrations_1">
+    <index id="631" parent="562" name="sqlite_autoindex__prisma_migrations_1">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="623" parent="561">
+    <key id="632" parent="562">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex__prisma_migrations_1</UnderlyingIndexName>
     </key>
-    <column id="624" parent="562" name="type">
+    <column id="633" parent="563" name="type">
       <Position>1</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="625" parent="562" name="name">
+    <column id="634" parent="563" name="name">
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="626" parent="562" name="tbl_name">
+    <column id="635" parent="563" name="tbl_name">
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="627" parent="562" name="rootpage">
+    <column id="636" parent="563" name="rootpage">
       <Position>4</Position>
       <StoredType>INT|0s</StoredType>
     </column>
-    <column id="628" parent="562" name="sql">
+    <column id="637" parent="563" name="sql">
       <Position>5</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="629" parent="563" name="name">
+    <column id="638" parent="564" name="name">
       <Position>1</Position>
     </column>
-    <column id="630" parent="563" name="seq">
+    <column id="639" parent="564" name="seq">
       <Position>2</Position>
     </column>
   </database-model>

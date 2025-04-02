@@ -1,0 +1,390 @@
+Index: .idea/dataSources.local.xml
+===================================================================
+diff --git a/.idea/dataSources.local.xml b/.idea/dataSources.local.xml
+deleted file mode 100644
+--- a/.idea/dataSources.local.xml	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
++++ /dev/null	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
+@@ -1,17 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="dataSourceStorageLocal" created-in="WS-243.25659.40">
+-    <data-source name="dev" uuid="ea7b602c-b9d3-45dc-a791-94c3c4cc73c8">
+-      <database-info product="SQLite" version="3.45.1" jdbc-version="4.2" driver-name="SQLite JDBC" driver-version="3.45.1.0" dbms="SQLITE" exact-version="3.45.1" exact-driver-version="3.45">
+-        <identifier-quote-string>&quot;</identifier-quote-string>
+-      </database-info>
+-      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+-      <auth-provider>no-auth</auth-provider>
+-      <schema-mapping>
+-        <introspection-scope>
+-          <node kind="schema" qname="@" />
+-        </introspection-scope>
+-      </schema-mapping>
+-    </data-source>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: prisma/migrations/20250328114208_init/migration.sql
+===================================================================
+diff --git a/prisma/migrations/20250328114208_init/migration.sql b/prisma/migrations/20250328114208_init/migration.sql
+deleted file mode 100644
+--- a/prisma/migrations/20250328114208_init/migration.sql	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
++++ /dev/null	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
+@@ -1,50 +0,0 @@
+-/*
+-  Warnings:
+-
+-  - You are about to drop the `Account` table. If the table is not empty, all the data it contains will be lost.
+-  - You are about to drop the `Session` table. If the table is not empty, all the data it contains will be lost.
+-  - You are about to drop the `VerificationToken` table. If the table is not empty, all the data it contains will be lost.
+-  - You are about to drop the column `emailVerified` on the `User` table. All the data in the column will be lost.
+-
+-*/
+--- DropIndex
+-DROP INDEX "Session_sessionToken_key";
+-
+--- DropIndex
+-DROP INDEX "VerificationToken_token_key";
+-
+--- DropTable
+-PRAGMA foreign_keys=off;
+-DROP TABLE "Account";
+-PRAGMA foreign_keys=on;
+-
+--- DropTable
+-PRAGMA foreign_keys=off;
+-DROP TABLE "Session";
+-PRAGMA foreign_keys=on;
+-
+--- DropTable
+-PRAGMA foreign_keys=off;
+-DROP TABLE "VerificationToken";
+-PRAGMA foreign_keys=on;
+-
+--- RedefineTables
+-PRAGMA defer_foreign_keys=ON;
+-PRAGMA foreign_keys=OFF;
+-CREATE TABLE "new_User" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "name" TEXT NOT NULL,
+-    "email" TEXT NOT NULL,
+-    "password" TEXT NOT NULL,
+-    "referralCode" TEXT NOT NULL,
+-    "referredById" INTEGER,
+-    "role" TEXT NOT NULL DEFAULT 'user',
+-    CONSTRAINT "User_referredById_fkey" FOREIGN KEY ("referredById") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+-);
+-INSERT INTO "new_User" ("email", "id", "name", "password", "referralCode", "referredById", "role") SELECT "email", "id", "name", "password", "referralCode", "referredById", "role" FROM "User";
+-DROP TABLE "User";
+-ALTER TABLE "new_User" RENAME TO "User";
+-CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+-CREATE UNIQUE INDEX "User_referralCode_key" ON "User"("referralCode");
+-PRAGMA foreign_keys=ON;
+-PRAGMA defer_foreign_keys=OFF;
+Index: prisma/migrations/20250326112724_init/migration.sql
+===================================================================
+diff --git a/prisma/migrations/20250326112724_init/migration.sql b/prisma/migrations/20250326112724_init/migration.sql
+deleted file mode 100644
+--- a/prisma/migrations/20250326112724_init/migration.sql	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
++++ /dev/null	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
+@@ -1,31 +0,0 @@
+-/*
+-  Warnings:
+-
+-  - You are about to drop the `Referral` table. If the table is not empty, all the data it contains will be lost.
+-  - Added the required column `name` to the `User` table without a default value. This is not possible if the table is not empty.
+-
+-*/
+--- DropIndex
+-DROP INDEX "Referral_code_key";
+-
+--- DropTable
+-PRAGMA foreign_keys=off;
+-DROP TABLE "Referral";
+-PRAGMA foreign_keys=on;
+-
+--- RedefineTables
+-PRAGMA defer_foreign_keys=ON;
+-PRAGMA foreign_keys=OFF;
+-CREATE TABLE "new_User" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "name" TEXT NOT NULL,
+-    "email" TEXT NOT NULL,
+-    "password" TEXT NOT NULL,
+-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+-);
+-INSERT INTO "new_User" ("email", "id", "password") SELECT "email", "id", "password" FROM "User";
+-DROP TABLE "User";
+-ALTER TABLE "new_User" RENAME TO "User";
+-CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+-PRAGMA foreign_keys=ON;
+-PRAGMA defer_foreign_keys=OFF;
+Index: prisma/migrations/20250326110948_init/migration.sql
+===================================================================
+diff --git a/prisma/migrations/20250326110948_init/migration.sql b/prisma/migrations/20250326110948_init/migration.sql
+deleted file mode 100644
+--- a/prisma/migrations/20250326110948_init/migration.sql	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
++++ /dev/null	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
+@@ -1,20 +0,0 @@
+--- CreateTable
+-CREATE TABLE "User" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "email" TEXT NOT NULL,
+-    "password" TEXT NOT NULL
+-);
+-
+--- CreateTable
+-CREATE TABLE "Referral" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "code" TEXT NOT NULL,
+-    "userId" INTEGER NOT NULL,
+-    CONSTRAINT "Referral_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+-);
+-
+--- CreateIndex
+-CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+-
+--- CreateIndex
+-CREATE UNIQUE INDEX "Referral_code_key" ON "Referral"("code");
+Index: prisma/migrations/20250328110508_init_user_model/migration.sql
+===================================================================
+diff --git a/prisma/migrations/20250328110508_init_user_model/migration.sql b/prisma/migrations/20250328110508_init_user_model/migration.sql
+deleted file mode 100644
+--- a/prisma/migrations/20250328110508_init_user_model/migration.sql	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
++++ /dev/null	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
+@@ -1,39 +0,0 @@
+--- CreateTable
+-CREATE TABLE "Account" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "userId" INTEGER NOT NULL,
+-    "type" TEXT NOT NULL,
+-    "provider" TEXT NOT NULL,
+-    "providerAccountId" TEXT NOT NULL,
+-    "refresh_token" TEXT,
+-    "access_token" TEXT,
+-    "expires_at" INTEGER,
+-    "token_type" TEXT,
+-    "scope" TEXT,
+-    "id_token" TEXT,
+-    "session_state" TEXT,
+-    CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+-);
+-
+--- CreateTable
+-CREATE TABLE "Session" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "sessionToken" TEXT NOT NULL,
+-    "userId" INTEGER NOT NULL,
+-    "expires" DATETIME NOT NULL,
+-    CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+-);
+-
+--- CreateTable
+-CREATE TABLE "VerificationToken" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "identifier" TEXT NOT NULL,
+-    "token" TEXT NOT NULL,
+-    "expires" DATETIME NOT NULL
+-);
+-
+--- CreateIndex
+-CREATE UNIQUE INDEX "Session_sessionToken_key" ON "Session"("sessionToken");
+-
+--- CreateIndex
+-CREATE UNIQUE INDEX "VerificationToken_token_key" ON "VerificationToken"("token");
+Index: prisma/migrations/20250327100209_init/migration.sql
+===================================================================
+diff --git a/prisma/migrations/20250327100209_init/migration.sql b/prisma/migrations/20250327100209_init/migration.sql
+deleted file mode 100644
+--- a/prisma/migrations/20250327100209_init/migration.sql	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
++++ /dev/null	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
+@@ -1,24 +0,0 @@
+-/*
+-  Warnings:
+-
+-  - Added the required column `image` to the `Product` table without a default value. This is not possible if the table is not empty.
+-
+-*/
+--- RedefineTables
+-PRAGMA defer_foreign_keys=ON;
+-PRAGMA foreign_keys=OFF;
+-CREATE TABLE "new_Product" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "name" TEXT NOT NULL,
+-    "description" TEXT,
+-    "price" REAL NOT NULL,
+-    "stock" INTEGER NOT NULL,
+-    "image" TEXT NOT NULL,
+-    "categoryId" INTEGER,
+-    CONSTRAINT "Product_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+-);
+-INSERT INTO "new_Product" ("categoryId", "description", "id", "name", "price", "stock") SELECT "categoryId", "description", "id", "name", "price", "stock" FROM "Product";
+-DROP TABLE "Product";
+-ALTER TABLE "new_Product" RENAME TO "Product";
+-PRAGMA foreign_keys=ON;
+-PRAGMA defer_foreign_keys=OFF;
+Index: prisma/migrations/20250328112019_add_email_verified/migration.sql
+===================================================================
+diff --git a/prisma/migrations/20250328112019_add_email_verified/migration.sql b/prisma/migrations/20250328112019_add_email_verified/migration.sql
+deleted file mode 100644
+--- a/prisma/migrations/20250328112019_add_email_verified/migration.sql	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
++++ /dev/null	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
+@@ -1,2 +0,0 @@
+--- AlterTable
+-ALTER TABLE "User" ADD COLUMN "emailVerified" DATETIME;
+Index: .idea/dataSources.xml
+===================================================================
+diff --git a/.idea/dataSources.xml b/.idea/dataSources.xml
+deleted file mode 100644
+--- a/.idea/dataSources.xml	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
++++ /dev/null	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
+@@ -1,20 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+-    <data-source source="LOCAL" name="dev" uuid="ea7b602c-b9d3-45dc-a791-94c3c4cc73c8">
+-      <driver-ref>sqlite.xerial</driver-ref>
+-      <synchronize>true</synchronize>
+-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+-      <jdbc-url>jdbc:sqlite:C:\NODE JS\nextJS\ecommerce-next-app\prisma\dev.db</jdbc-url>
+-      <working-dir>$ProjectFileDir$</working-dir>
+-      <libraries>
+-        <library>
+-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.45.1/org/xerial/sqlite-jdbc/3.45.1.0/sqlite-jdbc-3.45.1.0.jar</url>
+-        </library>
+-        <library>
+-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.45.1/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar</url>
+-        </library>
+-      </libraries>
+-    </data-source>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: prisma/migrations/20250326125937_init/migration.sql
+===================================================================
+diff --git a/prisma/migrations/20250326125937_init/migration.sql b/prisma/migrations/20250326125937_init/migration.sql
+deleted file mode 100644
+--- a/prisma/migrations/20250326125937_init/migration.sql	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
++++ /dev/null	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
+@@ -1,53 +0,0 @@
+-/*
+-  Warnings:
+-
+-  - You are about to drop the column `createdAt` on the `User` table. All the data in the column will be lost.
+-  - The required column `referralCode` was added to the `User` table with a prisma-level default value. This is not possible if the table is not empty. Please add this column as optional, then populate it before making it required.
+-
+-*/
+--- CreateTable
+-CREATE TABLE "Order" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "userId" INTEGER NOT NULL,
+-    "amount" REAL NOT NULL,
+-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+-    CONSTRAINT "Order_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+-);
+-
+--- CreateTable
+-CREATE TABLE "Commission" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "orderId" INTEGER NOT NULL,
+-    "referrerId" INTEGER NOT NULL,
+-    "commissionAmount" REAL NOT NULL,
+-    "level" INTEGER NOT NULL,
+-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+-    CONSTRAINT "Commission_orderId_fkey" FOREIGN KEY ("orderId") REFERENCES "Order" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+-    CONSTRAINT "Commission_referrerId_fkey" FOREIGN KEY ("referrerId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+-);
+-
+--- RedefineTables
+-PRAGMA defer_foreign_keys=ON;
+-PRAGMA foreign_keys=OFF;
+-CREATE TABLE "new_User" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "name" TEXT NOT NULL,
+-    "email" TEXT NOT NULL,
+-    "password" TEXT NOT NULL,
+-    "referralCode" TEXT NOT NULL,
+-    "referredById" INTEGER,
+-    CONSTRAINT "User_referredById_fkey" FOREIGN KEY ("referredById") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+-);
+-INSERT INTO "new_User" ("email", "id", "name", "password") SELECT "email", "id", "name", "password" FROM "User";
+-DROP TABLE "User";
+-ALTER TABLE "new_User" RENAME TO "User";
+-CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+-CREATE UNIQUE INDEX "User_referralCode_key" ON "User"("referralCode");
+-PRAGMA foreign_keys=ON;
+-PRAGMA defer_foreign_keys=OFF;
+-
+--- CreateIndex
+-CREATE INDEX "Commission_orderId_idx" ON "Commission"("orderId");
+-
+--- CreateIndex
+-CREATE INDEX "Commission_referrerId_idx" ON "Commission"("referrerId");
+Index: prisma/migrations/20250327095921_init/migration.sql
+===================================================================
+diff --git a/prisma/migrations/20250327095921_init/migration.sql b/prisma/migrations/20250327095921_init/migration.sql
+deleted file mode 100644
+--- a/prisma/migrations/20250327095921_init/migration.sql	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
++++ /dev/null	(revision c22082202c1f125b81f708069d9b7a1866adf50b)
+@@ -1,62 +0,0 @@
+--- CreateTable
+-CREATE TABLE "Category" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "name" TEXT NOT NULL
+-);
+-
+--- CreateTable
+-CREATE TABLE "Product" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "name" TEXT NOT NULL,
+-    "description" TEXT,
+-    "price" REAL NOT NULL,
+-    "stock" INTEGER NOT NULL,
+-    "categoryId" INTEGER,
+-    CONSTRAINT "Product_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+-);
+-
+--- CreateTable
+-CREATE TABLE "OrderItem" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "orderId" INTEGER NOT NULL,
+-    "productId" INTEGER NOT NULL,
+-    "quantity" INTEGER NOT NULL,
+-    "price" REAL NOT NULL,
+-    CONSTRAINT "OrderItem_orderId_fkey" FOREIGN KEY ("orderId") REFERENCES "Order" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+-    CONSTRAINT "OrderItem_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Product" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+-);
+-
+--- RedefineTables
+-PRAGMA defer_foreign_keys=ON;
+-PRAGMA foreign_keys=OFF;
+-CREATE TABLE "new_Order" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "userId" INTEGER NOT NULL,
+-    "amount" REAL NOT NULL,
+-    "status" TEXT NOT NULL DEFAULT 'PENDING',
+-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+-    CONSTRAINT "Order_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+-);
+-INSERT INTO "new_Order" ("amount", "createdAt", "id", "userId") SELECT "amount", "createdAt", "id", "userId" FROM "Order";
+-DROP TABLE "Order";
+-ALTER TABLE "new_Order" RENAME TO "Order";
+-CREATE TABLE "new_User" (
+-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+-    "name" TEXT NOT NULL,
+-    "email" TEXT NOT NULL,
+-    "password" TEXT NOT NULL,
+-    "referralCode" TEXT NOT NULL,
+-    "referredById" INTEGER,
+-    "role" TEXT NOT NULL DEFAULT 'user',
+-    CONSTRAINT "User_referredById_fkey" FOREIGN KEY ("referredById") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+-);
+-INSERT INTO "new_User" ("email", "id", "name", "password", "referralCode", "referredById") SELECT "email", "id", "name", "password", "referralCode", "referredById" FROM "User";
+-DROP TABLE "User";
+-ALTER TABLE "new_User" RENAME TO "User";
+-CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+-CREATE UNIQUE INDEX "User_referralCode_key" ON "User"("referralCode");
+-PRAGMA foreign_keys=ON;
+-PRAGMA defer_foreign_keys=OFF;
+-
+--- CreateIndex
+-CREATE UNIQUE INDEX "Category_name_key" ON "Category"("name");

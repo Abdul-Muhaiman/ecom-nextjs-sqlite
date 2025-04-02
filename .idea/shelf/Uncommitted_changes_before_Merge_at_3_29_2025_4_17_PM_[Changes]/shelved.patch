@@ -1,0 +1,194 @@
+Index: app/(auth)/register/page.tsx
+===================================================================
+diff --git a/app/(auth)/register/page.tsx b/app/(auth)/register/page.tsx
+deleted file mode 100644
+--- a/app/(auth)/register/page.tsx	(revision 5ba49c35ff4d3df461e48e4eb3b401e559ec5f47)
++++ /dev/null	(revision 5ba49c35ff4d3df461e48e4eb3b401e559ec5f47)
+@@ -1,106 +0,0 @@
+-"use client";
+-
+-import { useState } from "react";
+-
+-export default function Page() {
+-    const [successMessage, setSuccessMessage] = useState<string | null>(null);
+-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+-
+-    const handleSubmit = async (data: FormData) => {
+-        try {
+-            const res = await fetch("/api/register", {
+-                method: "POST",
+-                body: data,
+-            });
+-
+-            if (res.ok) {
+-                setSuccessMessage("User registered successfully!");
+-                setErrorMessage(null); // Clear any previous errors
+-            } else {
+-                const errorData = await res.json();
+-                setErrorMessage(errorData.error || "Something went wrong");
+-                setSuccessMessage(null);
+-            }
+-        } catch (e) {
+-            setErrorMessage("An unexpected error occurred.");
+-            setSuccessMessage(null);
+-        }
+-    };
+-
+-    return (
+-        <div className="flex justify-center items-center h-screen bg-gray-100">
+-            <div className="bg-white p-6 rounded-lg shadow-md max-w-md w-full">
+-                <h1 className="text-2xl font-bold mb-4 text-center">Register User</h1>
+-                {successMessage && (
+-                    <div className="bg-green-100 text-green-700 p-3 rounded mb-4">
+-                        {successMessage}
+-                    </div>
+-                )}
+-                {errorMessage && (
+-                    <div className="bg-red-100 text-red-700 p-3 rounded mb-4">
+-                        {errorMessage}
+-                    </div>
+-                )}
+-                <form action={handleSubmit} className="space-y-4">
+-                    <div>
+-                        <label htmlFor="name" className="block font-medium text-gray-700">
+-                            Name
+-                        </label>
+-                        <input
+-                            type="text"
+-                            id="name"
+-                            name="name"
+-                            className="w-full p-2 border border-gray-300 rounded"
+-                            required
+-                        />
+-                    </div>
+-
+-                    <div>
+-                        <label htmlFor="email" className="block font-medium text-gray-700">
+-                            Email
+-                        </label>
+-                        <input
+-                            type="email"
+-                            id="email"
+-                            name="email"
+-                            className="w-full p-2 border border-gray-300 rounded"
+-                            required
+-                        />
+-                    </div>
+-
+-                    <div>
+-                        <label htmlFor="password" className="block font-medium text-gray-700">
+-                            Password
+-                        </label>
+-                        <input
+-                            type="password"
+-                            id="password"
+-                            name="password"
+-                            className="w-full p-2 border border-gray-300 rounded"
+-                            required
+-                        />
+-                    </div>
+-
+-                    <div>
+-                        <label htmlFor="referralCodeUsed" className="block font-medium text-gray-700">
+-                            Referral Code (Optional)
+-                        </label>
+-                        <input
+-                            type="text"
+-                            id="referralCodeUsed"
+-                            name="referralCodeUsed"
+-                            className="w-full p-2 border border-gray-300 rounded"
+-                        />
+-                    </div>
+-
+-                    <button
+-                        type="submit"
+-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded"
+-                    >
+-                        Submit
+-                    </button>
+-                </form>
+-            </div>
+-        </div>
+-    );
+-}
+Index: app/api/(auth)/register/route.ts
+===================================================================
+diff --git a/app/api/(auth)/register/route.ts b/app/api/(auth)/register/route.ts
+deleted file mode 100644
+--- a/app/api/(auth)/register/route.ts	(revision 5ba49c35ff4d3df461e48e4eb3b401e559ec5f47)
++++ /dev/null	(revision 5ba49c35ff4d3df461e48e4eb3b401e559ec5f47)
+@@ -1,74 +0,0 @@
+-import prisma from "@/lib/prisma";
+-import bcrypt from "bcrypt";
+-import {generateUniqueReferralCode} from "@/utils/utils";
+-import {NextResponse} from "next/server";
+-
+-export async function POST(req: Request) {
+-    try {
+-        const formData = await req.formData();
+-        const name = formData.get("name")?.toString();
+-        const email = formData.get("email")?.toString();
+-        const password = formData.get("password")?.toString();
+-        const referralCodeUsed = formData.get("referralCodeUsed")?.toString();
+-
+-        if (!name || !email || !password) {
+-            return new Response(
+-                JSON.stringify({ error: "Name, email, and password are required!" }),
+-                { status: 400 }
+-            );
+-        }
+-
+-        // Check for existing email
+-        const existingUser = await prisma.user.findUnique({ where: { email } });
+-        if (existingUser) {
+-            return new Response(
+-                JSON.stringify({ error: "A user with this email already exists." }),
+-                { status: 400 }
+-            );
+-        }
+-
+-        // Check if the referral code used is valid
+-        let referredById: number | null = null;
+-        if (referralCodeUsed) {
+-            const referrer = await prisma.user.findUnique({
+-                where: { referralCode: referralCodeUsed },
+-            });
+-            if (!referrer) {
+-                return new Response(
+-                    JSON.stringify({ error: "Invalid referral code provided." }),
+-                    { status: 400 }
+-                );
+-            }
+-            referredById = referrer.id;
+-        }
+-
+-        // Generate a unique referral code
+-        const referralCode = await generateUniqueReferralCode();
+-
+-        // Hash the password for security
+-        const hashedPassword = await bcrypt.hash(password, 10);
+-
+-        // Create the new user
+-        await prisma.user.create({
+-            data: {
+-                name,
+-                email,
+-                password: hashedPassword,
+-                referralCode,
+-                referredById,
+-            },
+-        });
+-
+-        NextResponse.json({ message: "User registered successfully!" });
+-
+-        return new Response(JSON.stringify({ message: "User registered successfully!" }), {
+-            status: 201,
+-        });
+-    } catch (error) {
+-        console.error("Error registering user:", error);
+-        return new Response(
+-            JSON.stringify({ error: "An unexpected error occurred." }),
+-            { status: 500 }
+-        );
+-    }
+-}

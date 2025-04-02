@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma";
 import Image from "next/image";
 import Placeholder from "@/public/placeholder.png";
 import Link from "next/link";
+import {AddToCartButton} from "@/components/AddToCartButton";
 
 export default async function Page() {
     // Directly fetch data using Prisma
@@ -61,11 +62,10 @@ export default async function Page() {
                                 <p className="text-sm text-gray-500">
                                     Stock: <span className="font-bold">{product.stock}</span>
                                 </p>
-                                <button
-                                    className="mt-2 w-full bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-md text-sm font-medium transition-transform transform hover:scale-105 shadow"
-                                >
-                                    Add to Cart
-                                </button>
+                                <AddToCartButton
+                                    product={product}
+                                    style={"mt-2 w-full bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-md text-sm font-medium transition-transform transform hover:scale-105 shadow"}
+                                />
                             </div>
                         </div>
                     </div>
