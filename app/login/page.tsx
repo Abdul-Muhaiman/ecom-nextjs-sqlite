@@ -5,7 +5,6 @@ import {getSession, signIn} from "next-auth/react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
-import {useCartStore} from "@/store/cartStore";
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
@@ -13,8 +12,6 @@ const LoginPage = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(false);
     const router  = useRouter();
-
-    const { fetchCart } = useCartStore();
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -32,7 +29,6 @@ const LoginPage = () => {
         if (res?.ok) {
             const session = await getSession();
             if (session) {
-                await fetchCart(session?.user.id);
             }
 
             if (res?.url) {

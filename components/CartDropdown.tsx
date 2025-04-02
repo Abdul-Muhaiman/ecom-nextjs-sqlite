@@ -1,10 +1,9 @@
 "use client";
 
-import { useCartStore } from "@/store/cartStore";
 import Link from "next/link";
 
 export default function CartDropdown() {
-    const { cart } = useCartStore();
+
 
     return (
         <div className="relative">
@@ -15,7 +14,6 @@ export default function CartDropdown() {
                     Cart
                 </button>
                 <span className="absolute -top-2 -right-2 bg-red-500  text-xs font-bold px-2 py-1 rounded-full">
-                {cart.length}
             </span>
             </Link>
         </div>
