@@ -40,7 +40,6 @@ export default async function Navbar() {
 
                 {/* Cart Dropdown */}
                 <div className="flex items-center space-x-4 relative">
-                    <CartDropdown />
 
                     {/* Login Button */}
                     {!session ? (
