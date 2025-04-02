@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**NEW CART**&#10;Add to cart button logic with post request to db">
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**NEW CART**&#10;Get cart products using GET Route">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/cart/[userId]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/cart/[userId]/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/cart/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/cart/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/cart/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/AddToCartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/AddToCartButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,11 +83,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\cart\remove" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\cart" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\cart\[userId]" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\auth" />
-      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\auth\[...nextauth]" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -126,7 +127,7 @@
       <workItem from="1743348409147" duration="2618000" />
       <workItem from="1743445723817" duration="12206000" />
       <workItem from="1743595644271" duration="3974000" />
-      <workItem from="1743601275594" duration="5131000" />
+      <workItem from="1743601275594" duration="6926000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -240,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743604983265</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="**NEW CART**&#10;Get cart products using GET Route">
+      <option name="closed" value="true" />
+      <created>1743606560772</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1743606560772</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +279,7 @@
     <MESSAGE value="CART FUNCTIONALITY ADDING" />
     <MESSAGE value="Removed cart" />
     <MESSAGE value="**NEW CART**&#10;Add to cart button logic with post request to db" />
-    <option name="LAST_COMMIT_MESSAGE" value="**NEW CART**&#10;Add to cart button logic with post request to db" />
+    <MESSAGE value="**NEW CART**&#10;Get cart products using GET Route" />
+    <option name="LAST_COMMIT_MESSAGE" value="**NEW CART**&#10;Get cart products using GET Route" />
   </component>
 </project>

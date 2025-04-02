@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import {useEffect, useState} from "react";
+import {useSession} from "next-auth/react";
 import Image from "next/image";
 import Placeholder from "@/public/placeholder.png"
+import DeleteButton from "@/app/cart/components/DeleteButton"
 
 interface cartItems {
     id: number;
@@ -65,7 +66,7 @@ export default function CartPage() {
                                     <div className="relative w-20 h-20 flex-shrink-0">
                                         <Image
                                             src={item.productImage || Placeholder}
-                                            alt={item.productImage}
+                                            alt={item.productName}
                                             fill
                                             className="object-contain rounded-md"
                                             sizes="100vw"
@@ -97,20 +98,11 @@ export default function CartPage() {
                                         </p>
                                     </div>
                                     {/* Delete Button */}
-                                    <button
-                                        className="ml-4 text-gray-500 hover:text-red-500 focus:outline-none"
-                                    >
-                                        <svg
-                                            className="w-5 h-5 fill-current"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path
-                                                fillRule="evenodd"
-                                                d="M6 2a1 1 0 00-.894.553L4.382 4H1a1 1 0 000 2h1v10a2 2 0 002 2h12a2 2 0 002-2V6h1a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0014 2H6zM9 8a1 1 0 012 0v6a1 1 0 11-2 0V8z"
-                                                clipRule="evenodd"
-                                            />
-                                        </svg>
-                                    </button>
+                                    <DeleteButton
+                                        userId={session?.user.id as number}
+                                        productId={item.productId}
+                                        setCartItems={setCartItems} // Pass down setCartItems
+                                    />
                                 </div>
                             ))
                         ) : (
@@ -144,8 +136,7 @@ export default function CartPage() {
                 $
                                 {cartItems
                                     .reduce(
-                                        (total, item) =>
-                                            total + item.productPrice * item.quantity,
+                                        (total, item) => total + item.productPrice * item.quantity,
                                         0
                                     )
                                     .toFixed(2)}
