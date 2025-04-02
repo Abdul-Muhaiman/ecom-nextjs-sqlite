@@ -6,6 +6,7 @@ import {useSession} from "next-auth/react";
 import Image from "next/image";
 import Placeholder from "@/public/placeholder.png"
 import DeleteButton from "@/app/cart/components/DeleteButton"
+import ClearCartButton from "@/app/cart/components/ClearCartButton";
 
 interface cartItems {
     id: number;
@@ -18,7 +19,7 @@ interface cartItems {
 }
 
 export default function CartPage() {
-    const { data: session, status } = useSession();
+    const {data: session, status} = useSession();
     const [cartItems, setCartItems] = useState<cartItems[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -82,11 +83,13 @@ export default function CartPage() {
                                         </p>
                                         {/* Quantity Controls */}
                                         <div className="flex items-center mt-2">
-                                            <button className="w-8 h-8 bg-blue-200 rounded-full text-blue-700 flex items-center justify-center hover:bg-blue-300">
+                                            <button
+                                                className="w-8 h-8 bg-blue-200 rounded-full text-blue-700 flex items-center justify-center hover:bg-blue-300">
                                                 -
                                             </button>
                                             <span className="mx-4 text-lg">{item.quantity}</span>
-                                            <button className="w-8 h-8 bg-blue-200 rounded-full text-blue-700 flex items-center justify-center hover:bg-blue-300">
+                                            <button
+                                                className="w-8 h-8 bg-blue-200 rounded-full text-blue-700 flex items-center justify-center hover:bg-blue-300">
                                                 +
                                             </button>
                                         </div>
@@ -118,9 +121,7 @@ export default function CartPage() {
                                 Continue Shopping
                             </Link>
                             {cartItems.length > 0 && (
-                                <button className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600">
-                                    Clear Cart
-                                </button>
+                                <ClearCartButton userId={session?.user.id as number} setCartItems={setCartItems} />
                             )}
                         </div>
                     </div>
@@ -142,7 +143,8 @@ export default function CartPage() {
                                     .toFixed(2)}
               </span>
                         </div>
-                        <button className="mt-6 w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition-colors">
+                        <button
+                            className="mt-6 w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition-colors">
                             Proceed to Checkout
                         </button>
                     </div>

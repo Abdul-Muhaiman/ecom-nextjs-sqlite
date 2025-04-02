@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest, { params }: { params: { userId: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ userId: string }> }) {
     try {
         // Extract userId from params
         const { userId } = await params;
@@ -29,5 +29,24 @@ export async function GET(request: NextRequest, { params }: { params: { userId: 
             { error: "An error occurred while fetching the cart items" },
             { status: 500 } // Internal Server Error
         );
+    }
+}
+
+export async function DELETE(req: NextRequest, { params }: { params: { userId: string } }) {
+    try {
+        const { userId } = params;
+
+        if (!userId) {
+            return NextResponse.json({ error: "User ID is required" }, { status: 400 });
+        }
+
+        await prisma.cartItem.deleteMany({
+            where: { userId: parseInt(userId) },
+        });
+
+        return NextResponse.json({ message: "Cart cleared successfully" });
+    } catch (error) {
+        console.error("Error clearing cart:", error);
+        return NextResponse.json({ error: "Internal server error" }, { status: 500 });
     }
 }
