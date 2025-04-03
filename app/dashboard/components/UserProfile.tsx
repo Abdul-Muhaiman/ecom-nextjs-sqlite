@@ -1,116 +1,87 @@
-import React from 'react';
+import React from "react";
 import Link from "next/link";
+import {getInitials} from "@/utils/helper";
+import {User} from "@/types/user";
 
-// Interface for the 'referredBy' nested object
-interface ReferredBy {
-    id: number;
-    name: string;
-    email: string;
-    referralCode: string;
-}
-
-// Interface for the 'referredUsers' array
-interface ReferredUser {
-    id: number;
-    name: string;
-    email: string;
-    referralCode: string;
-}
-
-// Main User Interface
-interface User {
-    id: number;
-    name: string;
-    email: string;
-    referralCode: string;
-    referredById: number | null;
-    role: string;
-    referredBy?: ReferredBy;
-    referredUsers?: ReferredUser[];
-}
-
-const UserProfile = ({user}: { user: User }) => {
-    // Helper function to get initials for avatar
-    const getInitials = (name: string) => {
-        const names = name.split(' ');
-        let initials = '';
-        if (names.length > 0) {
-            initials += names[0][0];
-        }
-        if (names.length > 1) {
-            initials += names[names.length - 1][0];
-        }
-        return initials.toUpperCase();
-    };
+const UserProfile = ({ user }: { user: User }) => {
 
     return (
-        <div className="max-w-3xl mx-auto p-6 space-y-8">
+        <div className="max-w-4xl mx-auto p-6 space-y-10">
+            {/* Header Section */}
             <div className="text-center">
                 <div
-                    className="h-20 w-20 mx-auto bg-blue-200 rounded-full flex items-center justify-center text-3xl font-bold text-blue-800 mb-4">
+                    className="h-20 w-20 mx-auto bg-blue-600 text-white rounded-full flex items-center justify-center text-3xl font-extrabold shadow-md"
+                >
                     {getInitials(user.name)}
                 </div>
-                <h1 className="text-3xl font-semibold text-gray-900">{user.name}</h1>
-                <p className="text-gray-600">{user.email}</p>
-                <Link href={'/dashboard/referral'}>
-                    <button
-                        className="mt-4 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
-                    >
+                <h1 className="text-4xl font-bold text-gray-900 mt-4">{user.name}</h1>
+                <p className="text-gray-600 text-lg">{user.email}</p>
+                <Link href="/dashboard/referral">
+                    <button className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300">
                         View Commissions
                     </button>
                 </Link>
             </div>
 
+            {/* Referral Code Section */}
             <div className="bg-white shadow-md rounded-lg p-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4 border-b pb-2">Referral Code</h2>
-                <div className="p-4 bg-gray-100 rounded-md font-mono text-xl font-semibold text-blue-600 text-center">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4 border-b pb-2">Your Referral Code</h2>
+                <div className="p-5 bg-blue-50 text-blue-700 text-center font-mono text-2xl font-bold rounded-lg shadow-sm">
                     {user.referralCode}
                 </div>
             </div>
 
+            {/* Referred By Section */}
             {user.referredBy && (
                 <div className="bg-white shadow-md rounded-lg p-6">
-                    <h2 className="text-xl font-semibold text-gray-900 mb-4 border-b pb-2">Referred By</h2>
-                    <div className="flex items-center gap-4 mb-4">
+                    <h2 className="text-2xl font-semibold text-gray-900 mb-4 border-b pb-2">Referred By</h2>
+                    <div className="flex items-center gap-4">
                         <div
-                            className="h-12 w-12 bg-gray-300 rounded-full flex items-center justify-center text-sm font-semibold">
+                            className="h-14 w-14 bg-gray-300 text-gray-800 rounded-full flex items-center justify-center text-lg font-bold shadow-sm"
+                        >
                             {getInitials(user.referredBy.name)}
                         </div>
                         <div>
-                            <p className="text-lg font-medium text-gray-900">{user.referredBy.name}</p>
-                            <p className="text-gray-600">{user.referredBy.email}</p>
+                            <p className="text-lg font-semibold text-gray-900">{user.referredBy.name}</p>
+                            <p className="text-gray-600 text-sm">{user.referredBy.email}</p>
                         </div>
                     </div>
-                    <div
-                        className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold inline-block">
+                    <div className="mt-4 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-bold inline-block">
                         Referral Code: {user.referredBy.referralCode}
                     </div>
                 </div>
             )}
 
+            {/* Referred Users Section */}
             {user.referredUsers && user.referredUsers.length > 0 && (
                 <div className="bg-white shadow-md rounded-lg p-6">
-                    <h2 className="text-xl font-semibold text-gray-900 mb-4 border-b pb-2">Users You&#39;ve Referred
-                        ({user.referredUsers.length})</h2>
-                    <div className="space-y-4">
-                        {user.referredUsers.map((referredUser) => (
-                            <div key={referredUser.id}
-                                 className="p-4 bg-gray-50 rounded-md border border-gray-200 flex items-center justify-between">
-                                <div className="flex items-center gap-4">
-                                    <div
-                                        className="h-10 w-10 bg-gray-300 rounded-full flex items-center justify-center text-sm font-semibold">
-                                        {getInitials(referredUser.name)}
-                                    </div>
-                                    <div>
-                                        <p className="text-lg font-medium text-gray-900">{referredUser.name}</p>
-                                        <p className="text-gray-600">{referredUser.email}</p>
-                                    </div>
-                                </div>
-                                <div className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-semibold">
-                                    Referral Code: {referredUser.referralCode}
-                                </div>
-                            </div>
-                        ))}
+                    <h2 className="text-2xl font-semibold text-gray-900 mb-4 border-b pb-2">Users You&#39;ve Referred</h2>
+                    <div className="overflow-x-auto rounded-lg">
+                        <table className="min-w-full bg-gray-50 rounded-lg border border-gray-200 shadow-sm">
+                            <thead>
+                            <tr className="bg-blue-500 text-white text-left">
+                                <th className="px-5 py-3 text-sm font-bold uppercase">Name</th>
+                                <th className="px-5 py-3 text-sm font-bold uppercase">Email</th>
+                                <th className="px-5 py-3 text-sm font-bold uppercase">Referral Code</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {user.referredUsers.map((referredUser) => (
+                                <tr
+                                    key={referredUser.id}
+                                    className="hover:bg-gray-100 transition-colors duration-300"
+                                >
+                                    <td className="px-5 py-4 text-sm text-gray-800 font-medium">
+                                        {referredUser.name}
+                                    </td>
+                                    <td className="px-5 py-4 text-sm text-gray-600">{referredUser.email}</td>
+                                    <td className="px-5 py-4 text-sm text-gray-900 font-bold">
+                                        {referredUser.referralCode}
+                                    </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             )}

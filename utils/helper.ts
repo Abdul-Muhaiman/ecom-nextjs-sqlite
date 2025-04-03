@@ -34,3 +34,11 @@ export const formatDate = (dateString: string) => {
         minute: '2-digit',
     });
 };
+
+export const getInitials = (name: string) => {
+    const names = name.split(" ");
+    let initials = "";
+    if (names.length > 0) initials += names[0][0];
+    if (names.length > 1) initials += names[names.length - 1][0];
+    return initials.toUpperCase();
+};

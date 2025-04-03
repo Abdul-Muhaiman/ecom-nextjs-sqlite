@@ -58,7 +58,7 @@ export default function OrdersPage() {
     // Render order data
     return (
         <div className="min-h-screen bg-gray-100 p-6">
-            <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Order Details</h1>
+            <h1 className="text-4xl font-extrabold text-gray-800 mb-8 text-center tracking-wide">Order Details</h1>
             {orders.map((order) => (
                 <OrderDetails key={order.id} order={order} />
             ))}

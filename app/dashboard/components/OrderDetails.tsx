@@ -11,33 +11,35 @@ const OrderDetails = ({ order }: { order: Order }) => {
         <div className="max-w-4xl mx-auto p-4 sm:p-6">
             <div className="bg-white shadow-lg rounded-xl p-6 mb-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300">
                 {/* Order Overview */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-center">
                     <div>
-                        <p className="text-sm text-gray-500 font-medium">Order Amount</p>
-                        <p className="text-lg font-semibold text-gray-900">${order.amount}</p>
+                        <p className="text-sm text-gray-500 font-medium uppercase tracking-wide">Order Amount</p>
+                        <p className="text-lg font-bold text-gray-900">${order.amount}</p>
                     </div>
                     <div>
-                        <p className="text-sm text-gray-500 font-medium">Order Status</p>
+                        <p className="text-sm text-gray-500 font-medium uppercase tracking-wide">Order Status</p>
                         <span
-                            className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${
+                            className={`inline-block px-4 py-1 text-sm font-semibold rounded-full ${
                                 order.status.toLowerCase() === "delivered"
-                                    ? "bg-green-100 text-green-600"
-                                    : "bg-yellow-100 text-yellow-600"
+                                    ? "bg-green-100 text-green-700"
+                                    : "bg-yellow-100 text-yellow-700"
                             }`}
                         >
                             {order.status}
                         </span>
                     </div>
                     <div>
-                        <p className="text-sm text-gray-500 font-medium">Order Date</p>
-                        <p className="text-lg font-semibold text-gray-900">{formatDate(order.createdAt)}</p>
+                        <p className="text-sm text-gray-500 font-medium uppercase tracking-wide">Order Date</p>
+                        <p className="text-lg font-bold text-gray-900">{formatDate(order.createdAt)}</p>
                     </div>
                 </div>
 
                 {/* See Details Button */}
                 <div className="mt-6 text-center">
                     <button
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg hover:from-blue-600 hover:to-indigo-700 shadow-md transition-all duration-300"
+                        className={`w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-all duration-300 ${
+                            isOpen ? "bg-gray-600 hover:bg-gray-700" : ""
+                        }`}
                         onClick={() => setIsOpen(!isOpen)}
                     >
                         {isOpen ? "Hide Details" : "See Details"}
@@ -46,8 +48,8 @@ const OrderDetails = ({ order }: { order: Order }) => {
 
                 {/* Order Items Section */}
                 {isOpen && (
-                    <div className="mt-6 bg-gray-50 p-6 rounded-lg border border-gray-200">
-                        <h2 className="text-2xl font-bold text-gray-800 mb-4">Order Items</h2>
+                    <div className="mt-6 bg-blue-50 p-6 rounded-lg border border-gray-200">
+                        <h2 className="text-2xl font-extrabold text-gray-800 mb-4">Order Items</h2>
                         <div className="space-y-6">
                             {order.items.map((item, index) => (
                                 <div
@@ -60,13 +62,13 @@ const OrderDetails = ({ order }: { order: Order }) => {
                                                 src={item.product.image || Placeholder}
                                                 alt={item.product.name}
                                                 fill
-                                                className="object-contain rounded-md"
+                                                className="object-contain rounded-md shadow-sm"
                                                 sizes="100vw"
                                             />
                                         </div>
                                         <div className="ml-4">
-                                            <p className="text-lg font-semibold text-gray-900">{item.product.name}</p>
-                                            <p className="text-sm text-gray-500">Quantity: {item.quantity}</p>
+                                            <p className="text-lg font-bold text-gray-900">{item.product.name}</p>
+                                            <p className="text-sm text-gray-600">Quantity: {item.quantity}</p>
                                         </div>
                                     </div>
                                     <div className="text-right">
