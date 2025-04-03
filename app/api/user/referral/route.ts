@@ -41,12 +41,12 @@ export async function GET(req: NextRequest) {
         })
 
         if (!commissions) {
-            return NextResponse.json({ error: 'User not found' }, { status: 404 });
+            return NextResponse.json({ error: 'Commissions not found' }, { status: 404 });
         }
 
         return NextResponse.json(commissions, { status: 200 });
     } catch (error: any) {
-        console.error("Error fetching user data:", error);
+        console.error("Error fetching commission data:", error);
         return NextResponse.json({ error: 'Internal server error: ' + error.message }, { status: 500 });
     }
 }

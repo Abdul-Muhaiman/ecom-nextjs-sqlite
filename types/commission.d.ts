@@ -8,14 +8,14 @@ export interface Commission {
     order: Order; // Nested order object
 }
 
-export interface Order {
+interface Order {
     id: number; // Unique identifier for the order
     amount: number; // Total amount of the order
     createdAt: string; // Timestamp of order creation
     user: User; // Nested user object
 }
 
-export interface User {
+interface User {
     id: number; // Unique identifier for the user
     name: string; // User's name
 }

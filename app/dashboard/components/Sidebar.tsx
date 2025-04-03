@@ -13,7 +13,7 @@ const sidebarContent = [
 export default function Sidebar() {
 
     return (
-        <div className="h-screen w-64 bg-gray-800 text-white flex flex-col">
+        <div className="h-auto w-64 bg-gray-800 text-white flex flex-col">
             {/* Logo/Title */}
             <div className="p-4 text-center text-xl font-bold border-b border-gray-600">
                 My Profile

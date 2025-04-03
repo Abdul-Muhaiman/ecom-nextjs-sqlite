@@ -30,7 +30,9 @@ export default async function DashboardLayout({children}: { children: React.Reac
 
     return (
         <div className={"flex"}>
-            <Sidebar/>
+
+
+                <Sidebar/>
             <SessionProvider session={session as Session}>
                 <div className={"grow"}>{children}</div>
             </SessionProvider>

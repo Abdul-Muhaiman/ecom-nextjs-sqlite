@@ -5,13 +5,13 @@ import { useSessionContext } from "@/context/SessionContext";
 import {Commission} from "@/types/commission";
 import CommissionDetails from "@/app/dashboard/components/CommissionDetails";
 
-export default function ProfilePage() {
+export default function CommissionPage() {
     const session = useSessionContext(); // Get session from your custom context
     const [commissions, setCommission] = useState<Commission[] | null>(null);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        const fetchUserDetails = async () => {
+        const fetchCommissionDetails = async () => {
             if (session?.user?.id) {
                 setIsLoading(true); // Start loading
                 try {
@@ -29,7 +29,7 @@ export default function ProfilePage() {
             }
         };
 
-        fetchUserDetails();
+        fetchCommissionDetails();
     }, [session]);
 
     // Handle loading state
