@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**NEW CART**&#10;Remove all items added">
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**NEW CART**&#10;Change qty on cart page working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/cart/remove/[productId]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/cart/product/[productId]/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cart/components/DeleteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/components/DeleteButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cart/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/checkout/address/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/checkout/address/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +125,7 @@
       <workItem from="1743445723817" duration="12206000" />
       <workItem from="1743595644271" duration="3974000" />
       <workItem from="1743601275594" duration="11162000" />
-      <workItem from="1743662920621" duration="120000" />
+      <workItem from="1743662920621" duration="1655000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -266,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743610362423</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="**NEW CART**&#10;Change qty on cart page working">
+      <option name="closed" value="true" />
+      <created>1743663115969</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1743663115969</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,6 +304,7 @@
     <MESSAGE value="**NEW CART**&#10;Get cart products using GET Route" />
     <MESSAGE value="**NEW CART**&#10;Remove products from carts using remove button working" />
     <MESSAGE value="**NEW CART**&#10;Remove all items added" />
-    <option name="LAST_COMMIT_MESSAGE" value="**NEW CART**&#10;Remove all items added" />
+    <MESSAGE value="**NEW CART**&#10;Change qty on cart page working" />
+    <option name="LAST_COMMIT_MESSAGE" value="**NEW CART**&#10;Change qty on cart page working" />
   </component>
 </project>
