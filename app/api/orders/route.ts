@@ -1,63 +1,259 @@
+// import { NextRequest, NextResponse } from "next/server";
+// import prisma from "@/lib/prisma";
+// import {calculateCommissionsConcurrent} from "@/lib/commission";
+//
+// // Main POST function
+// export async function POST(req: NextRequest) {
+//     try {
+//         // Parse the request body
+//         const body = await req.json();
+//         const { userId, amount } = body;
+//
+//         // Validate required fields
+//         if (!userId || !amount) {
+//             return NextResponse.json(
+//                 { error: "User ID and order amount are required!" },
+//                 { status: 400 }
+//             );
+//         }
+//
+//         // Check if the user exists
+//         const user = await prisma.user.findUnique({
+//             where: { id: userId },
+//         });
+//
+//         if (!user) {
+//             return NextResponse.json(
+//                 { error: `User with ID ${userId} does not exist.` },
+//                 { status: 404 }
+//             );
+//         }
+//
+//         // Create the order first
+//         const order = await prisma.order.create({
+//             data: {
+//                 userId,
+//                 amount,
+//             },
+//         });
+//
+//         // After the order is successfully created, calculate commissions
+//         const commissionResult = await calculateCommissionsConcurrent(
+//             userId,
+//             order.id,
+//             amount
+//         );
+//
+//         // Return success response
+//         return NextResponse.json(
+//             {
+//                 message: "Order created successfully!",
+//                 orderId: order.id,
+//                 commissions: commissionResult.message,
+//             },
+//             { status: 201 }
+//         );
+//     } catch (error) {
+//         console.error("Error processing order:", error);
+//
+//         return NextResponse.json(
+//             { error: "An unexpected error occurred. Please try again later." },
+//             { status: 500 }
+//         );
+//     }
+// }
+
+
+// app/api/orders/route.ts (or your specific path)
+
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import {calculateCommissionsConcurrent} from "@/lib/commission";
+import { calculateCommissionsConcurrent } from "@/lib/commission"; // Assuming this remains relevant
+// Import your Address type if you pass it from the frontend/context
+// import { Address } from '@/context/AddressContext';
 
-// Main POST function
+// Define the expected shape of the request body
+// We only need userId; address is optional but recommended
+interface OrderRequestBody {
+    userId: number;
+    // shippingAddress: Address; // <-- Add this if sending address from frontend
+}
+
+// Define the structure for the data needed to create an OrderItem
+// (before adding the orderId later)
+interface OrderItemCreateInput {
+    productId: number;
+    quantity: number;
+    price: number;
+}
+
 export async function POST(req: NextRequest) {
     try {
-        // Parse the request body
-        const body = await req.json();
-        const { userId, amount } = body;
+        // 1. Parse Request Body & Get User ID (and potentially address)
+        const body: OrderRequestBody = await req.json();
+        const { userId /*, shippingAddress */ } = body; // Destructure address if sent
 
-        // Validate required fields
-        if (!userId || !amount) {
+        // --- Basic Input Validation ---
+        if (!userId) {
             return NextResponse.json(
-                { error: "User ID and order amount are required!" },
+                { error: "User ID is required!" },
                 { status: 400 }
             );
         }
+        // Add validation for shippingAddress if required
 
-        // Check if the user exists
-        const user = await prisma.user.findUnique({
-            where: { id: userId },
+        // 2. Verify User Exists
+        const user = await prisma.user.findUnique({ where: { id: userId } });
+        if (!user) {
+            return NextResponse.json({ error: "User not found." }, { status: 404 });
+        }
+
+        // 3. Fetch User's Cart Items (including Product data for price/stock)
+        const cartItems = await prisma.cartItem.findMany({
+            where: { userId: userId },
+            include: {
+                product: true, // Include product details (price, stock, name)
+            },
         });
 
-        if (!user) {
+        // --- Cart Validation ---
+        if (cartItems.length === 0) {
+            return NextResponse.json({ error: "Cart is empty." }, { status: 400 });
+        }
+
+        // 4. Validate Stock & Calculate Total Amount (Server-Side)
+        let calculatedAmount = 0;
+        const orderItemsData: OrderItemCreateInput[] = []; // Prepare data for OrderItem creation
+
+        for (const item of cartItems) {
+            if (!item.product) {
+                // Should not happen if FK constraints are okay, but good check
+                return NextResponse.json(
+                    { error: `Product details missing for cart item ID ${item.id}.` },
+                    { status: 500 }
+                );
+            }
+            if (item.quantity > item.product.stock) {
+                return NextResponse.json(
+                    {
+                        error: `Insufficient stock for ${item.product.name}. Requested: ${item.quantity}, Available: ${item.product.stock}`,
+                    },
+                    { status: 409 } // 409 Conflict is appropriate for stock issues
+                );
+            }
+            // Calculate subtotal for this item using CURRENT product price
+            calculatedAmount += item.quantity * item.product.price;
+
+            // Prepare OrderItem data (price stored is the one at time of order)
+            orderItemsData.push({
+                productId: item.productId,
+                quantity: item.quantity,
+                price: item.product.price, // Store price at the time of order
+            });
+        }
+
+        // 5. Database Transaction (Atomicity: All succeed or all fail)
+        let newOrder;
+        try {
+            newOrder = await prisma.$transaction(async (tx) => {
+                // a. Create the Order record
+                const order = await tx.order.create({
+                    data: {
+                        userId: userId,
+                        amount: calculatedAmount, // Use server-calculated amount
+                        status: "PENDING", // Or your initial order status
+                        // Add shippingAddress here if you modified the schema
+                        // shippingAddress: shippingAddress ? JSON.stringify(shippingAddress) : undefined, // Example if using JSON field
+                    },
+                });
+
+                // b. Create OrderItem records linking products to this order
+                await tx.orderItem.createMany({
+                    data: orderItemsData.map(item => ({
+                        ...item,
+                        orderId: order.id, // Link each item to the newly created order
+                    })),
+                });
+
+                // c. Decrement stock for each product purchased
+                for (const item of cartItems) {
+                    await tx.product.update({
+                        where: { id: item.productId },
+                        data: {
+                            stock: {
+                                decrement: item.quantity,
+                            },
+                        },
+                    });
+                    // Optional: Add an extra check within the transaction update itself
+                    // This ensures atomicity if stock changes between initial check and update
+                    // However, the initial check + transaction usually suffices
+                    // const updatedProduct = await tx.product.update({ ... });
+                    // if (updatedProduct.stock < 0) {
+                    //    throw new Error(`Stock became negative for product ${item.productId}`);
+                    // }
+                }
+
+                // d. Clear the user's cart
+                await tx.cartItem.deleteMany({
+                    where: { userId: userId },
+                });
+
+                // Return the created order from the transaction scope
+                return order;
+            });
+
+        } catch (error: any) {
+            // Handle potential transaction errors (e.g., stock check failure inside tx)
+            console.error("Transaction failed:", error);
+            // Check for specific Prisma transaction errors if needed
+            if (error.message.includes("Stock became negative")) { // Example specific error check
+                return NextResponse.json(
+                    { error: "Stock level changed during transaction. Please try again." },
+                    { status: 409 } // Conflict
+                );
+            }
             return NextResponse.json(
-                { error: `User with ID ${userId} does not exist.` },
-                { status: 404 }
+                { error: "Failed to process order transaction. Please try again." },
+                { status: 500 }
             );
         }
 
-        // Create the order first
-        const order = await prisma.order.create({
-            data: {
-                userId,
-                amount,
-            },
-        });
+        // --- Transaction Successful ---
 
-        // After the order is successfully created, calculate commissions
+        // 6. Calculate Commissions (if applicable, after successful order creation)
+        // Ensure newOrder is defined before proceeding
+        if (!newOrder) {
+            // This case should ideally be caught by the transaction error handling
+            console.error("Order creation successful but newOrder object is missing.");
+            return NextResponse.json(
+                { error: "Order processed but failed to retrieve order details." },
+                { status: 500 }
+            );
+        }
+
         const commissionResult = await calculateCommissionsConcurrent(
             userId,
-            order.id,
-            amount
+            newOrder.id, // Use the ID from the created order
+            newOrder.amount // Use the amount from the created order
         );
 
-        // Return success response
+        // 7. Return Success Response
         return NextResponse.json(
             {
-                message: "Order created successfully!",
-                orderId: order.id,
-                commissions: commissionResult.message,
+                message: "Order placed successfully!",
+                orderId: newOrder.id,
+                // Optionally include commission calculation status/message
+                commissionStatus: commissionResult.message,
             },
             { status: 201 }
         );
-    } catch (error) {
-        console.error("Error processing order:", error);
 
+    } catch (error) {
+        // General error catching
+        console.error("Error processing order:", error);
         return NextResponse.json(
-            { error: "An unexpected error occurred. Please try again later." },
+            { error: "An unexpected server error occurred." },
             { status: 500 }
         );
     }

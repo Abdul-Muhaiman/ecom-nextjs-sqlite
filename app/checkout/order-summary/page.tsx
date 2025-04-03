@@ -105,18 +105,20 @@ export default function OrderSummaryPage() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               userId: session?.user?.id,
-              shippingAddress,
-              items: cartItems.map(item => ({ productId: item.productId, quantity: item.quantity, price: item.productPrice })),
-              paymentMethod: selectedPaymentMethod,
-              totalAmount: total,
+              // shippingAddress,
+              // items: cartItems.map(item => ({ productId: item.productId, quantity: item.quantity, price: item.productPrice })),
+              // paymentMethod: selectedPaymentMethod,
+              // totalAmount: total,
             }),
           });
           if (!response.ok) {
             throw new Error('Failed to place order');
           }
           const orderResult = await response.json();
-          // Redirect to order confirmation page, clear cart, etc.
-          router.push(`/order-confirmation/${orderResult.orderId}`);
+            console.log(orderResult);
+
+            // Redirect to order confirmation page, clear cart, etc.
+          // router.push(`/order-confirmation/${orderResult.orderId}`);
         } catch (error) {
           console.error("Order placement failed:", error);
           alert("Failed to place order. Please try again.");
@@ -126,8 +128,8 @@ export default function OrderSummaryPage() {
         // --- End of example order placement logic ---
 
         // For now, just simulate success after a delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        alert("Order Placed (Simulation)!");
+        // await new Promise(resolve => setTimeout(resolve, 1500));
+        // alert("Order Placed (Simulation)!");
         setIsPlacingOrder(false);
         // You would likely redirect or clear cart state here upon success
     };
