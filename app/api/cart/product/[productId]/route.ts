@@ -37,3 +37,38 @@ export async function DELETE(req: NextRequest, { params }: { params: { productId
         return NextResponse.json({ error: "Internal server error" }, { status: 500 });
     }
 }
+
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ productId: string }> }) {
+    try {
+        const { productId } = await params;
+        const reqBody = await req.json();
+        const { userId, quantity } = reqBody;
+
+        if (!userId || !quantity) {
+            return NextResponse.json({ error: "User ID and quantity are required" }, { status: 400 });
+        }
+
+        const updatedItem = await prisma.cartItem.updateMany({
+            where: {
+                userId: parseInt(userId),
+                productId: parseInt(productId),
+            },
+            data: {
+                quantity,
+            },
+        });
+
+        if (!updatedItem.count) {
+            return NextResponse.json({ error: "Item not found" }, { status: 404 });
+        }
+
+        return NextResponse.json({
+            message: "Quantity updated successfully",
+            productId,
+            quantity,
+        });
+    } catch (error) {
+        console.error("Error updating quantity:", error);
+        return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    }
+}

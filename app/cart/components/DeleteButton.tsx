@@ -19,7 +19,7 @@ export default function DeleteButton({
 }) {
     const deleteProduct = async () => {
         try {
-            const response = await fetch(`/api/cart/remove/${productId}`, {
+            const response = await fetch(`/api/cart/product/${productId}`, {
                 method: "DELETE",
                 body: JSON.stringify({ userId }),
                 headers: {

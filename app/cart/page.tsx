@@ -7,6 +7,8 @@ import Image from "next/image";
 import Placeholder from "@/public/placeholder.png"
 import DeleteButton from "@/app/cart/components/DeleteButton"
 import ClearCartButton from "@/app/cart/components/ClearCartButton";
+import QuantityControls from "@/app/cart/components/QuantityControls";
+import {useRouter} from "next/navigation";
 
 interface cartItems {
     id: number;
@@ -23,13 +25,15 @@ export default function CartPage() {
     const [cartItems, setCartItems] = useState<cartItems[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const router = useRouter();
+
     useEffect(() => {
         const fetchCartItems = async () => {
             if (status === "authenticated" && session?.user?.id) {
                 try {
                     const response = await fetch(`/api/cart/${session.user.id}`);
                     if (!response.ok) {
-                        throw new Error("Failed to fetch cart items");
+                        return  new Error("Failed to fetch cart items");
                     }
                     const data = await response.json();
                     setCartItems(data); // Set cart items from the API response
@@ -83,15 +87,7 @@ export default function CartPage() {
                                         </p>
                                         {/* Quantity Controls */}
                                         <div className="flex items-center mt-2">
-                                            <button
-                                                className="w-8 h-8 bg-blue-200 rounded-full text-blue-700 flex items-center justify-center hover:bg-blue-300">
-                                                -
-                                            </button>
-                                            <span className="mx-4 text-lg">{item.quantity}</span>
-                                            <button
-                                                className="w-8 h-8 bg-blue-200 rounded-full text-blue-700 flex items-center justify-center hover:bg-blue-300">
-                                                +
-                                            </button>
+                                            <QuantityControls userId={session?.user.id as number} productId={item.productId} quantity={item.quantity} setCartItems={setCartItems} />
                                         </div>
                                     </div>
                                     {/* Item Total Price */}
@@ -144,6 +140,7 @@ export default function CartPage() {
               </span>
                         </div>
                         <button
+                            onClick={() => router.push("/checkout/address")}
                             className="mt-6 w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition-colors">
                             Proceed to Checkout
                         </button>
