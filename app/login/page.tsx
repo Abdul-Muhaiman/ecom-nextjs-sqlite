@@ -23,14 +23,10 @@ const LoginPage = () => {
             redirect: false, // Prevent automatic redirection
             email,
             password,
-            callbackUrl: "/"
+            callbackUrl: "/dashboard"
         });
 
         if (res?.ok) {
-            const session = await getSession();
-            if (session) {
-            }
-
             if (res?.url) {
                 setLoading(false);
                 router.push(res.url);

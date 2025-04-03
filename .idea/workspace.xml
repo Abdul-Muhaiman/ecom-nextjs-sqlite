@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**CHECKOUT**&#10;address and order summary page working completely.">
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**CHECKOUT**&#10;order placing successfully">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/orders/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/orders/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/checkout/order-summary/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/checkout/order-summary/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/LogoutButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LogoutButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Navbar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +20,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -82,11 +83,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\dashboard\orders" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\cart\remove" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\cart" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\cart\[userId]" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app" />
-      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\auth" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -127,7 +128,7 @@
       <workItem from="1743445723817" duration="12206000" />
       <workItem from="1743595644271" duration="3974000" />
       <workItem from="1743601275594" duration="11162000" />
-      <workItem from="1743662920621" duration="6732000" />
+      <workItem from="1743662920621" duration="14226000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -289,7 +290,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743669474665</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="**CHECKOUT**&#10;order placing successfully">
+      <option name="closed" value="true" />
+      <created>1743670859178</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1743670859178</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,6 +334,7 @@
     <MESSAGE value="**NEW CART**&#10;Change qty on cart page working" />
     <MESSAGE value="**CHECKOUT**&#10;initialized ContextAPI for address" />
     <MESSAGE value="**CHECKOUT**&#10;address and order summary page working completely." />
-    <option name="LAST_COMMIT_MESSAGE" value="**CHECKOUT**&#10;address and order summary page working completely." />
+    <MESSAGE value="**CHECKOUT**&#10;order placing successfully" />
+    <option name="LAST_COMMIT_MESSAGE" value="**CHECKOUT**&#10;order placing successfully" />
   </component>
 </project>

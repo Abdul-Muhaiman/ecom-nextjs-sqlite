@@ -1,4 +1,7 @@
 import Link from "next/link";
+import {getSession} from "next-auth/react";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 
 const navbarContent = [
     {title: "Home", href: "/"},
@@ -9,6 +12,7 @@ const navbarContent = [
 
 export default async function Navbar() {
     // Fetch session on the server-side
+    const session = await getServerSession(authOptions);
 
     return (
         <header className="bg-gray-800 text-gray-100 body-font">
@@ -44,12 +48,16 @@ export default async function Navbar() {
                             Cart
                         </button>
                     </Link>
-                    <Link href="/login">
+                    {session?.user?
+                    <Link href="/dashboard">
+                        <span className={"bg-red-500 border-white border-2 w-8 h-8 rounded-4xl block text-center text-lg"}>D</span>
+                    </Link>
+                        : <Link href="/login">
                         <button
                             className="bg-gray-900 hover:bg-gray-700 border-1 text-white py-1 px-3 rounded focus:outline-none">
                             Login
                         </button>
-                    </Link>
+                    </Link>}
                 </div>
             </div>
         </header>

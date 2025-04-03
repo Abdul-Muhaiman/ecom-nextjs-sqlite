@@ -1,6 +1,5 @@
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/app/api/auth/[...nextauth]/route";
-import LogoutButton from "@/components/LogoutButton";
 
 export default async function Page() {
     const session = await getServerSession(authOptions);
@@ -22,7 +21,6 @@ export default async function Page() {
                 <span>Email: {session.user.email}</span>
                 <span>Role: {session.user.role}</span>
             </div>
-            <LogoutButton />
         </div>
     );
 }
