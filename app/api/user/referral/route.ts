@@ -15,40 +15,36 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ error: 'Invalid User ID. Must be a number.' }, { status: 400 });
         }
 
-        const userInfo = await prisma.user.findUnique({
-            where: { id: parsedUserId },
+        const commissions = await prisma.commission.findMany({
+            where: {referrerId: parsedUserId},
             select: {
                 id: true,
-                name: true,
-                email: true,
-                referralCode: true,
-                role: true,
-                referredBy: {
+                orderId: true,
+                referrerId: true,
+                commissionAmount: true,
+                level: true,
+                createdAt: true,
+                order: {
                     select: {
                         id: true,
-                        name: true,
-                        email: true,
-                        referralCode: true,
-                        role: true
-                    }
-                },
-                referredUsers: {
-                    select: {
-                        id: true,
-                        name: true,
-                        email: true,
-                        referralCode: true,
-                        role: true
+                        amount: true,
+                        createdAt: true,
+                        user: {
+                            select: {
+                                id: true,
+                                name: true,
+                            }
+                        }
                     }
                 }
             }
-        });
+        })
 
-        if (!userInfo) {
+        if (!commissions) {
             return NextResponse.json({ error: 'User not found' }, { status: 404 });
         }
 
-        return NextResponse.json(userInfo, { status: 200 });
+        return NextResponse.json(commissions, { status: 200 });
     } catch (error: any) {
         console.error("Error fetching user data:", error);
         return NextResponse.json({ error: 'Internal server error: ' + error.message }, { status: 500 });
