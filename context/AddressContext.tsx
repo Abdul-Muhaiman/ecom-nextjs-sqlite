@@ -1,19 +1,16 @@
 // context/AddressContext.tsx (Note the .tsx extension)
 "use client"; // Still needed for client-side state and hooks
 
-import React, {
-    useState,
-    createContext,
-    useContext,
-    ReactNode, // Type for children props
-    Dispatch,  // Type for state setters
-    SetStateAction // Type for state setters
-} from 'react';
+import React, {createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState} from 'react';
 
 // 1. Define the structure of our address data
-interface Address {
+export interface Address {
+    fullName: string;
     street: string;
     city: string;
+    state: string;
+    country: string;
+    zip: string;
     // Add more fields as needed (zip, country, etc.) with their types (e.g., zip: string;)
 }
 
@@ -32,15 +29,36 @@ interface AddressProviderProps {
     children: ReactNode; // Standard type for component children
 }
 
+const SESSION_STORAGE_KEY = "addressSession";
+
 // 5. Create the 'room' (Provider Component) with TypeScript
 export function AddressProvider({ children }: AddressProviderProps) {
-    // Initialize state with the Address type and default values
-    const [shippingAddress, setShippingAddress] = useState<Address>({
-        street: '',
-        city: '',
+    const [shippingAddress, setShippingAddress] = useState<Address>(() => {
+        // ... (your existing loading logic is correct here) ...
+        try {
+            const savedAddress = sessionStorage.getItem(SESSION_STORAGE_KEY);
+            return savedAddress
+                ? (JSON.parse(savedAddress) as Address)
+                : { fullName: '', street: '', city: '', state: '', country: '', zip: '' };
+        } catch (error) {
+            console.error(`Error reading ${SESSION_STORAGE_KEY} from sessionStorage:`, error);
+            return { fullName: '', street: '', city: '', state: '', country: '', zip: '' };
+        }
     });
 
-    // The 'value' object must match the AddressContextType interface
+    // --- ADD THIS useEffect ---
+    useEffect(() => {
+        try {
+            // Save the current shippingAddress state to sessionStorage whenever it changes
+            sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(shippingAddress));
+        } catch (error) {
+            console.error(`Error saving ${SESSION_STORAGE_KEY} to sessionStorage:`, error);
+        }
+        // This effect runs when shippingAddress changes
+    }, [shippingAddress]);
+    // --- END of added useEffect ---
+
+
     const value: AddressContextType = {
         shippingAddress,
         setShippingAddress,
