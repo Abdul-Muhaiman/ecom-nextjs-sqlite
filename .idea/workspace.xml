@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="Corrected error handling and removed build errors">
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="DAL ADDED&#10;products page modified with pagination">
+      <change afterPath="$PROJECT_DIR$/components/products/ProductDetails.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/products/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/products/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/products/[id]/components/ProductDetails.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/products/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/products/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/products/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/products/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/helper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/register-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/register-user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/products/ProductCart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/products/ProductCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/products/ProductPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/products/ProductPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,11 +85,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\products" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\lib" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\dashboard\orders" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\cart\remove" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\cart" />
-      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\cart\[userId]" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -131,7 +133,7 @@
       <workItem from="1743662920621" duration="21235000" />
       <workItem from="1743687396004" duration="2247000" />
       <workItem from="1743697725357" duration="1459000" />
-      <workItem from="1743756402828" duration="10480000" />
+      <workItem from="1743756402828" duration="11846000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -333,7 +335,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743756480995</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="DAL ADDED&#10;products page modified with pagination">
+      <option name="closed" value="true" />
+      <created>1743768733413</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1743768733413</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,6 +384,7 @@
     <MESSAGE value="**PROFILE**&#10;commission page added with details showing" />
     <MESSAGE value="**PROFILE**&#10;Order details page added successfully" />
     <MESSAGE value="Corrected error handling and removed build errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected error handling and removed build errors" />
+    <MESSAGE value="DAL ADDED&#10;products page modified with pagination" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAL ADDED&#10;products page modified with pagination" />
   </component>
 </project>
