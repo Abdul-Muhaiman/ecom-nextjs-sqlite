@@ -1,14 +1,11 @@
 import Link from "next/link";
-import prisma from "@/lib/prisma";
-import ProductDetails from "./components/ProductDetails";
+import ProductDetails from "@/components/products/ProductDetails";
+import {getProductById} from "@/lib/dal/product";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
 
-    const product = await prisma.product.findUnique({
-        where: { id: Number(id) },
-        include: { category: true },
-    });
+    const product = await getProductById(parseInt(id, 10));
 
     if (!product) {
         return (

@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="DAL ADDED&#10;products page modified with pagination">
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**DAL**&#10;Products fetching logic modified">
+      <change afterPath="$PROJECT_DIR$/components/products/ProductCard.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/components/products/ProductDetails.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/products/[id]/components/ProductDetails.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/products/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/products/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/products/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/products/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/products/ProductCart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/products/ProductCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/products/ProductCart.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/components/products/ProductPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/products/ProductPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/products/ProductPageWrapper.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/product.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/product.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +136,7 @@
       <workItem from="1743662920621" duration="21235000" />
       <workItem from="1743687396004" duration="2247000" />
       <workItem from="1743697725357" duration="1459000" />
-      <workItem from="1743756402828" duration="11846000" />
+      <workItem from="1743756402828" duration="12103000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -343,7 +346,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743768733413</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="**DAL**&#10;Products fetching logic modified">
+      <option name="closed" value="true" />
+      <created>1743769885761</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1743769885761</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,6 +396,7 @@
     <MESSAGE value="**PROFILE**&#10;Order details page added successfully" />
     <MESSAGE value="Corrected error handling and removed build errors" />
     <MESSAGE value="DAL ADDED&#10;products page modified with pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="DAL ADDED&#10;products page modified with pagination" />
+    <MESSAGE value="**DAL**&#10;Products fetching logic modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="**DAL**&#10;Products fetching logic modified" />
   </component>
 </project>

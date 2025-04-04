@@ -1,4 +1,4 @@
-export interface Product {
+export interface ProductOld {
     id: number;
     name: string;
     description: string | null;
@@ -11,3 +11,25 @@ export interface Product {
         id: number;
     } | null;
 }
+
+export type Product = {
+    category: {
+        id: number;
+        name: string;
+    } | null;
+} & {
+    id: number;
+    image: string;
+    name: string;
+    description: string | null;
+    price: number;
+    stock: number;
+    categoryId: number | null;
+};
+
+export type Pagination = {
+    total: number;
+    pages: number;
+    page: number;
+    limit: number;
+};
