@@ -1,13 +1,22 @@
 import prisma from "@/lib/prisma";
 import {NextResponse} from "next/server";
+import { getProducts } from "@/lib/dal/product";
 
-export async function GET() {
+export async function GET(request: Request) {
+    const { searchParams } = new URL(request.url);
+    const page = searchParams.get("page") ? parseInt(searchParams.get("page")!, 10) : 1;
+    const limit = searchParams.get("limit") ? parseInt(searchParams.get("limit")!, 10) : 9;
+    const categoryId = searchParams.get("category") ? parseInt(searchParams.get("category")!, 10) : undefined;
+
     try {
-        const products = await prisma.product.findMany();
-
-        return NextResponse.json({products}, {status: 200})
+        const result = await getProducts({ page, limit, categoryId });
+        return NextResponse.json(result);
     } catch (error) {
-        console.error(error)
+        console.error("Error fetching products:", error);
+        return NextResponse.json(
+            { error: "Failed to fetch products" },
+            { status: 500 }
+        );
     }
 }
 

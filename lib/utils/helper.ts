@@ -42,3 +42,9 @@ export const getInitials = (name: string) => {
     if (names.length > 1) initials += names[names.length - 1][0];
     return initials.toUpperCase();
 };
+
+export const navigateToPage = (page: number) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("page", page.toString());
+    window.location.search = params.toString();
+}
