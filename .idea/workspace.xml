@@ -4,20 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**DAL**&#10;Products UI modified">
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**DAL**&#10;Cart DAL and Action implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/auth/register/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/register/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/cart/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/cart/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/components/OrderDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/components/OrderDetails.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/components/UserProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/components/UserProfile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cart/components/ClearCartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/components/ClearCartButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cart/components/DeleteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/components/DeleteButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cart/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/AddToCartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/AddToCartButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/products/ProductCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/products/ProductCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/products/ProductDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/products/ProductDetails.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dal/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/register-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/register-user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/actions/cart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/actions/cart.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dal/cart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/cart.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/user.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/user.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +134,7 @@
       <workItem from="1743662920621" duration="21235000" />
       <workItem from="1743687396004" duration="2247000" />
       <workItem from="1743697725357" duration="1459000" />
-      <workItem from="1743756402828" duration="19072000" />
+      <workItem from="1743756402828" duration="23867000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -373,7 +368,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743772791818</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="**DAL**&#10;Cart DAL and Action implemented">
+      <option name="closed" value="true" />
+      <created>1743785330334</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1743785330334</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,7 +394,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added User Registration logic" />
     <MESSAGE value="Added commission calculation logic" />
     <MESSAGE value="Prisma schema modified for ecommerce functionality and logic." />
     <MESSAGE value="Added NextAuth with just boilerplate code&#10;Recovered registration page UI" />
@@ -416,6 +418,7 @@
     <MESSAGE value="**DAL**&#10;Products fetching logic modified" />
     <MESSAGE value="**DAL**&#10;Products types modified" />
     <MESSAGE value="**DAL**&#10;Products UI modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="**DAL**&#10;Products UI modified" />
+    <MESSAGE value="**DAL**&#10;Cart DAL and Action implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="**DAL**&#10;Cart DAL and Action implemented" />
   </component>
 </project>

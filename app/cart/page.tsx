@@ -2,51 +2,33 @@
 
 import Link from "next/link";
 import {useEffect, useState} from "react";
-import {useSession} from "next-auth/react";
 import Image from "next/image";
 import Placeholder from "@/public/placeholder.png"
 import DeleteButton from "@/app/cart/components/DeleteButton"
 import ClearCartButton from "@/app/cart/components/ClearCartButton";
 import QuantityControls from "@/app/cart/components/QuantityControls";
 import {useRouter} from "next/navigation";
-
-interface cartItems {
-    id: number;
-    userId: number;
-    productId: number;
-    productName: string;
-    productPrice: number;
-    productImage: string;
-    quantity: number;
-}
+import {getCartItemsAction} from "@/lib/actions/cart";
+import {GetCartProduct} from "@/types/cart";
 
 export default function CartPage() {
-    const {data: session, status} = useSession();
-    const [cartItems, setCartItems] = useState<cartItems[]>([]);
+
+
+    const [cartItems, setCartItems] = useState<GetCartProduct[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const router = useRouter();
 
     useEffect(() => {
         const fetchCartItems = async () => {
-            if (status === "authenticated" && session?.user?.id) {
-                try {
-                    const response = await fetch(`/api/cart/${session.user.id}`);
-                    if (!response.ok) {
-                        return  new Error("Failed to fetch cart items");
-                    }
-                    const data = await response.json();
-                    setCartItems(data); // Set cart items from the API response
-                } catch (error) {
-                    console.error("Error fetching cart items:", error);
-                } finally {
-                    setIsLoading(false); // Stop loading regardless of success or failure
-                }
-            }
+            setIsLoading(true);
+            const cart : GetCartProduct[] = await getCartItemsAction()
+            setCartItems(cart)
+            setIsLoading(false);
         };
 
         fetchCartItems();
-    }, [session, status]);
+    }, []);
 
     if (status === "loading" || isLoading) {
         return <div className="text-center py-12">Loading...</div>; // Show a loading indicator while fetching data
@@ -87,7 +69,7 @@ export default function CartPage() {
                                         </p>
                                         {/* Quantity Controls */}
                                         <div className="flex items-center mt-2">
-                                            <QuantityControls userId={session?.user.id as number} productId={item.productId} quantity={item.quantity} setCartItems={setCartItems} />
+                                            {/*<QuantityControls userId={session?.user.id as number} productId={item.productId} quantity={item.quantity} setCartItems={setCartItems} />*/}
                                         </div>
                                     </div>
                                     {/* Item Total Price */}
@@ -98,7 +80,6 @@ export default function CartPage() {
                                     </div>
                                     {/* Delete Button */}
                                     <DeleteButton
-                                        userId={session?.user.id as number}
                                         productId={item.productId}
                                         setCartItems={setCartItems} // Pass down setCartItems
                                     />
@@ -117,7 +98,7 @@ export default function CartPage() {
                                 Continue Shopping
                             </Link>
                             {cartItems.length > 0 && (
-                                <ClearCartButton userId={session?.user.id as number} setCartItems={setCartItems} />
+                                <ClearCartButton setCartItems={setCartItems} />
                             )}
                         </div>
                     </div>

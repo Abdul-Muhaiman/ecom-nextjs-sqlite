@@ -1,11 +1,12 @@
 "use client";
 
-import {Product} from "@prisma/client";
 import React from "react";
 import {addToCartAction} from "@/lib/actions/cart";
+import {AddCartProduct} from "@/types/cart";
+import {Product} from "@/types/product";
 
 export const AddToCartButton = ({product, style, icon}: {
-    product?: Product;
+    product: Product;
     style?: string;
     icon?: React.ReactNode;
 }) => {
@@ -14,7 +15,15 @@ export const AddToCartButton = ({product, style, icon}: {
             return;
         }
 
-        const {message} = await addToCartAction(product);
+        const addProduct : AddCartProduct = {
+            productId: product.id,
+            productName: product.name,
+            productPrice: product.price,
+            productImage: product.image,
+            quantity: 1,
+        }
+
+        const {message} = await addToCartAction(addProduct);
         console.log(message);
 
     };

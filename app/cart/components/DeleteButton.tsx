@@ -1,46 +1,56 @@
-interface cartItems {
-    id: number;
-    userId: number;
-    productId: number;
-    productName: string;
-    productPrice: number;
-    productImage: string;
-    quantity: number;
-}
+import {removeCartItemAction} from "@/lib/actions/cart";
+import {GetCartProduct} from "@/types/cart";
+import React from "react";
+
+// interface cartItems {
+//     id: number;
+//     userId: number;
+//     productId: number;
+//     productName: string;
+//     productPrice: number;
+//     productImage: string;
+//     quantity: number;
+// }
 
 export default function DeleteButton({
-                          userId,
-                          productId,
-                          setCartItems,
-                      }: {
-    userId: number;
+                                         // userId,
+                                         productId,
+                                         setCartItems,
+                                     }: {
+    // userId: number;
     productId: number;
-    setCartItems: React.Dispatch<React.SetStateAction<cartItems[]>>;
+    setCartItems: React.Dispatch<React.SetStateAction<GetCartProduct[]>>;
 }) {
     const deleteProduct = async () => {
-        try {
-            const response = await fetch(`/api/cart/product/${productId}`, {
-                method: "DELETE",
-                body: JSON.stringify({ userId }),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
+        // try {
+        //     const response = await fetch(`/api/cart/product/${productId}`, {
+        //         method: "DELETE",
+        //         body: JSON.stringify({ userId }),
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         },
+        //     });
+        //
+        //     if (!response.ok) {
+        //         throw new Error("Failed to delete product");
+        //     }
+        //
+        //     const data = await response.json();
+        //     console.log(data);
+        //
+        //     // Update the local state to remove the item
+        //     setCartItems((prevItems) =>
+        //         prevItems.filter((item) => item.productId !== productId)
+        //     );
+        // } catch (error) {
+        //     console.error("Error deleting product:", error);
+        // }
 
-            if (!response.ok) {
-                throw new Error("Failed to delete product");
-            }
+        await removeCartItemAction(productId);
+        setCartItems((prevItems) =>
+            prevItems.filter((item) => item.productId !== productId)
+        );
 
-            const data = await response.json();
-            console.log(data);
-
-            // Update the local state to remove the item
-            setCartItems((prevItems) =>
-                prevItems.filter((item) => item.productId !== productId)
-            );
-        } catch (error) {
-            console.error("Error deleting product:", error);
-        }
     };
 
     return (
