@@ -4,11 +4,10 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 // Import context hook and Address type
-import { useAddress, Address } from '@/context/AddressContext'; // Adjust import path if needed
+import { useAddress } from '@/context/AddressContext'; // Adjust import path if needed
 import Placeholder from "@/public/placeholder.png"; // Assuming you have this placeholder
 
 // Define the cart item structure (can be imported if shared)
@@ -24,7 +23,6 @@ interface CartItem {
 
 export default function OrderSummaryPage() {
     const { data: session, status } = useSession();
-    const router = useRouter();
 
     // Get address from context
     const { shippingAddress } = useAddress(); // Use the context hook

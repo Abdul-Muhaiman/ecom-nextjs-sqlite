@@ -3,7 +3,7 @@ import Sidebar from "@/app/dashboard/components/Sidebar";
 import {getServerSession} from "next-auth";
 import Link from "next/link";
 import {SessionProvider} from "@/context/SessionContext";
-import {authOptions} from "@/app/api/auth/[...nextauth]/route"; // Adjust path if needed
+import {authOptions} from "@/lib/auth";
 
 interface Session {
     user: User;

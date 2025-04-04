@@ -6,12 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**PROFILE**&#10;Order details page added successfully">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/components/CommissionDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/components/CommissionDetails.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/components/OrderDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/components/OrderDetails.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/components/UserProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/components/UserProfile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/orders/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/orders/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/user.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/user.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/helper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/auth/[...nextauth]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/[...nextauth]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/cart/[userId]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/cart/[userId]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/cart/product/[productId]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/cart/product/[productId]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/orders/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/orders/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/products/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/products/[id]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/user/orders/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/user/orders/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/user/profile/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/user/profile/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/user/referral/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/user/referral/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/checkout/order-summary/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/checkout/order-summary/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/register/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/AddToCartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/AddToCartButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/LogoutButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LogoutButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-access/cart-methods.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/cartStore.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,6 +144,8 @@
       <workItem from="1743595644271" duration="3974000" />
       <workItem from="1743601275594" duration="11162000" />
       <workItem from="1743662920621" duration="21235000" />
+      <workItem from="1743687396004" duration="2247000" />
+      <workItem from="1743697725357" duration="1459000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />

@@ -1,12 +1,10 @@
 import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function DELETE(req: NextRequest, { params }: { params: { productId: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: Promise<{ productId: string }> }) {
     try {
-        console.log("DELETE REQUEST RECEIVED");
-
         // Extract productId from params
-        const { productId } = params;
+        const { productId } = await params;
         const reqBody = await req.json();
         const { userId } = reqBody; // Extract userId from the request body
 

@@ -1,70 +1,3 @@
-// import { NextRequest, NextResponse } from "next/server";
-// import prisma from "@/lib/prisma";
-// import {calculateCommissionsConcurrent} from "@/lib/commission";
-//
-// // Main POST function
-// export async function POST(req: NextRequest) {
-//     try {
-//         // Parse the request body
-//         const body = await req.json();
-//         const { userId, amount } = body;
-//
-//         // Validate required fields
-//         if (!userId || !amount) {
-//             return NextResponse.json(
-//                 { error: "User ID and order amount are required!" },
-//                 { status: 400 }
-//             );
-//         }
-//
-//         // Check if the user exists
-//         const user = await prisma.user.findUnique({
-//             where: { id: userId },
-//         });
-//
-//         if (!user) {
-//             return NextResponse.json(
-//                 { error: `User with ID ${userId} does not exist.` },
-//                 { status: 404 }
-//             );
-//         }
-//
-//         // Create the order first
-//         const order = await prisma.order.create({
-//             data: {
-//                 userId,
-//                 amount,
-//             },
-//         });
-//
-//         // After the order is successfully created, calculate commissions
-//         const commissionResult = await calculateCommissionsConcurrent(
-//             userId,
-//             order.id,
-//             amount
-//         );
-//
-//         // Return success response
-//         return NextResponse.json(
-//             {
-//                 message: "Order created successfully!",
-//                 orderId: order.id,
-//                 commissions: commissionResult.message,
-//             },
-//             { status: 201 }
-//         );
-//     } catch (error) {
-//         console.error("Error processing order:", error);
-//
-//         return NextResponse.json(
-//             { error: "An unexpected error occurred. Please try again later." },
-//             { status: 500 }
-//         );
-//     }
-// }
-
-
-// app/api/orders/route.ts (or your specific path)
 
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
@@ -203,16 +136,22 @@ export async function POST(req: NextRequest) {
                 return order;
             });
 
-        } catch (error: any) {
-            // Handle potential transaction errors (e.g., stock check failure inside tx)
-            console.error("Transaction failed:", error);
-            // Check for specific Prisma transaction errors if needed
-            if (error.message.includes("Stock became negative")) { // Example specific error check
-                return NextResponse.json(
-                    { error: "Stock level changed during transaction. Please try again." },
-                    { status: 409 } // Conflict
-                );
+        } catch (error: unknown) { // 'unknown' keeps things type-safe
+            // Ensure 'error' is of type 'Error' before accessing its properties
+            if (error instanceof Error) {
+                console.error("Transaction failed:", error.message);
+
+                if (error.message.includes("Stock became negative")) {
+                    return NextResponse.json(
+                        { error: "Stock level changed during transaction. Please try again." },
+                        { status: 409 }
+                    );
+                }
+            } else {
+                // Handle unexpected error types
+                console.error("Transaction failed with an unknown error:", error);
             }
+
             return NextResponse.json(
                 { error: "Failed to process order transaction. Please try again." },
                 { status: 500 }

@@ -45,8 +45,20 @@ export async function GET(req: NextRequest) {
         }
 
         return NextResponse.json(commissions, { status: 200 });
-    } catch (error: any) {
-        console.error("Error fetching commission data:", error);
-        return NextResponse.json({ error: 'Internal server error: ' + error.message }, { status: 500 });
+    } catch (error: unknown) {
+        console.error("Error fetching commissions data:", error);
+
+        if (error instanceof Error) {
+            return NextResponse.json(
+                { error: 'Internal server error: ' + error.message },
+                { status: 500 }
+            );
+        }
+
+        // Fallback for unknown error types
+        return NextResponse.json(
+            { error: 'An unknown error occurred.' },
+            { status: 500 }
+        );
     }
 }

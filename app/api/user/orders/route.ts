@@ -43,8 +43,20 @@ export async function GET(req: NextRequest) {
         }
 
         return NextResponse.json(orders, { status: 200 });
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("Error fetching orders data:", error);
-        return NextResponse.json({ error: 'Internal server error: ' + error.message }, { status: 500 });
+
+        if (error instanceof Error) {
+            return NextResponse.json(
+                { error: 'Internal server error: ' + error.message },
+                { status: 500 }
+            );
+        }
+
+        // Fallback for unknown error types
+        return NextResponse.json(
+            { error: 'An unknown error occurred.' },
+            { status: 500 }
+        );
     }
 }

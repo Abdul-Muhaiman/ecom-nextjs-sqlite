@@ -1,10 +1,10 @@
 "use client";
 
 import React, {useState} from "react";
-import {getSession, signIn} from "next-auth/react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
+import {signIn} from "next-auth/react";
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");

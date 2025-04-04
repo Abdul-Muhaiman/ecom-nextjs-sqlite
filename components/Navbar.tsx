@@ -1,7 +1,7 @@
+"use client"
+
 import Link from "next/link";
-import {getSession} from "next-auth/react";
-import {getServerSession} from "next-auth";
-import {authOptions} from "@/app/api/auth/[...nextauth]/route";
+import {useSession} from "next-auth/react";
 
 const navbarContent = [
     {title: "Home", href: "/"},
@@ -10,9 +10,9 @@ const navbarContent = [
     {title: "Contact", href: "#"},
 ];
 
-export default async function Navbar() {
+export default function Navbar() {
     // Fetch session on the server-side
-    const session = await getServerSession(authOptions);
+    const session = useSession();
 
     return (
         <header className="bg-gray-800 text-gray-100 body-font">
@@ -48,7 +48,7 @@ export default async function Navbar() {
                             Cart
                         </button>
                     </Link>
-                    {session?.user?
+                    {session?.data?.user?
                     <Link href="/dashboard">
                         <span className={"bg-red-500 border-white border-2 w-8 h-8 rounded-4xl block text-center text-lg"}>D</span>
                     </Link>

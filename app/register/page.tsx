@@ -31,7 +31,7 @@ export default function Page() {
                 setSuccessMessage(null);
                 setLoading(false);
             }
-        } catch (e) {
+        } catch {
             setErrorMessage("An unexpected error occurred.");
             setSuccessMessage(null);
             setLoading(false);
