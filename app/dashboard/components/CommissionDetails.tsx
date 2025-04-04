@@ -1,6 +1,6 @@
 import React from 'react';
 import { Commission } from "@/types/commission";
-import {formatDate} from "@/utils/helper";
+import {formatDate} from "@/lib/utils/helper";
 
 const CommissionDetails = ({ commissions }: { commissions: Commission[] }) => {
 

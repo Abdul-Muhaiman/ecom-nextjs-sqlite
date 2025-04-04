@@ -4,17 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**DAL**&#10;Products fetching logic modified">
-      <change afterPath="$PROJECT_DIR$/components/products/ProductCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/products/ProductDetails.tsx" afterDir="false" />
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**DAL**&#10;Products types modified">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/products/[id]/components/ProductDetails.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/products/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/products/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/products/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/products/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/products/ProductCart.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/products/[id]/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/components/CommissionDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/components/CommissionDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/products/loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/products/loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/products/PaginationControls.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/products/ProductCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/products/ProductCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/products/ProductDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/products/ProductDetails.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/products/ProductPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/products/ProductPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/products/ProductPageWrapper.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/product.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/product.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +53,7 @@
     </layout>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -136,7 +137,7 @@
       <workItem from="1743662920621" duration="21235000" />
       <workItem from="1743687396004" duration="2247000" />
       <workItem from="1743697725357" duration="1459000" />
-      <workItem from="1743756402828" duration="12103000" />
+      <workItem from="1743756402828" duration="14755000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -354,7 +355,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743769885761</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="**DAL**&#10;Products types modified">
+      <option name="closed" value="true" />
+      <created>1743770075175</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1743770075175</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,7 +381,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First commit, initial app" />
     <MESSAGE value="Prisma and DB added" />
     <MESSAGE value="Added User Registration logic" />
     <MESSAGE value="Added commission calculation logic" />
@@ -397,6 +405,7 @@
     <MESSAGE value="Corrected error handling and removed build errors" />
     <MESSAGE value="DAL ADDED&#10;products page modified with pagination" />
     <MESSAGE value="**DAL**&#10;Products fetching logic modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="**DAL**&#10;Products fetching logic modified" />
+    <MESSAGE value="**DAL**&#10;Products types modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="**DAL**&#10;Products types modified" />
   </component>
 </project>

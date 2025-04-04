@@ -1,79 +1,93 @@
 import Link from "next/link";
 import Image from "next/image";
-import Placeholder from "@/public/placeholder.png";
-import { AddToCartButton } from "@/components/AddToCartButton";
+// import Placeholder from "@/public/placeholder.png";
+// import { AddToCartButton } from "@/components/AddToCartButton";
 import {Product} from "@/types/product";
+import React from 'react';
+import { ShoppingCart } from 'lucide-react';
 
-export default function ProductCard(props: { product: Product }) {
+// Mock AddToCartButton (Simplified for this context) -  No change, assuming it's correctly implemented
+const AddToCartButton = ({ product, style }: { product: Product; style?: string }) => {
+    return (
+        <button className={style} onClick={() => alert(`Added ${product.name} to cart!`)}>
+            <ShoppingCart className="w-5 h-5 mr-2 inline-block" />
+            Add to Cart
+        </button>
+    );
+};
+
+const ProductCard = ({ product }: { product: Product }) => {
     return (
         <div
-            className="group block bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 hover:scale-105"
+            className="group bg-white/90 border border-gray-100 rounded-2xl overflow-hidden shadow-lg
+                       hover:shadow-xl transition-all duration-300 hover:scale-[1.02]
+                       hover:border-blue-500/30"
         >
-            {/* Link wraps the entire image area for interaction */}
-            <Link href={`/products/${props.product.id}`} className="relative block">
-                <div className="relative w-48 h-48 mx-auto mt-4 overflow-hidden rounded-t-lg">
+            {/* Image and Link */}
+            <Link href={`/products/${product.id}`} className="relative block p-10">
+                <div className="relative w-full aspect-square p-4 flex items-center justify-center">
                     <Image
-                        src={props.product.image || Placeholder}
-                        alt={props.product.name}
+                        src={product.image} // Use the prop
+                        alt={product.name}
                         fill
-                        style={{ objectFit: "contain" }}
+                        style={{ objectFit: 'contain' }}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="transition-transform duration-300 object-contain transform group-hover:scale-110"
+                        className="transition-transform duration-300 transform group-hover:scale-105"
                         priority
                     />
                 </div>
             </Link>
 
             {/* Product Details */}
-            <div className="p-4 flex flex-col gap-4">
+            <div className="p-6 space-y-4">
                 {/* Category */}
-                {props.product.category && (
-                    <p className="text-xs text-blue-600 uppercase tracking-wide font-medium transition-colors duration-200 group-hover:text-blue-500">
-                        {props.product.category.name || props.product.categoryId}
+                {product.category && (
+                    <p className="text-sm text-blue-500 uppercase tracking-wide font-medium transition-colors duration-200 group-hover:text-blue-600">
+                        {product.category.name}
                     </p>
                 )}
 
                 {/* Product Name */}
                 <h3
-                    className="text-lg font-bold text-gray-800 overflow-hidden text-ellipsis break-words transition-colors duration-200 group-hover:text-gray-900"
+                    className="text-xl font-semibold text-gray-800 overflow-hidden text-ellipsis break-words
+                               transition-colors duration-200 group-hover:text-gray-900 line-clamp-2"
                     style={{
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
                         WebkitLineClamp: 2,
                     }}
                 >
-                    {props.product.name}
+                    {product.name}
                 </h3>
 
                 {/* Product Price */}
-                <p className="text-xl font-semibold text-green-600 group-hover:text-green-700 transition-colors duration-200">
-                    ${props.product.price.toLocaleString()}
+                <p className="text-2xl font-bold text-green-600 transition-colors duration-200">
+                    ${product.price?.toLocaleString()}
                 </p>
 
                 {/* Stock Information */}
                 <p className="text-sm text-gray-500">
-                    Stock:{" "}
+                    Stock:
                     <span
-                        className={`font-bold ${
-                            props.product.stock > 10
-                                ? "text-green-600"
-                                : props.product.stock > 0
-                                    ? "text-yellow-600"
-                                    : "text-red-600"
-                        }`}
+                        className={`font-bold ${product.stock > 10
+                            ? 'text-green-600'
+                            : product.stock > 0
+                                ? 'text-yellow-600'
+                                : 'text-red-600'}`}
                     >
-                        {props.product.stock > 0 ? props.product.stock : "Out of Stock"}
+                        {product.stock > 0 ? product.stock : 'Out of Stock'}
                     </span>
                 </p>
 
                 {/* Add to Cart Button */}
                 <AddToCartButton
-                    product={props.product}
-                    style={
-                        "mt-2 w-full bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded-md text-sm font-medium transition-transform transform hover:scale-105 shadow-md"
-                    }
+                    product={product}
+                    style="w-full bg-gray-800 hover:bg-gray-900 hover:shadow-xl text-white py-3 px-6 rounded-full text-sm font-medium
+                           transition-all duration-300 transform shadow-md"
                 />
             </div>
         </div>
     );
-}
+};
+
+export default ProductCard;

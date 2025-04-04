@@ -1,77 +1,94 @@
-import Image from "next/image";
-import { AddToCartButton } from "@/components/AddToCartButton";
-import Placeholder from "@/public/placeholder.png";
-import { ProductOld } from "@/types/product";
+"use client"
 
-export default function ProductDetails({ product }: { product: ProductOld }) {
+import React from 'react';
+import { ShoppingCart } from 'lucide-react';
+import Image from 'next/image';
+import {Product} from "@/types/product";
+
+// Mock AddToCartButton
+const AddToCartButton = ({ product, style }: { product: Product, style: string }) => {
     return (
-        <section className="text-gray-600 w-full py-8">
-            <div className="flex flex-col lg:flex-row w-full bg-white overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                {/* Enlarged Product Image */}
-                <div className="relative w-full lg:w-3/5 h-[500px] flex items-center justify-center">
-                    <Image
-                        src={product.image || Placeholder}
-                        alt={product.name}
-                        fill
-                        style={{ objectFit: "contain" }}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 50vw"
-                        className="transition-transform duration-300 object-contain transform hover:scale-105"
-                        priority
-                    />
-                </div>
+        <button className={style} onClick={() => alert(`Added ${product.name} to cart!`)}>
+            <ShoppingCart className="w-5 h-5 mr-2 inline-block" />
+            Add to Cart
+        </button>
+    );
+};
 
-                {/* Product Details */}
-                <div className="w-full lg:w-2/5 p-8 flex flex-col">
-                    {/* Category */}
-                    <h2 className="text-xs uppercase tracking-widest font-medium text-blue-500 mb-1">
-                        {product.category?.name || "Uncategorized"}
-                    </h2>
-
-                    {/* Product Name */}
-                    <h1 className="text-gray-900 text-4xl font-bold leading-tight mt-2 mb-4">
-                        {product.name}
-                    </h1>
-
-                    {/* Description */}
-                    <p className="leading-relaxed text-base text-gray-700 mb-6">
-                        {product.description}
-                    </p>
-
-                    {/* Spacer to push price/stock and CTA to the bottom */}
-                    <div className="mt-auto">
-                        {/* Price and Stock */}
-                        <div className="flex justify-between items-center border-t border-gray-300 pt-4">
-                            <span className="text-2xl font-semibold text-green-600">
-                                ${product.price.toLocaleString()}
-                            </span>
-                            <span className="text-sm text-gray-500">
-                                Stock:{" "}
-                                <span
-                                    className={`font-bold ${
-                                        product.stock > 10
-                                            ? "text-green-600"
-                                            : product.stock > 0
-                                                ? "text-yellow-500"
-                                                : "text-red-500"
-                                    }`}
-                                >
-                                    {product.stock > 0 ? product.stock : "Out of Stock"}
-                                </span>
-                            </span>
+const ProductDetails = ({ product }: { product: Product }) => {
+    return (
+        <section className="bg-white py-20">
+            <div className="container mx-auto px-8">
+                <div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden
+                            border border-gray-100 transition-all duration-300
+                            hover:shadow-xl hover:border-blue-500/30 max-w-7xl mx-auto"> {/* Added max-w-7xl and mx-auto */}
+                    <div className="flex flex-col lg:flex-row w-full">
+                        {/* Enlarged Product Image */}
+                        <div className="relative w-full lg:w-1/2 aspect-w-1 aspect-h-1 flex items-center justify-center p-16 m-6"> {/* Increased p-16 */}
+                            <Image
+                                src={product.image}
+                                alt={product.name}
+                                fill
+                                style={{ objectFit: 'contain' }}
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+                                className="rounded-t-lg lg:rounded-l-lg"
+                                priority
+                            />
                         </div>
 
-                        {/* Add to Cart Button */}
-                        <div className="mt-6">
-                            <AddToCartButton
-                                product={product}
-                                style={
-                                    "w-full bg-gray-800 hover:bg-gray-900 text-white py-3 rounded-lg text-base font-medium transition-transform transform hover:scale-105 shadow-md"
-                                }
-                            />
+                        {/* Product Details */}
+                        <div className="w-full lg:w-1/2 p-12 space-y-12 flex flex-col justify-between"> {/* Increased p-12 and space-y-12 */}
+                            <div className="space-y-8">
+                                {/* Category */}
+                                <h2 className="text-sm text-blue-500 uppercase tracking-wide font-medium transition-colors duration-200">
+                                    {product.category?.name || "Uncategorized"}
+                                </h2>
+
+                                {/* Product Name */}
+                                <h1 className="text-3xl font-bold text-gray-800 leading-tight tracking-tight">
+                                    {product.name}
+                                </h1>
+
+                                {/* Description */}
+                                <p className="text-gray-600 text-base leading-relaxed">
+                                    {product.description}
+                                </p>
+                            </div>
+
+                            {/* Price and Stock & Add to Cart */}
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-12 border-t border-gray-200 pt-12"> {/* Increased gap-12 and pt-12 */}
+                                <div className="space-y-4">
+                                    {/* Price */}
+                                    <p className="text-2xl font-semibold text-green-600 transition-colors duration-200">
+                                        ${product.price?.toLocaleString()}
+                                    </p>
+                                    {/* Stock */}
+                                    <span className="text-sm text-gray-500">
+                                        Stock:
+                                        <span
+                                            className={`font-bold ${product.stock > 10
+                                                ? "text-green-600"
+                                                : product.stock > 0
+                                                    ? "text-yellow-500"
+                                                    : "text-red-500"}`}
+                                        >
+                                            {product.stock > 0 ? product.stock : "Out of Stock"}
+                                        </span>
+                                    </span>
+                                </div>
+                                {/* Add to Cart Button */}
+                                <AddToCartButton
+                                    product={product}
+                                    style="bg-gray-800 hover:bg-gray-900 text-white py-3 px-8 rounded-full text-lg font-medium
+                                           transition-all duration-300 transform hover:scale-105 shadow-md whitespace-nowrap"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     );
-}
+};
+
+export default ProductDetails;
