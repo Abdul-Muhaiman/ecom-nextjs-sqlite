@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react';
 import UserProfile from './components/UserProfile';
 import { useSessionContext } from "@/context/SessionContext"; // Your custom context for session
-import { User } from "@/types/user";
+import { UserOld } from "@/types/user";
 
 export default function ProfilePage() {
     const session = useSessionContext(); // Replace useSession with useSessionContext
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<UserOld | null>(null);
     const [isLoading, setIsLoading] = useState(false);
 
     console.log("SESSION", session.user.id)
@@ -21,7 +21,7 @@ export default function ProfilePage() {
                     if (!response.ok) {
                         throw new Error("Failed to fetch user details");
                     }
-                    const data: User = await response.json();
+                    const data: UserOld = await response.json();
                     console.log(data);
                     setUser(data); // Set user state
                 } catch (error) {

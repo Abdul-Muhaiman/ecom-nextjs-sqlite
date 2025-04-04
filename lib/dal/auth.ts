@@ -5,6 +5,7 @@ import { getServerSession } from 'next-auth';
 import prisma  from '@/lib/prisma';
 import { redirect } from 'next/navigation';
 import {authOptions} from "@/lib/auth";
+import {User} from "@/types/user";
 
 // Get the current user session
 export const getServerUser = cache(async () => {
@@ -12,7 +13,7 @@ export const getServerUser = cache(async () => {
     if (!session?.user?.email) return null;
 
     // Fetch the complete user data from database
-    const user = await prisma.user.findUnique({
+    const user : User = await prisma.user.findUnique({
         where: { email: session.user.email },
         select: {
             id: true,
@@ -28,7 +29,7 @@ export const getServerUser = cache(async () => {
 
 // Require authentication (any role)
 export const requireAuth = cache(async () => {
-    const user = await getServerUser();
+    const user : User = await getServerUser();
 
     if (!user) {
         redirect('/login');
@@ -39,7 +40,7 @@ export const requireAuth = cache(async () => {
 
 // Require admin role
 export const requireAdmin = cache(async () => {
-    const user = await requireAuth();
+    const user : User = await requireAuth();
 
     if (user.role !== 'admin') {
         // Either redirect or throw an error
@@ -57,7 +58,6 @@ export const hasPermission = cache(async (permission: string) => {
 
     // Simple role-based check
     if (permission === 'manage_products' && user.role === 'admin') return true;
-    if (permission === 'view_orders' && (user.role === 'admin' || user.role === 'user')) return true;
+    return permission === 'view_orders' && (user.role === 'admin' || user.role === 'user');
 
-    return false;
 });

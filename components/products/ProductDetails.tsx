@@ -4,14 +4,13 @@ import React from 'react';
 import { ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 import {Product} from "@/types/product";
+import {AddToCartButton} from "@/components/AddToCartButton";
 
 // Mock AddToCartButton
-const AddToCartButton = ({ product, style }: { product: Product, style: string }) => {
+const AddToCart = ({ product, style }: { product: Product, style: string }) => {
+    const icon : React.ReactNode = <ShoppingCart className="w-5 h-5 mr-2 inline-block" />;
     return (
-        <button className={style} onClick={() => alert(`Added ${product.name} to cart!`)}>
-            <ShoppingCart className="w-5 h-5 mr-2 inline-block" />
-            Add to Cart
-        </button>
+        <AddToCartButton product={product} style={style} icon={icon} />
     );
 };
 
@@ -77,7 +76,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
                                     </span>
                                 </div>
                                 {/* Add to Cart Button */}
-                                <AddToCartButton
+                                <AddToCart
                                     product={product}
                                     style="bg-gray-800 hover:bg-gray-900 text-white py-3 px-8 rounded-full text-lg font-medium
                                            transition-all duration-300 transform hover:scale-105 shadow-md whitespace-nowrap"

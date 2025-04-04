@@ -1,18 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 // import Placeholder from "@/public/placeholder.png";
-// import { AddToCartButton } from "@/components/AddToCartButton";
+import { AddToCartButton } from "@/components/AddToCartButton";
 import {Product} from "@/types/product";
 import React from 'react';
 import { ShoppingCart } from 'lucide-react';
 
 // Mock AddToCartButton (Simplified for this context) -  No change, assuming it's correctly implemented
-const AddToCartButton = ({ product, style }: { product: Product; style?: string }) => {
+const AddToCart = ({ product, style }: { product: Product; style?: string }) => {
+    const icon : React.ReactNode = <ShoppingCart className="w-5 h-5 mr-2 inline-block" />;
     return (
-        <button className={style} onClick={() => alert(`Added ${product.name} to cart!`)}>
-            <ShoppingCart className="w-5 h-5 mr-2 inline-block" />
-            Add to Cart
-        </button>
+            <AddToCartButton product={product} style={style} icon={icon} />
     );
 };
 
@@ -80,7 +78,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                 </p>
 
                 {/* Add to Cart Button */}
-                <AddToCartButton
+                <AddToCart
                     product={product}
                     style="w-full bg-gray-800 hover:bg-gray-900 hover:shadow-xl text-white py-3 px-6 rounded-full text-sm font-medium
                            transition-all duration-300 transform shadow-md"

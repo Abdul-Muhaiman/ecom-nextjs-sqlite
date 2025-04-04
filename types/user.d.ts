@@ -14,7 +14,7 @@ export interface ReferredUser {
 }
 
 // Main User Interface
-export interface User {
+export interface UserOld {
     id: number;
     name: string;
     email: string;
@@ -24,3 +24,11 @@ export interface User {
     referredBy?: ReferredBy;
     referredUsers?: ReferredUser[];
 }
+
+type User = {
+    name: string
+    id: number
+    email: string
+    referralCode: string
+    role: string
+} | null

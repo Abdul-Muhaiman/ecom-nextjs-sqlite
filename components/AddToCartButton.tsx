@@ -1,55 +1,27 @@
 "use client";
 
-import { Product } from "@prisma/client";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import {Product} from "@prisma/client";
+import React from "react";
+import {addToCartAction} from "@/lib/actions/cart";
 
-export const AddToCartButton = ({
-                                    product,
-                                    style,
-                                }: {
+export const AddToCartButton = ({product, style, icon}: {
     product?: Product;
     style?: string;
+    icon?: React.ReactNode;
 }) => {
-    const {data: session} = useSession();
-    const router = useRouter();
-
     const handleAdd = async () => {
-        // Redirect to log in if not authenticated
-        if (!session?.user) {
-            router.push("/login");
+        if (!product) {
             return;
         }
 
-        const response = await fetch("/api/cart", {
-            method: "POST",
-            body: JSON.stringify({
-                userId: session.user.id,
-                productId: product?.id as number,
-                productName: product?.name as string,
-                productImage: product?.image as string,
-                productPrice: product?.price as number,
-                quantity: 1
-            })
-        })
-
-        const data = await response.json();
-        console.log("data", data);
-
-        // Add product to the cart
-        // if (product) {
-        //     await addToCart(session.user.id, {
-        //         productId: product.id,
-        //         name: product.name,
-        //         price: product.price,
-        //         quantity: 1,
-        //     });
-        // }
+        const {message} = await addToCartAction(product);
+        console.log(message);
 
     };
 
     return (
         <button className={style} onClick={handleAdd}>
+            {icon}
             Add to Cart
         </button>
     );

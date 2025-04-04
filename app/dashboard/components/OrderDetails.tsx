@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { formatDate } from "@/utils/helper";
+import { formatDate } from "@/lib/utils/helper";
 import { Order } from "@/types/order";
 import Placeholder from "@/public/placeholder.png";
 import Image from "next/image";

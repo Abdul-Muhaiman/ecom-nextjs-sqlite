@@ -3,8 +3,6 @@ import prisma from "@/lib/prisma";
 
 export async function POST(req: NextRequest) {
     try {
-        console.log("POST REQUEST MADE");
-
         // Parse request body
         const reqBody = await req.json();
 
