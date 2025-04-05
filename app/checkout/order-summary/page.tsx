@@ -1,71 +1,51 @@
-// app/checkout/order-summary/page.tsx
 "use client";
 
-import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { ArrowLeft, CheckCircle, CreditCard, Loader2, MapPin, ShoppingCart, XCircle } from 'lucide-react';
 // Import context hook and Address type
 import { useAddress } from '@/context/AddressContext'; // Adjust import path if needed
-import Placeholder from "@/public/placeholder.png"; // Assuming you have this placeholder
+import Placeholder from "@/public/placeholder.png";
+import { GetCartProduct } from "@/types/cart";
+import { getCartItemsAction } from "@/lib/actions/cart";
+import { createOrderAction } from "@/lib/actions/orders";
+import { useRouter } from "next/navigation"; // Assuming you have this placeholder
 
-// Define the cart item structure (can be imported if shared)
-interface CartItem {
-    id: number;
-    userId: number;
-    productId: number;
-    productName: string;
-    productPrice: number;
-    productImage: string;
-    quantity: number;
-}
+// --- Utility Function ---
+const cn = (...classes: string[]): string => {
+    return classes.filter(Boolean).join(' ');
+};
 
 export default function OrderSummaryPage() {
-    const { data: session, status } = useSession();
 
     // Get address from context
     const { shippingAddress } = useAddress(); // Use the context hook
 
-    const [cartItems, setCartItems] = useState<CartItem[]>([]);
-    const [isLoadingCart, setIsLoadingCart] = useState(true);
+    const [cartItems, setCartItems] = useState<GetCartProduct[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>('payOnDelivery'); // Default to enabled option
     const [isPlacingOrder, setIsPlacingOrder] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const router = useRouter();
 
     // --- Fetch Cart Items Effect ---
     useEffect(() => {
         const fetchCartItems = async () => {
-            // Only fetch if authenticated and userId is available
-            if (status === "authenticated" && session?.user?.id) {
-                setIsLoadingCart(true); // Set loading true when fetch starts
-                try {
-                    const response = await fetch(`/api/cart/${session.user.id}`);
-                    if (!response.ok) {
-                        // Consider more robust error handling/logging
-                        console.error("Failed to fetch cart items, status:", response.status);
-                        // Optionally set an error state here to show a message
-                        setCartItems([]); // Clear items on error
-                        return;
-                    }
-                    const data = await response.json();
-                    setCartItems(data);
-                } catch (error) {
-                    console.error("Error fetching cart items:", error);
-                    setCartItems([]); // Clear items on error
-                    // Optionally set an error state here
-                } finally {
-                    setIsLoadingCart(false); // Stop loading
-                }
-            } else if (status === "unauthenticated") {
-                // Handle unauthenticated state if necessary (e.g., redirect)
-                setIsLoadingCart(false);
-                setCartItems([]);
+            setIsLoading(true);
+            try {
+                const cart: GetCartProduct[] = await getCartItemsAction();
+                setCartItems(cart);
+            } catch (err) {
+                console.error("Error fetching cart items:", err);
+                setError("Failed to load cart items. Please try again later.");
+            } finally {
+                setIsLoading(false);
             }
-            // If status is 'loading', we wait for it to become 'authenticated' or 'unauthenticated'
         };
 
         fetchCartItems();
-    }, [session, status]); // Rerun when session or status changes
+    }, []);
 
     // --- Calculations ---
     const calculateSubtotal = () => {
@@ -77,8 +57,9 @@ export default function OrderSummaryPage() {
 
     const subtotal = calculateSubtotal();
     // Add logic for shipping cost if applicable, otherwise 0
-    const shippingCost = 0; // Example: Free shipping
-    const total = subtotal + shippingCost;
+    const tax = 5.0;
+    const shipping = 10;
+    const total = subtotal + shipping + tax;
 
     // --- Event Handlers ---
     const handlePlaceOrder = async () => {
@@ -86,73 +67,51 @@ export default function OrderSummaryPage() {
             alert("Please ensure address is selected, cart is not empty, and payment method is chosen.");
             return;
         }
-
         setIsPlacingOrder(true);
-        console.log("Placing order with:", {
-            shippingAddress,
-            cartItems,
-            paymentMethod: selectedPaymentMethod,
-            total,
-        });
 
-        // --- !!! Add your actual order placement logic here !!! ---
-        // Example: Send data to your backend API
         try {
-          const response = await fetch('/api/orders', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              userId: session?.user?.id,
-              // shippingAddress,
-              // items: cartItems.map(item => ({ productId: item.productId, quantity: item.quantity, price: item.productPrice })),
-              // paymentMethod: selectedPaymentMethod,
-              // totalAmount: total,
-            }),
-          });
-          if (!response.ok) {
-            throw new Error('Failed to place order');
-          }
-          const orderResult = await response.json();
-            console.log(orderResult);
-
-            // Redirect to order confirmation page, clear cart, etc.
-          // router.push(`/order-confirmation/${orderResult.orderId}`);
+            const { message, orderId } = await createOrderAction();
+            alert(`Order created successfully! ID: ${orderId}`);
+            router.replace("/")
+            return message;
         } catch (error) {
-          console.error("Order placement failed:", error);
-          alert("Failed to place order. Please try again.");
+            console.error(error);
+            setError("Failed to create order. Please try again.");
         } finally {
-          setIsPlacingOrder(false);
+            setIsPlacingOrder(false);
         }
-        // --- End of example order placement logic ---
 
-        // For now, just simulate success after a delay
-        // await new Promise(resolve => setTimeout(resolve, 1500));
-        // alert("Order Placed (Simulation)!");
-        setIsPlacingOrder(false);
-        // You would likely redirect or clear cart state here upon success
     };
 
     // --- Loading and Empty States ---
-    if (status === "loading" || isLoadingCart) {
-        return <div className="text-center py-12 text-gray-600">Loading Summary...</div>;
-    }
-
-    if (status === "unauthenticated") {
-        // Or redirect to login: router.push('/login');
-        return <div className="text-center py-12 text-red-600">Please log in to view your summary.</div>;
-    }
-
-    if (cartItems.length === 0 && !isLoadingCart) {
+    if (isLoading) {
         return (
-            <div className="text-center py-12 text-gray-500">
-                Your cart is empty. <Link href="/products" className="text-blue-600 hover:text-blue-800">Continue Shopping</Link>
+            <div className="flex items-center justify-center py-12">
+                <Loader2 className="animate-spin h-12 w-12 text-blue-500" />
+                <p className="ml-4 text-gray-600">Loading Summary...</p>
+            </div>
+        );
+    }
+
+
+    if (cartItems.length === 0 && !isLoading) {
+        return (
+            <div className="text-center py-12">
+                <p className="text-gray-500 text-lg mb-4">Your cart is empty.</p>
+                <Link
+                    href="/products"
+                    className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-300"
+                >
+                    <ShoppingCart className="w-5 h-5 mr-2" />
+                    Continue Shopping
+                </Link>
             </div>
         );
     }
 
     // --- Render Page ---
     return (
-        <div className="min-h-screen bg-gray-50 py-12">
+        <div className="min-h-screen bg-gray-100 py-12">
             <div className="container mx-auto px-4">
                 <h1 className="text-3xl font-bold text-gray-800 mb-8">Order Summary</h1>
 
@@ -160,13 +119,22 @@ export default function OrderSummaryPage() {
                     {/* Left Column: Address and Items */}
                     <div className="flex-1 space-y-6">
                         {/* Shipping Address Section */}
-                        <div className="bg-white p-6 rounded-lg shadow">
-                            <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-xl font-bold text-gray-800">Shipping Address</h2>
+                        <div className="bg-white shadow-md rounded-lg p-6">
+                            <div className="flex justify-between items-start mb-4">
+                                <div>
+                                    <h2 className="text-xl font-semibold text-gray-900">Shipping Address</h2>
+                                    <p className="text-gray-500 text-sm">
+                                        {shippingAddress && (shippingAddress.street || shippingAddress.fullName)
+                                            ? "Selected Shipping Address"
+                                            : "No address selected"
+                                        }
+                                    </p>
+                                </div>
                                 <Link
                                     href="/checkout/address" // Link back to address selection/edit page
-                                    className="text-sm text-blue-600 hover:text-blue-800 font-semibold"
+                                    className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1"
                                 >
+                                    <MapPin className="w-4 h-4" />
                                     Change
                                 </Link>
                             </div>
@@ -180,14 +148,21 @@ export default function OrderSummaryPage() {
                             ) : (
                                 <p className="text-gray-500">
                                     No shipping address selected.
-                                    <Link href="/checkout/address" className="text-blue-600 hover:text-blue-800 ml-1">Add Address</Link>
+                                    <Link
+                                        href="/checkout/address"
+                                        className="text-blue-600 hover:text-blue-800 ml-1 inline-flex items-center gap-1"
+                                    >
+                                        <MapPin className="w-4 h-4" />
+                                        Add Address
+                                    </Link>
                                 </p>
                             )}
                         </div>
 
                         {/* Cart Items Summary Section */}
-                        <div className="bg-white p-6 rounded-lg shadow">
-                            <h2 className="text-xl font-bold text-gray-800 mb-4">Items in Cart</h2>
+                        <div className="bg-white shadow-md rounded-lg p-6">
+                            <h2 className="text-xl font-semibold text-gray-900 mb-4">Items in Cart</h2>
+                            <p className="text-gray-500 text-sm mb-4">Review the items in your cart</p>
                             <div className="space-y-4">
                                 {cartItems.map((item) => (
                                     <div key={item.productId} className="flex items-center gap-4 border-b border-gray-200 pb-4 last:border-b-0">
@@ -201,10 +176,10 @@ export default function OrderSummaryPage() {
                                             />
                                         </div>
                                         <div className="flex-grow">
-                                            <h3 className="text-md font-semibold text-gray-800">{item.productName}</h3>
+                                            <h3 className="text-md font-semibold text-gray-900">{item.productName}</h3>
                                             <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
                                         </div>
-                                        <div className="text-right text-md font-semibold text-gray-800">
+                                        <div className="text-right text-md font-semibold text-gray-900">
                                             ${(item.productPrice * item.quantity).toFixed(2)}
                                         </div>
                                     </div>
@@ -215,56 +190,65 @@ export default function OrderSummaryPage() {
 
                     {/* Right Column: Totals and Payment */}
                     <div className="w-full lg:w-1/3">
-                        <div className="bg-white p-6 rounded-lg shadow space-y-6 sticky top-20"> {/* Added sticky top */}
+                        <div className="space-y-6 sticky top-20">
                             {/* Order Totals */}
-                            <div>
-                                <h2 className="text-xl font-bold text-gray-800 mb-4">Totals</h2>
+                            <div className="bg-white shadow-md rounded-lg p-6">
+                                <h2 className="text-xl font-semibold text-gray-900 mb-4">Totals</h2>
+                                <p className="text-gray-500 text-sm mb-4">Order summary details</p>
                                 <div className="space-y-2 border-b border-gray-200 pb-4 mb-4">
                                     <div className="flex justify-between">
                                         <span className="text-gray-600">Subtotal</span>
-                                        <span className="text-gray-800 font-semibold">${subtotal.toFixed(2)}</span>
+                                        <span className="text-gray-900 font-semibold">${subtotal.toFixed(2)}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-gray-600">Shipping</span>
-                                        <span className="text-gray-800 font-semibold">{shippingCost === 0 ? 'Free' : `$${shippingCost}`}</span>
+                                        <span className="text-gray-900 font-semibold">{shipping > 0 ? 'Free' : `$${shipping}`}</span>
                                     </div>
                                 </div>
                                 <div className="flex justify-between mt-4">
-                                    <span className="text-gray-800 text-lg font-bold">Total</span>
-                                    <span className="text-gray-800 text-lg font-bold">${total.toFixed(2)}</span>
+                                    <span className="text-gray-900 text-lg font-bold">Total</span>
+                                    <span className="text-gray-900 text-lg font-bold">${total.toFixed(2)}</span>
                                 </div>
                             </div>
 
                             {/* Payment Method */}
-                            <div>
-                                <h2 className="text-xl font-bold text-gray-800 mb-4">Payment Method</h2>
-                                <div className="space-y-3">
+                            <div className="bg-white shadow-md rounded-lg p-6">
+                                <h2 className="text-xl font-semibold text-gray-900 mb-4">Payment Method</h2>
+                                <p className="text-gray-500 text-sm mb-4">Choose your payment method</p>
+                                <div className="space-y-4">
                                     {/* Credit Card (Disabled) */}
-                                    <label className="flex items-center p-3 border rounded-md bg-gray-100 opacity-50 cursor-not-allowed">
+                                    <div className="flex items-center">
                                         <input
                                             type="radio"
+                                            id="creditCard"
                                             name="paymentMethod"
                                             value="creditCard"
                                             checked={selectedPaymentMethod === 'creditCard'}
                                             onChange={(e) => setSelectedPaymentMethod(e.target.value)}
-                                            className="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"
-                                            disabled // Disable this option
+                                            disabled
+                                            className="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500 cursor-not-allowed"
                                         />
-                                        <span className="ml-3 text-gray-500">Credit Card (Unavailable)</span>
-                                    </label>
+                                        <label
+                                            htmlFor="creditCard"
+                                            className="ml-3 text-gray-500 cursor-not-allowed opacity-50"
+                                        >
+                                            Credit Card (Unavailable)
+                                        </label>
+                                    </div>
 
                                     {/* Pay on Delivery (Enabled) */}
-                                    <label className="flex items-center p-3 border rounded-md hover:border-blue-400 cursor-pointer">
+                                    <div className="flex items-center">
                                         <input
                                             type="radio"
+                                            id="payOnDelivery"
                                             name="paymentMethod"
                                             value="payOnDelivery"
                                             checked={selectedPaymentMethod === 'payOnDelivery'}
                                             onChange={(e) => setSelectedPaymentMethod(e.target.value)}
                                             className="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                                         />
-                                        <span className="ml-3 text-gray-700">Pay on Delivery</span>
-                                    </label>
+                                        <label htmlFor="payOnDelivery" className="ml-3 text-gray-900">Pay on Delivery</label>
+                                    </div>
                                 </div>
                             </div>
 
@@ -272,13 +256,21 @@ export default function OrderSummaryPage() {
                             <button
                                 onClick={handlePlaceOrder}
                                 disabled={!shippingAddress || cartItems.length === 0 || !selectedPaymentMethod || isPlacingOrder}
-                                className={`w-full text-white py-3 rounded-md transition-colors font-semibold ${
+                                className={cn(
+                                    "w-full py-3 text-white font-semibold rounded-md transition-colors",
                                     (!shippingAddress || cartItems.length === 0 || !selectedPaymentMethod || isPlacingOrder)
-                                        ? 'bg-gray-400 cursor-not-allowed' // Disabled state
+                                        ? 'bg-gray-400 cursor-not-allowed opacity-70' // Disabled state
                                         : 'bg-blue-600 hover:bg-blue-700' // Enabled state
-                                }`}
+                                )}
                             >
-                                {isPlacingOrder ? 'Placing Order...' : 'Place Order'}
+                                {isPlacingOrder ? (
+                                    <div className="flex items-center justify-center">
+                                        <Loader2 className="animate-spin h-5 w-5 mr-2" />
+                                        Placing Order...
+                                    </div>
+                                ) : (
+                                    'Place Order'
+                                )}
                             </button>
                         </div>
                     </div>

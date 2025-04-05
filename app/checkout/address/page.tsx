@@ -79,7 +79,7 @@ export default function AddressForm() {
                     <form onSubmit={handleSubmit} className="space-y-6">
                         {/* Full Name */}
                         <div>
-                            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">
+                            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
                                 Full Name <span className="text-red-500">*</span>
                             </label>
                             <input
@@ -88,7 +88,7 @@ export default function AddressForm() {
                                 name="fullName"
                                 value={formData.fullName}
                                 onChange={handleChange}
-                                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-500 focus:border-blue-500 sm:text-sm"
+                                className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
                                 required
                                 autoComplete="name"
                             />
@@ -96,7 +96,7 @@ export default function AddressForm() {
 
                         {/* Street Address */}
                         <div>
-                            <label htmlFor="street" className="block text-sm font-medium text-gray-700 mb-1">
+                            <label htmlFor="street" className="block text-sm font-medium text-gray-700 mb-2">
                                 Street Address <span className="text-red-500">*</span>
                             </label>
                             <input
@@ -105,7 +105,7 @@ export default function AddressForm() {
                                 name="street"
                                 value={formData.street}
                                 onChange={handleChange}
-                                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
                                 required
                                 autoComplete="street-address"
                             />
@@ -114,7 +114,7 @@ export default function AddressForm() {
                         {/* City / State */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">
+                                <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
                                     City <span className="text-red-500">*</span>
                                 </label>
                                 <input
@@ -123,13 +123,13 @@ export default function AddressForm() {
                                     name="city"
                                     value={formData.city}
                                     onChange={handleChange}
-                                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
                                     required
                                     autoComplete="address-level2" // City
                                 />
                             </div>
                             <div>
-                                <label htmlFor="state" className="block text-sm font-medium text-gray-700 mb-1">
+                                <label htmlFor="state" className="block text-sm font-medium text-gray-700 mb-2">
                                     State / Province <span className="text-red-500">*</span>
                                 </label>
                                 <input
@@ -138,7 +138,7 @@ export default function AddressForm() {
                                     name="state"
                                     value={formData.state}
                                     onChange={handleChange}
-                                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
                                     required
                                     autoComplete="address-level1" // State
                                 />
@@ -148,7 +148,7 @@ export default function AddressForm() {
                         {/* Country / Zip Code */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label htmlFor="zip" className="block text-sm font-medium text-gray-700 mb-1">
+                                <label htmlFor="zip" className="block text-sm font-medium text-gray-700 mb-2">
                                     ZIP / Postal Code <span className="text-red-500">*</span>
                                 </label>
                                 <input
@@ -157,13 +157,13 @@ export default function AddressForm() {
                                     name="zip"
                                     value={formData.zip}
                                     onChange={handleChange}
-                                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
                                     required
                                     autoComplete="postal-code"
                                 />
                             </div>
                             <div>
-                                <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
+                                <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-2">
                                     Country <span className="text-red-500">*</span>
                                 </label>
                                 <input
@@ -173,7 +173,7 @@ export default function AddressForm() {
                                     name="country"
                                     value={formData.country}
                                     onChange={handleChange}
-                                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    className="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
                                     required
                                     autoComplete="country-name"
                                 />
@@ -181,22 +181,18 @@ export default function AddressForm() {
                         </div>
 
                         {/* Submit Button */}
-                        <div className="pt-4"> {/* Added padding top for separation */}
+                        <div className="pt-6"> {/* Increased padding-top */}
                             <button
                                 type="submit"
-                                className={`w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out ${
+                                className={`w-full flex justify-center items-center py-3 px-6 border border-transparent rounded-md shadow-sm text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out ${
                                     isSubmitting
-                                        ? 'bg-blue-400 cursor-not-allowed'
+                                        ? 'bg-blue-400 cursor-not-allowed opacity-70' // Slightly faded when disabled
                                         : 'bg-blue-600 hover:bg-blue-700'
                                 }`}
                                 disabled={isSubmitting}
                             >
                                 {isSubmitting ? (
-                                    <>
-                                        {/* Optional Spinner Icon */}
-                                        {/* <FaSpinner className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" /> */}
-                                        Saving...
-                                    </>
+                                    <span className="animate-pulse">Saving...</span> // Simple text-based animation
                                 ) : (
                                     'Save Address & Continue'
                                 )}
