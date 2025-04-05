@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**DAL**&#10;*CART*&#10;minor correction">
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="UI Changed whole app">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cart/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/checkout/address/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/checkout/address/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/checkout/order-summary/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/checkout/order-summary/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cart/CartItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cart/CartItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cart/OrderSummary.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cart/OrderSummary.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dal/order.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/order.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/products/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/products/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +45,7 @@
     </layout>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -135,7 +130,7 @@
       <workItem from="1743687396004" duration="2247000" />
       <workItem from="1743697725357" duration="1459000" />
       <workItem from="1743756402828" duration="23925000" />
-      <workItem from="1743827812741" duration="11143000" />
+      <workItem from="1743827812741" duration="12605000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -401,7 +396,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743843146986</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="**DAL**&#10;Placing order logic and design and cart design">
+      <option name="closed" value="true" />
+      <created>1743846991475</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1743846991475</updated>
+    </task>
+    <task id="LOCAL-00035" summary="UI Changed whole app">
+      <option name="closed" value="true" />
+      <created>1743847770817</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1743847770817</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -419,8 +430,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="NextAuth Added with help of Gemini 2.5 using Google AI Studio" />
-    <MESSAGE value="DB setup correctly in the master branch" />
     <MESSAGE value="Cart functionality working products adding to cart and backend sync with local storage" />
     <MESSAGE value="CART FUNCTIONALITY ADDING" />
     <MESSAGE value="Removed cart" />
@@ -444,6 +453,8 @@
     <MESSAGE value="**DAL**&#10;GET, ADD, REMOVE, CLEAR cart implemented" />
     <MESSAGE value="**DAL**&#10;CART REFACTOR COMPLETED WITH DESIGN !!!" />
     <MESSAGE value="**DAL**&#10;*CART*&#10;minor correction" />
-    <option name="LAST_COMMIT_MESSAGE" value="**DAL**&#10;*CART*&#10;minor correction" />
+    <MESSAGE value="**DAL**&#10;Placing order logic and design and cart design" />
+    <MESSAGE value="UI Changed whole app" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI Changed whole app" />
   </component>
 </project>

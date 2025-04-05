@@ -1,63 +1,69 @@
-"use client"
+"use client";
 
 import Link from "next/link";
-import {useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { Home, ShoppingCart, Info, Mail, User } from "lucide-react";
 
 const navbarContent = [
-    {title: "Home", href: "/"},
-    {title: "Products", href: "/products"},
-    {title: "About", href: "#"},
-    {title: "Contact", href: "#"},
+    { title: "Home", href: "/", icon: <Home className="w-5 h-5" /> },
+    { title: "Products", href: "/products", icon: <ShoppingCart className="w-5 h-5" /> },
+    { title: "About", href: "#", icon: <Info className="w-5 h-5" /> },
+    { title: "Contact", href: "#", icon: <Mail className="w-5 h-5" /> },
 ];
 
 export default function Navbar() {
-    // Fetch session on the server-side
     const session = useSession();
 
     return (
-        <header className="bg-gray-800 text-gray-100 body-font">
-            <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <header className="bg-blue-600 text-white shadow-lg">
+            <div className="container mx-auto flex flex-wrap p-6 flex-col md:flex-row items-center">
                 {/* Logo */}
-                <Link
-                    href="/"
-                    className="flex title-font font-medium items-center text-white mb-4 md:mb-0"
-                >
-                    <span className="ml-1.5 pt-1 text-xl text-white">EcomShop</span>
+                <Link href="/" className="flex items-center space-x-2 mb-4 md:mb-0">
+                    <span className="text-2xl font-bold tracking-wide">EcomShop</span>
                 </Link>
 
                 {/* Navigation Links */}
-                <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <nav className="md:ml-auto flex items-center space-x-8">
                     {navbarContent.map((link) => (
                         <Link
                             key={link.title}
                             href={link.href}
-                            className="mr-5 text-gray-400 hover:text-white"
+                            className="flex items-center space-x-2 text-white hover:text-gray-200 transition duration-300"
                         >
-                            {link.title}
+                            {link.icon}
+                            <span>{link.title}</span>
                         </Link>
                     ))}
                 </nav>
 
-                {/* Cart Dropdown */}
-                <div className="flex items-center space-x-4 relative">
-
-                    {/* Login Button */}
+                {/* User Actions */}
+                <div className="flex items-center space-x-6 ml-6">
+                    {/* Cart Button */}
                     <Link href="/cart">
                         <button
-                            className="bg-gray-900 hover:bg-gray-700 border-1 text-white py-1 px-3 rounded focus:outline-none">
+                            className="flex items-center gap-2 bg-white text-blue-600 py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 hover:text-white transition duration-300"
+                        >
+                            <ShoppingCart className="w-5 h-5" />
                             Cart
                         </button>
                     </Link>
-                    {session?.data?.user?
-                    <Link href="/dashboard">
-                        <span className={"bg-red-500 border-white border-2 w-8 h-8 rounded-4xl block text-center text-lg"}>D</span>
-                    </Link>
-                        : <Link href="/login">
-                        <button
-                            className="bg-gray-900 hover:bg-gray-700 border-1 text-white py-1 px-3 rounded focus:outline-none">
-                            Login
-                        </button>
-                    </Link>}
+
+                    {/* Conditional Login/Dashboard Button */}
+                    {session?.data?.user ? (
+                        <Link href="/dashboard">
+                            <div className="bg-green-500 text-white border-2 border-white w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold shadow-md transition duration-300 hover:bg-green-600">
+                                <User className="w-5 h-5" />
+                            </div>
+                        </Link>
+                    ) : (
+                        <Link href="/login">
+                            <button
+                                className="bg-white text-blue-600 py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 hover:text-white transition duration-300"
+                            >
+                                Login
+                            </button>
+                        </Link>
+                    )}
                 </div>
             </div>
         </header>
