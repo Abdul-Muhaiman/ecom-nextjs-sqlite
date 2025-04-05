@@ -14,12 +14,12 @@ export default function QuantityControls({
     quantity: number;
     setCartItems: React.Dispatch<React.SetStateAction<GetCartProduct[]>>; // Pass setCartItems from parent
 }) {
-    const [mutatedQuantity, setMutatedQuantity] = useState(quantity);
+    const [mutatedQuantity, setMutatedQuantity] = useState<number>(quantity);
     const [isUpdating, setIsUpdating] = useState(false);
 
     const controlQuantity = async () => {
         setIsUpdating(true); // Set loading state
-        const updatedItem = await updateCartItemAction(productId, quantity);
+        const {message} = await updateCartItemAction(productId, mutatedQuantity);
         setCartItems((prevItems) =>
             prevItems.map((item) =>
                 item.productId === productId
@@ -28,7 +28,7 @@ export default function QuantityControls({
             )
         )
         setIsUpdating(false);
-        return updatedItem;
+        return message;
     };
 
     return (

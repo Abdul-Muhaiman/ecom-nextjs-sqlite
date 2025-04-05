@@ -66,7 +66,6 @@ export async function updateCartItemAction(prodId: number, quantity: number) {
     try {
         const {error, message, productId} = await updateCartItem_DAL(prodId, quantity);
         if (error) throw new Error(error);
-        revalidatePath("/cart")
         return {message, productId};
     } catch (error) {
         console.error("Error updating cart item quantity:", error);
