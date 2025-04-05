@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**DAL**&#10;Cart DAL and Action implemented">
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**DAL**&#10;GET, ADD, REMOVE, CLEAR cart implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cart/components/ClearCartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/components/ClearCartButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cart/components/DeleteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/components/DeleteButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cart/components/ClearCartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cart/ClearCartButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cart/components/DeleteButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cart/DeleteButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/cart/components/QuantityControls.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cart/QuantityControls.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/cart/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/cart/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/AddToCartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/AddToCartButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/actions/cart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/actions/cart.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/dal/cart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/cart.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
@@ -23,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -86,11 +86,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\products" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\lib" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\dashboard\orders" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\cart\remove" />
-      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\api\cart" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -134,7 +134,8 @@
       <workItem from="1743662920621" duration="21235000" />
       <workItem from="1743687396004" duration="2247000" />
       <workItem from="1743697725357" duration="1459000" />
-      <workItem from="1743756402828" duration="23867000" />
+      <workItem from="1743756402828" duration="23925000" />
+      <workItem from="1743827812741" duration="5937000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -376,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743785330334</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="**DAL**&#10;GET, ADD, REMOVE, CLEAR cart implemented">
+      <option name="closed" value="true" />
+      <created>1743792679475</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1743792679475</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,7 +403,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added commission calculation logic" />
     <MESSAGE value="Prisma schema modified for ecommerce functionality and logic." />
     <MESSAGE value="Added NextAuth with just boilerplate code&#10;Recovered registration page UI" />
     <MESSAGE value="NextAuth Added with help of Gemini 2.5 using Google AI Studio" />
@@ -419,6 +427,7 @@
     <MESSAGE value="**DAL**&#10;Products types modified" />
     <MESSAGE value="**DAL**&#10;Products UI modified" />
     <MESSAGE value="**DAL**&#10;Cart DAL and Action implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="**DAL**&#10;Cart DAL and Action implemented" />
+    <MESSAGE value="**DAL**&#10;GET, ADD, REMOVE, CLEAR cart implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="**DAL**&#10;GET, ADD, REMOVE, CLEAR cart implemented" />
   </component>
 </project>

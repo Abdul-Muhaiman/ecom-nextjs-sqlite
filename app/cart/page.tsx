@@ -1,100 +1,85 @@
 "use client";
 
 import Link from "next/link";
-import {useEffect, useState} from "react";
-import Image from "next/image";
-import Placeholder from "@/public/placeholder.png"
-import DeleteButton from "@/app/cart/components/DeleteButton"
-import ClearCartButton from "@/app/cart/components/ClearCartButton";
-import QuantityControls from "@/app/cart/components/QuantityControls";
-import {useRouter} from "next/navigation";
-import {getCartItemsAction} from "@/lib/actions/cart";
-import {GetCartProduct} from "@/types/cart";
+import React, { useEffect, useState } from "react";
+import { ShoppingCart, ArrowLeft as ArrowLeftIcon } from 'lucide-react';
+import { useRouter } from "next/navigation";
+import { getCartItemsAction} from "@/lib/actions/cart";
+import { GetCartProduct } from "@/types/cart";
+import OrderSummary from "@/components/cart/OrderSummary";
+import ClearCartButton from "@/components/cart/ClearCartButton";
+import CartItem from "@/components/cart/CartItem";
 
-export default function CartPage() {
-
-
+export default function Page() {
     const [cartItems, setCartItems] = useState<GetCartProduct[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     const router = useRouter();
 
     useEffect(() => {
         const fetchCartItems = async () => {
             setIsLoading(true);
-            const cart : GetCartProduct[] = await getCartItemsAction()
-            setCartItems(cart)
-            setIsLoading(false);
+            try {
+                const cart: GetCartProduct[] = await getCartItemsAction();
+                setCartItems(cart);
+            } catch (err) {
+                console.error("Error fetching cart items:", err);
+                setError("Failed to load cart items. Please try again later.");
+            } finally {
+                setIsLoading(false);
+            }
         };
 
         fetchCartItems();
     }, []);
 
-    if (status === "loading" || isLoading) {
-        return <div className="text-center py-12">Loading...</div>; // Show a loading indicator while fetching data
+    if (isLoading) {
+        return (
+            <div className="flex items-center justify-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-blue-500"></div>
+                <p className="ml-4 text-gray-600">Loading your cart...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return <div className="text-center py-12 text-red-500">{error}</div>;
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12">
-            <div className="container mx-auto px-4">
+        <div className="bg-gray-50 py-16">
+            <div className="container mx-auto px-6">
                 {/* Page Title */}
-                <h1 className="text-3xl font-bold text-gray-800 mb-8">Shopping Cart</h1>
+                <h1 className="text-4xl font-bold text-gray-800 mb-12 tracking-tight">Shopping Cart</h1>
 
-                <div className="flex flex-col lg:flex-row gap-8">
+                <div className="flex flex-col lg:flex-row gap-12">
                     {/* Cart Items Section */}
-                    <div className="flex-1 bg-white p-6 rounded-lg shadow">
+                    <div className="flex-1 bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl p-6 border border-gray-100">
                         {cartItems.length > 0 ? (
                             cartItems.map((item) => (
-                                <div
-                                    key={item.productId}
-                                    className="flex items-center py-4 border-b border-gray-200"
-                                >
-                                    {/* Product Image */}
-                                    <div className="relative w-20 h-20 flex-shrink-0">
-                                        <Image
-                                            src={item.productImage || Placeholder}
-                                            alt={item.productName}
-                                            fill
-                                            className="object-contain rounded-md"
-                                            sizes="100vw"
-                                        />
-                                    </div>
-                                    {/* Product Details */}
-                                    <div className="ml-4 flex-grow">
-                                        <h3 className="text-lg font-semibold text-gray-800">
-                                            {item.productName}
-                                        </h3>
-                                        <p className="text-gray-600">
-                                            ${item.productPrice.toFixed(2)}
-                                        </p>
-                                        {/* Quantity Controls */}
-                                        <div className="flex items-center mt-2">
-                                            {/*<QuantityControls userId={session?.user.id as number} productId={item.productId} quantity={item.quantity} setCartItems={setCartItems} />*/}
-                                        </div>
-                                    </div>
-                                    {/* Item Total Price */}
-                                    <div className="text-right">
-                                        <p className="text-lg font-bold text-gray-800">
-                                            ${(item.productPrice * item.quantity).toFixed(2)}
-                                        </p>
-                                    </div>
-                                    {/* Delete Button */}
-                                    <DeleteButton
-                                        productId={item.productId}
-                                        setCartItems={setCartItems} // Pass down setCartItems
-                                    />
-                                </div>
+                                <CartItem key={item.productId} item={item} setCartItems={setCartItems} />
                             ))
                         ) : (
-                            <p className="text-center text-gray-500">Your cart is empty!</p>
+                            <div className="text-center py-8">
+                                <p className="text-gray-500 text-lg mb-4">Your cart is empty! 😢</p>
+                                <Link
+                                    href="/products"
+                                    className="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-300 inline-flex items-center gap-2"
+                                >
+                                    <ShoppingCart className="w-5 h-5" />
+                                    Browse Products
+                                </Link>
+                            </div>
                         )}
 
                         {/* Continue Shopping & Clear Cart Buttons */}
-                        <div className="mt-6 flex justify-between items-center">
+                        <div className="mt-8 flex justify-between items-center">
                             <Link
                                 href="/products"
-                                className="text-blue-600 hover:text-blue-800 font-semibold"
+                                className="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-300 inline-flex items-center gap-2"
                             >
+                                <ArrowLeftIcon className="w-5 h-5" />
                                 Continue Shopping
                             </Link>
                             {cartItems.length > 0 && (
@@ -104,30 +89,12 @@ export default function CartPage() {
                     </div>
 
                     {/* Order Summary Section */}
-                    <div className="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow">
-                        <h2 className="text-xl font-bold text-gray-800 mb-4">
-                            Order Summary
-                        </h2>
-                        <div className="flex justify-between border-t border-gray-200 pt-2">
-                            <span className="text-gray-800 font-bold">Subtotal</span>
-                            <span className="text-gray-800 font-bold">
-                $
-                                {cartItems
-                                    .reduce(
-                                        (total, item) => total + item.productPrice * item.quantity,
-                                        0
-                                    )
-                                    .toFixed(2)}
-              </span>
-                        </div>
-                        <button
-                            onClick={() => router.push("/checkout/address")}
-                            className="mt-6 w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition-colors">
-                            Proceed to Checkout
-                        </button>
-                    </div>
+                    <OrderSummary cartItems={cartItems} router={router} />
                 </div>
             </div>
         </div>
     );
 }
+
+
+
