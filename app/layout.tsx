@@ -1,7 +1,7 @@
 import "@/style/globals.css";
 import React from "react";
 import SessionProviderWrapper from "@/components/SessionProviderWrapper";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/ui/navbar/Navbar";
 
 export default function RootLayout({
                                        children,

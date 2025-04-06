@@ -55,7 +55,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
         }
 
         fetchProduct();
-    }, [productId]);
+    }, [params, productId]);
 
     // Form submission handler
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

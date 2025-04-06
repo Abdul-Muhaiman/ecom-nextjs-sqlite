@@ -4,19 +4,18 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Edit3, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import {User} from "@/types/user";
+import {editUserDetailsAction, getUserByIdAction} from "@/lib/actions/admin/users";
+import {mockProviders} from "next-auth/client/__tests__/helpers/mocks";
+import id = mockProviders.github.id;
 
 
 export default function EditUserPage({ params }: { params: Promise<{ id: string }> }) {
     const router = useRouter();
-    const [userId, setUserId] = useState<string | null>()
+    const [userId, setUserId] = useState<number | null>(null)
 
     // State for User Data
-    const [user, setUser] = useState({
-        name: "",
-        email: "",
-        role: "user",
-        referredBy: "",
-    });
+    const [user, setUser] = useState<Partial<User> | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -25,25 +24,16 @@ export default function EditUserPage({ params }: { params: Promise<{ id: string 
         async function fetchData() {
             try {
                 setLoading(true);
-                const resolvedParams = await params;
-                const userId = resolvedParams.id;
-                setUserId(userId);
+                const {id} = await params;
+                setUserId(parseInt(id));
 
                 // Fetch user data
-                const response = await new Promise((resolve) =>
-                    setTimeout(
-                        () =>
-                            resolve({
-                                id: userId,
-                                name: "John Doe",
-                                email: "john@example.com",
-                                role: "user",
-                                referredBy: "Jane Smith",
-                            }),
-                        1000
-                    )
-                );
-                setUser(response as typeof user);
+                if (!userId) {
+                    return;
+                }
+
+               const user = await getUserByIdAction(userId);
+               setUser(user);
             } catch (err) {
                 setError("Failed to load user data.");
             } finally {
@@ -51,15 +41,20 @@ export default function EditUserPage({ params }: { params: Promise<{ id: string 
             }
         }
         fetchData();
-    }, [params]);
+    }, [params, userId]);
 
     // Form Submission Handler
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("Updated user:", user);
-
         // Simulate saving user details
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        if (userId && user) {
+            const editedData = {
+                name: user?.name,
+                email: user?.email,
+                role: user?.role,
+            }
+            await editUserDetailsAction(id: userId, editedData: editedData)
+        }
         alert("User updated successfully!");
         router.push("/admin/users");
     };
@@ -107,7 +102,7 @@ export default function EditUserPage({ params }: { params: Promise<{ id: string 
                     <input
                         id="name"
                         type="text"
-                        value={user.name}
+                        value={user?.name}
                         onChange={(e) => setUser({ ...user, name: e.target.value })}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required
@@ -122,7 +117,7 @@ export default function EditUserPage({ params }: { params: Promise<{ id: string 
                     <input
                         id="email"
                         type="email"
-                        value={user.email}
+                        value={user?.email}
                         onChange={(e) => setUser({ ...user, email: e.target.value })}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required
@@ -136,7 +131,7 @@ export default function EditUserPage({ params }: { params: Promise<{ id: string 
                     </label>
                     <select
                         id="role"
-                        value={user.role}
+                        value={user?.role}
                         onChange={(e) => setUser({ ...user, role: e.target.value })}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required
@@ -146,19 +141,19 @@ export default function EditUserPage({ params }: { params: Promise<{ id: string 
                     </select>
                 </div>
 
-                {/* Referred By */}
-                <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2" htmlFor="referredBy">
-                        Referred By
-                    </label>
-                    <input
-                        id="referredBy"
-                        type="text"
-                        value={user.referredBy}
-                        onChange={(e) => setUser({ ...user, referredBy: e.target.value })}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
+                {/*/!* Referred By *!/*/}
+                {/*<div>*/}
+                {/*    <label className="block text-sm font-medium text-gray-600 mb-2" htmlFor="referredBy">*/}
+                {/*        Referred By*/}
+                {/*    </label>*/}
+                {/*    <input*/}
+                {/*        id="referredBy"*/}
+                {/*        type="text"*/}
+                {/*        value={user?.referredBy?.name}*/}
+                {/*        onChange={(e) => setUser({ ...user, name: e.target.value })}*/}
+                {/*        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"*/}
+                {/*    />*/}
+                {/*</div>*/}
 
                 {/* Submit Button */}
                 <button

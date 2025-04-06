@@ -23,18 +23,22 @@ export default async function DashboardLayout({children}: { children: React.Reac
         return (
             <div className={"flex flex-col items-center justify-center h-screen"}>
                 <p className={"text-3xl mb-3 text-gray-700"}>Login to see your profile</p>
-                <Link href={'/login'} className={"text-blue-500 text-2xl underline underline-offset-2"}>Go to login</Link>
+                <Link href={'/login'} className={"text-blue-500 text-2xl underline underline-offset-2"}>Go to
+                    login</Link>
             </div>
         );
     }
 
     return (
-        <div className={"flex"}>
+        <div className="flex">
+            {/* Sidebar */}
+            <Sidebar/>
 
-
-                <Sidebar/>
+            {/* Main Content Area */}
             <SessionProvider session={session as Session}>
-                <div className={"grow"}>{children}</div>
+                <main className="flex-1 bg-gray-50 p-10">
+                    {children}
+                </main>
             </SessionProvider>
         </div>
     );

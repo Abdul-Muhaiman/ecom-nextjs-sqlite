@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Edit, Trash2, Grid } from "lucide-react";
+import { Edit, Trash2 } from "lucide-react";
 
 export default function CategoriesPage() {
     // Hardcoded categories data

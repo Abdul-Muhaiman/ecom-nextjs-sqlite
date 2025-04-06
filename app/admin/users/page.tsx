@@ -1,37 +1,53 @@
 "use client";
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Link from "next/link";
-import { Edit, Trash, User } from "lucide-react";
+import {Edit, Loader2, Trash, XCircle} from "lucide-react";
+import {User} from "@/types/user"
+import {getUsersAction} from "@/lib/actions/admin/users";
 
 export default function UsersPage() {
-    // Hardcoded user data
-    const users = [
-        {
-            id: 1,
-            name: "John Doe",
-            email: "john@example.com",
-            role: "user",
-            referralCode: "ABCD1234",
-            referredBy: "Jane Smith",
-        },
-        {
-            id: 2,
-            name: "Jane Smith",
-            email: "jane@example.com",
-            role: "admin",
-            referralCode: "EFGH5678",
-            referredBy: "None",
-        },
-        {
-            id: 3,
-            name: "Mike Johnson",
-            email: "mike@example.com",
-            role: "user",
-            referralCode: "IJKL9012",
-            referredBy: "John Doe",
-        },
-    ];
+
+    const [users, setUsers] = useState<User[]>();
+
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            setIsLoading(true);
+            try {
+                const users: User[] = await getUsersAction();
+                if (!users || users.length === 0) setError("No users found");
+                setUsers(users);
+            } catch (err) {
+                console.error("Error fetching cart items:", err);
+                setError("Failed to load cart items. Please try again later.");
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchUsers();
+    }, []);
+
+    if (isLoading) {
+        return (
+            <div className="flex items-center justify-center py-12">
+                <Loader2 className="animate-spin h-12 w-12 text-blue-500" />
+                <p className="ml-4 text-gray-600">Loading your cart...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="flex items-center justify-center py-12 text-red-500">
+                <XCircle className="w-10 h-10 mr-2" />
+                <p>{error}</p>
+            </div>
+        );
+    }
 
     return (
         <div className="container mx-auto px-8 py-12">
@@ -51,28 +67,28 @@ export default function UsersPage() {
                     </tr>
                     </thead>
                     <tbody>
-                    {users.map((user) => (
+                    {users?.map((user) => (
                         <tr
-                            key={user.id}
+                            key={user?.id}
                             className="hover:bg-gray-50 transition duration-200"
                         >
-                            <td className="px-6 py-4">{user.id}</td>
-                            <td className="px-6 py-4">{user.name}</td>
-                            <td className="px-6 py-4">{user.email}</td>
+                            <td className="px-6 py-4">{user?.id}</td>
+                            <td className="px-6 py-4">{user?.name}</td>
+                            <td className="px-6 py-4">{user?.email}</td>
                             <td
                                 className={`px-6 py-4 ${
-                                    user.role === "admin"
+                                    user?.role === "admin"
                                         ? "text-blue-600 font-semibold"
                                         : "text-gray-800"
                                 }`}
                             >
-                                {user.role}
+                                {user?.role}
                             </td>
-                            <td className="px-6 py-4">{user.referralCode}</td>
-                            <td className="px-6 py-4">{user.referredBy}</td>
+                            <td className="px-6 py-4">{user?.referralCode}</td>
+                            <td className="px-6 py-4">{user?.referredBy?.name}</td>
                             <td className="px-6 py-4 flex space-x-4 items-center">
                                 <Link
-                                    href={`/admin/users/${user.id}`}
+                                    href={`/admin/users/${user?.id}`}
                                     className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
                                 >
                                     <Edit className="w-5 h-5" />

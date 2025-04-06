@@ -39,7 +39,7 @@ export default function EditCategoryPage({ params }: { params: Promise<{ id: str
         }
 
         fetchCategory();
-    }, [categoryId]);
+    }, [categoryId, params]);
 
     // Form submission handler
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { DollarSign } from "lucide-react";
 
 export default function CommissionsPage() {
     // Hardcoded commissions data based on schema

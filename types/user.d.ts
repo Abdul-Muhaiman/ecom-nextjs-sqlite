@@ -25,10 +25,15 @@ export interface UserOld {
     referredUsers?: ReferredUser[];
 }
 
-type User = {
-    name: string
+export type User = {
     id: number
+    name: string
     email: string
-    referralCode: string
+    referralCode?: string
     role: string
+    referredById?: number | null | undefined;
+    referredBy?: {
+        id: number | null | undefined
+        name: string | null | undefined
+    } | null | undefined;
 } | null

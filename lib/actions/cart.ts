@@ -2,7 +2,6 @@
 
 import {addToCart_DAL, clearCart_DAL, getCart_DAL, removeCartItem_DAL, updateCartItem_DAL,} from "@/lib/dal/cart";
 import {AddCartProduct} from "@/types/cart";
-import {revalidatePath} from "next/cache";
 
 // Fetch Cart Items
 export async function getCartItemsAction() {

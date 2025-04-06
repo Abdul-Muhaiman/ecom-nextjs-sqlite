@@ -1,41 +1,47 @@
-'use client';
+"use client";
 
-import React from 'react';
+import {ArrowLeft, Box, ClipboardList, Users} from "lucide-react";
 import Link from "next/link";
 import LogoutButton from "@/components/LogoutButton";
 
-const sidebarContent = [
-    {title: "Dashboard", href: "/dashboard"},
-    {title: "Orders", href: "/dashboard/orders"},
-    {title: "Referral", href: "/dashboard/referral"},
-];
-
 export default function Sidebar() {
-
     return (
-        <div className="h-auto w-64 bg-gray-800 text-white flex flex-col">
-            {/* Logo/Title */}
-            <div className="p-4 text-center text-xl font-bold border-b border-gray-600">
-                My Profile
-            </div>
+        <aside className="bg-blue-600 text-white w-64 min-h-screen p-6 flex flex-col space-y-6">
+            <Link href={"/dashboard"}>
+                <h2 className="text-2xl font-bold tracking-tight">Dashboard</h2>
+            </Link>
+            <nav className="flex flex-col space-y-4">
+                {/* Users Section */}
+                <Link
+                    href="/dashboard"
+                    className="flex items-center gap-3 hover:bg-blue-700 transition px-3 py-2 rounded-md"
+                >
+                    <Users className="w-5 h-5"/>
+                    Profile
+                </Link>
 
-            {/* Navigation Links */}
-            <nav className="flex-1 p-4">
-                <ul className={"flex flex-col space-y-4"}>
-                    {sidebarContent.map((item) => (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className={"cursor-pointer p-2 rounded-md hover:bg-gray-700"}
-                        >
-                            {item.title}
-                        </Link>
-                    ))}
-                </ul>
-                <div className="p-4 border-t border-gray-600 mt-2">
-                    <LogoutButton />
-                </div>
+                {/* Products Section */}
+                <Link
+                    href="/dashboard/orders"
+                    className="flex items-center gap-3 hover:bg-blue-700 transition px-3 py-2 rounded-md"
+                >
+                    <Box className="w-5 h-5"/>
+                    Orders
+                </Link>
+
+                {/* Categories Section */}
+                <Link
+                    href="/dashboard/referral"
+                    className="flex items-center gap-3 hover:bg-blue-700 transition px-3 py-2 rounded-md"
+                >
+                    <ClipboardList className="w-5 h-5"/>
+                    Referrals
+                </Link>
+                <LogoutButton style="flex items-center gap-3 hover:bg-blue-700 transition px-3 py-2 rounded-md">
+                    <ArrowLeft className="w-5 h-5"/>
+                    Logout
+                </LogoutButton>
             </nav>
-        </div>
+        </aside>
     );
 }

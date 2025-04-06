@@ -59,7 +59,7 @@ export default function EditOrderPage({ params }: { params: Promise<{ id: string
         }
 
         fetchOrder();
-    }, [orderId]);
+    }, [orderId, params]);
 
     // Form submission handler
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

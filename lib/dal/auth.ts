@@ -1,35 +1,36 @@
 // lib/dal/auth.ts
 import 'server-only';
-import { cache } from 'react';
-import { getServerSession } from 'next-auth';
-import prisma  from '@/lib/prisma';
-import { redirect } from 'next/navigation';
+import {cache} from 'react';
+import {getServerSession} from 'next-auth';
+import prisma from '@/lib/prisma';
+import {redirect} from 'next/navigation';
 import {authOptions} from "@/lib/auth";
 import {User} from "@/types/user";
 
 // Get the current user session
 export const getServerUser = cache(async () => {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.email) return null;
+        const session = await getServerSession(authOptions);
+        if (!session?.user?.email) return null;
 
-    // Fetch the complete user data from database
-    const user : User = await prisma.user.findUnique({
-        where: { email: session.user.email },
-        select: {
-            id: true,
-            name: true,
-            email: true,
-            role: true,
-            referralCode: true
-        }
-    });
+        // Fetch the complete user data from database
+        const user: User = await prisma.user.findUnique({
+            where: {email: session.user.email},
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                role: true,
+                referralCode: true
+            }
+        });
 
-    return user;
-});
+        return user;
+    }
+);
 
 // Require authentication (any role)
 export const requireAuth = cache(async () => {
-    const user : User = await getServerUser();
+    const user: User = await getServerUser();
 
     if (!user) {
         redirect('/login');
@@ -40,7 +41,7 @@ export const requireAuth = cache(async () => {
 
 // Require admin role
 export const requireAdmin = cache(async () => {
-    const user : User = await requireAuth();
+    const user: User = await requireAuth();
 
     if (user.role !== 'admin') {
         // Either redirect or throw an error

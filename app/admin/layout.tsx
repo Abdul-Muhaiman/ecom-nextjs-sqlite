@@ -1,8 +1,8 @@
-"use client";
+import React from "react";
+import Sidebar from "@/components/admin/ui/Sidebar";
 
-import Sidebar from "./components/Sidebar";
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className="flex">
             {/* Sidebar */}

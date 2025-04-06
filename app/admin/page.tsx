@@ -1,4 +1,4 @@
-import Card from "@/app/admin/components/Card";
+import Card from "@/components/admin/ui/Card";
 
 export default function AdminDashboard() {
     return (
