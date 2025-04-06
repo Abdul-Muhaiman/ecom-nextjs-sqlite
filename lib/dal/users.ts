@@ -6,7 +6,8 @@ import {User} from "@/types/user";
 export const getAllUsers_DAL = async () => {
     await requireAdmin();
 
-    const users: User[] = await prisma.user.findMany({
+    // const users: User[] = await prisma.user.findMany({
+    return prisma.user.findMany({
         select: {
             id: true,
             name: true,
@@ -23,11 +24,9 @@ export const getAllUsers_DAL = async () => {
             },
         }
     });
-
-    return users;
 }
 
-export const getUserById_DAL = async (id: number) : Promise<User> => {
+export const getUserById_DAL = async (id: number) => {
     await requireAdmin();
 
     return prisma.user.findUnique({
@@ -49,29 +48,22 @@ export const getUserById_DAL = async (id: number) : Promise<User> => {
     });
 }
 
-export const editUserDetails_DAL = async (id : number,  editedData : User) => {
+export const editUserDetails_DAL = async (editedUser : {id: number, name: string, email: string, role: string}) => {
     await requireAdmin();
-
-    const dataBody = {
-        name: editedData?.name,
-        email: editedData?.email,
-        role: editedData?.role,
-    }
-
-    const user : User = await prisma.user.update({
-        where: {id: id},
-        data: dataBody
-    })
-
-    return user;
+    return prisma.user.update({
+        where: {id: editedUser.id},
+        data: {
+            name: editedUser.name,
+            email: editedUser.email,
+            role: editedUser.role,
+        }
+    });
 }
 
 export const deleteUser_DAL = async (id: number) => {
     await requireAdmin();
-
     const user : User = await prisma.user.delete({
         where: {id: id}
     })
-
     return user;
 }

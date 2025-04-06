@@ -4,50 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**ADMIN**&#10;Created Static UI for dashboard">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/60ce2258-c720-41f9-a398-ec2e139a3a85.corrupted.20250328-060708.reason.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/60ce2258-c720-41f9-a398-ec2e139a3a85.corrupted.20250328-060708.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ea7b602c-b9d3-45dc-a791-94c3c4cc73c8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ea7b602c-b9d3-45dc-a791-94c3c4cc73c8/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_28_2025_6_07_PM_[Changes]/dev.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_28_2025_6_07_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_28_2025_6_07_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_29_2025_4_19_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_29_2025_4_19_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_30_2025_11_10_PM_[Changes]/dev.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_30_2025_11_10_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_30_2025_11_10_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_30_2025_11_14_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_30_2025_11_14_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_30_2025_11_23_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_30_2025_11_23_PM_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_30_2025_11_23_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/categories/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/categories/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/categories/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/categories/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/commissions/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/commissions/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/components/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/ui/Card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/ui/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/orders/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/orders/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/products/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/products/[id]/page.tsx" afterDir="false" />
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**ADMIN**&#10;Refactored Navbar and User Dashboard and Admin sidebar">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/admin/users/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/users/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/users/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/components/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/LogoutButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LogoutButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/navbar/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/actions/cart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/actions/cart.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dal/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/users/pppage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/products/loading.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/actions/admin/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/actions/admin/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dal/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/user.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/user.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +24,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -187,7 +153,7 @@
       <workItem from="1743855789439" duration="36000" />
       <workItem from="1743855836087" duration="36000" />
       <workItem from="1743855882595" duration="9233000" />
-      <workItem from="1743934205917" duration="5187000" />
+      <workItem from="1743934205917" duration="18805000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -493,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743855319987</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="**ADMIN**&#10;Refactored Navbar and User Dashboard and Admin sidebar">
+      <option name="closed" value="true" />
+      <created>1743939576376</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1743939576376</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -511,7 +485,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="CART FUNCTIONALITY ADDING" />
     <MESSAGE value="Removed cart" />
     <MESSAGE value="**NEW CART**&#10;Add to cart button logic with post request to db" />
     <MESSAGE value="**NEW CART**&#10;Get cart products using GET Route" />
@@ -536,6 +509,7 @@
     <MESSAGE value="**DAL**&#10;Placing order logic and design and cart design" />
     <MESSAGE value="UI Changed whole app" />
     <MESSAGE value="**ADMIN**&#10;Created Static UI for dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="**ADMIN**&#10;Created Static UI for dashboard" />
+    <MESSAGE value="**ADMIN**&#10;Refactored Navbar and User Dashboard and Admin sidebar" />
+    <option name="LAST_COMMIT_MESSAGE" value="**ADMIN**&#10;Refactored Navbar and User Dashboard and Admin sidebar" />
   </component>
 </project>
