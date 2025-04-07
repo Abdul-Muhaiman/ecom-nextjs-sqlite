@@ -48,19 +48,27 @@ export const getProductById = cache(async (id: number) => {
 });
 
 // Admin only: Create product
-export const createProduct = async (data: {
+export const createProduct_DAL = async (data: {
     name: string;
     description?: string;
     price: number;
     stock: number;
-    image: string;
+    image?: string;
     categoryId?: number;
 }) => {
     // Ensure user is admin
     await requireAdmin();
 
+
     return prisma.product.create({
-        data
+        data: {
+            name: data.name,
+            description: data.description,
+            price: data.price,
+            stock: data.stock,
+            image: data.image? data.image : "",
+            categoryId: data.categoryId,
+        }
     });
 };
 

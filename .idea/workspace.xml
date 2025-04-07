@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**ADMIN, USER**&#10;Implemented completely">
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**ADMIN, PRODUCTS**&#10;Getting products from DB set">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/11a26cc2-a54b-4705-a5c5-e42e51bd8bf5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/11a26cc2-a54b-4705-a5c5-e42e51bd8bf5.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/products/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/products/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/users/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/products/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/products/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/admin/users/TableLoadingSkeletion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/users/TableLoadingSkeleton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/products/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/products/new/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/products/ProductCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/products/ProductCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/actions/admin/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/actions/admin/users.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/dal/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/product.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +168,7 @@
       <workItem from="1743855836087" duration="36000" />
       <workItem from="1743855882595" duration="9233000" />
       <workItem from="1743934205917" duration="26559000" />
-      <workItem from="1744013846061" duration="4074000" />
+      <workItem from="1744013846061" duration="8230000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -511,7 +514,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744016488614</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="**ADMIN, PRODUCTS**&#10;Getting products from DB set">
+      <option name="closed" value="true" />
+      <created>1744018050079</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1744018050079</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -529,7 +540,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="**NEW CART**&#10;Remove products from carts using remove button working" />
     <MESSAGE value="**NEW CART**&#10;Remove all items added" />
     <MESSAGE value="**NEW CART**&#10;Change qty on cart page working" />
     <MESSAGE value="**CHECKOUT**&#10;initialized ContextAPI for address" />
@@ -554,6 +564,7 @@
     <MESSAGE value="**ADMIN, SERVER ACTIONS**&#10;USER SECTION IMPLEMENTED" />
     <MESSAGE value="**DATABASE**&#10;Database corrected and seeded" />
     <MESSAGE value="**ADMIN, USER**&#10;Implemented completely" />
-    <option name="LAST_COMMIT_MESSAGE" value="**ADMIN, USER**&#10;Implemented completely" />
+    <MESSAGE value="**ADMIN, PRODUCTS**&#10;Getting products from DB set" />
+    <option name="LAST_COMMIT_MESSAGE" value="**ADMIN, PRODUCTS**&#10;Getting products from DB set" />
   </component>
 </project>

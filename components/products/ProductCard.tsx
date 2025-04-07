@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-// import Placeholder from "@/public/placeholder.png";
+import Placeholder from "@/public/placeholder.png";
 import { AddToCartButton } from "@/components/AddToCartButton";
 import {Product} from "@/types/product";
 import React from 'react';
@@ -25,7 +25,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             <Link href={`/products/${product.id}`} className="relative block p-6">
                 <div className="relative w-full aspect-square p-4 flex items-center justify-center">
                     <Image
-                        src={product.image}
+                        src={product.image? product.image : Placeholder}
                         alt={product.name}
                         fill
                         style={{ objectFit: "contain" }}

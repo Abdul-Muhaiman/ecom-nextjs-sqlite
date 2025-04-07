@@ -4,13 +4,15 @@ const nextConfig: NextConfig = {
     images: {
         remotePatterns: [
             {
-                protocol: 'https',
-                hostname: 'fakestoreapi.com',
-                port: '', // Leave empty if no specific port is required
-                pathname: '/img/**', // Matches all paths under /img/
+                protocol: 'http', // Allow HTTP
+                hostname: '**', // Allow any hostname
             },
+            {
+                protocol: 'https', // Allow HTTPS
+                hostname: '**', // Allow any hostname
+            }
         ],
     },
-}
+};
 
 export default nextConfig;

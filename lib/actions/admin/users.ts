@@ -16,7 +16,6 @@ export async function editUserAction(
 ): Promise<EditUserState> {   // 3. Return type should match the state type
 
     if (!(formData instanceof FormData)) {
-        // This check might be less necessary now, but can stay as a safeguard
         console.error("formData received is not an instance of FormData:", formData);
         return { message: "Invalid form data received.", error: true };
     }
