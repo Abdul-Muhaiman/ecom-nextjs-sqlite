@@ -2,18 +2,19 @@ import prisma from "@/lib/prisma";
 import {cache} from "react";
 import {requireAdmin} from "@/lib/dal/auth"; // Adjust the import path as needed
 
-// Fetch a category by ID
-export const getCategoryById_DAL = cache(async (id: number) => {
-    return prisma.category.findUnique({
-        where: { id },
-        include: { products: true }, // Include related products if needed
-    });
-});
 
 // Fetch all categories
 export const getAllCategories_DAL = cache(async () => {
     return prisma.category.findMany({
-        include: { products: true }, // Include related products if needed
+        // include: { products: true }, // Include related products if needed
+    });
+});
+
+// Fetch a category by ID
+export const getCategoryById_DAL = cache(async (id: number) => {
+    return prisma.category.findUnique({
+        where: { id },
+        // include: { products: true }, // Include related products if needed
     });
 });
 
@@ -63,7 +64,7 @@ export const deleteCategory_DAL = async (id: number) => {
         where: {id: id},
         data: {
             deleted: true,
-            deletedDate: new Date(),
+            deletedAt: new Date(),
         }
     })
 };
