@@ -1,27 +1,9 @@
 "use server"
 
-import {User} from "@/types/user";
-import {editUserDetails_DAL, getAllUsers_DAL, getUserById_DAL} from "@/lib/dal/users";
+import {deleteUser_DAL, editUserDetails_DAL, getUserById_DAL} from "@/lib/dal/users";
 import {redirect} from "next/navigation";
 import {revalidatePath} from "next/cache";
 
-export async function getUsersAction(): Promise<User[]> {
-    try {
-        return await getAllUsers_DAL();
-    } catch (error) {
-        console.error("Error fetching users:", error);
-        throw new Error("Unable to fetch users.");
-    }
-}
-
-export async function getUserByIdAction(id: number) {
-    try {
-        return await getUserById_DAL(id);
-    } catch (error) {
-        console.error("Error fetching user:", error);
-        throw new Error("Unable to fetch user.");
-    }
-}
 
 type EditUserState = {
     message: string;
@@ -87,4 +69,11 @@ export async function editUserAction(
 
     // If successful, redirect (outside try-catch ensures it only happens on success)
     redirect(`/admin/users/${userId}`);
+}
+
+export async function deleteUserAction(id: number) {
+    const user = await deleteUser_DAL(id);
+    console.log(user)
+
+    return { message: `User with ID ${id} deleted.` };
 }

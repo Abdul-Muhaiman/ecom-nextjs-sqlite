@@ -62,8 +62,12 @@ export const editUserDetails_DAL = async (editedUser : {id: number, name: string
 
 export const deleteUser_DAL = async (id: number) => {
     await requireAdmin();
-    const user : User = await prisma.user.delete({
-        where: {id: id}
+    const user : User = await prisma.user.update({
+        where: {id: id},
+        data: {
+            deleted: true,
+            deletedAt: new Date(),
+        }
     })
     return user;
 }

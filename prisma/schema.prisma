@@ -20,6 +20,9 @@ model User {
   referredBy    User?        @relation("Referral", fields: [referredById], references: [id])
   referredUsers User[]       @relation("Referral")
   cart          CartItem[]
+
+  deleted       Boolean      @default(false)
+  deletedAt     DateTime?
 }
 
 model Category {

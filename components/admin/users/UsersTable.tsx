@@ -2,6 +2,7 @@ import {getAllUsers_DAL} from "@/lib/dal/users";
 import Link from "next/link";
 import {Edit, Trash} from "lucide-react";
 import React from "react";
+import DeleteUser from "@/components/admin/users/DeleteUser";
 
 const UserTable = async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulating delay
@@ -51,13 +52,10 @@ const UserTable = async () => {
                                 href={`/admin/users/${user.id}`}
                                 className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
                             >
-                                <Edit className="w-5 h-5" />
+                                <Edit className="w-5 h-5"/>
                                 Edit
                             </Link>
-                            <button className="flex items-center gap-2 text-red-600 hover:text-red-800 transition">
-                                <Trash className="w-5 h-5" />
-                                Delete
-                            </button>
+                            <DeleteUser userId={user.id} />
                         </td>
                     </tr>
                 ))}
