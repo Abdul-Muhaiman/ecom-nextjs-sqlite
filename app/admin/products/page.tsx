@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Edit, Trash, Box } from "lucide-react";
+import { Edit, Trash } from "lucide-react";
 
 export default function ProductsPage() {
     // Hardcoded product data

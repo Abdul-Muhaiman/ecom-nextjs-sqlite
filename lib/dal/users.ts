@@ -22,6 +22,8 @@ export const getAllUsers_DAL = async () => {
                     referralCode: true,
                 }
             },
+            deleted: true,
+            deletedAt: true,
         }
     });
 }

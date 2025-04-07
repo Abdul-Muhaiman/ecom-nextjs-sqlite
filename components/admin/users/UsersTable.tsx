@@ -1,12 +1,13 @@
 import {getAllUsers_DAL} from "@/lib/dal/users";
 import Link from "next/link";
-import {Edit, Trash} from "lucide-react";
+import {Edit} from "lucide-react";
 import React from "react";
 import DeleteUser from "@/components/admin/users/DeleteUser";
 
 const UserTable = async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulating delay
-    const users = await getAllUsers_DAL();
+    const allUsers = await getAllUsers_DAL();
+    const users = allUsers.filter(value => !(value.deleted && value.deletedAt));
 
     return (
         <div className="overflow-x-auto bg-white shadow-md rounded-lg border border-gray-200">

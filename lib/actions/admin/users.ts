@@ -72,8 +72,7 @@ export async function editUserAction(
 }
 
 export async function deleteUserAction(id: number) {
-    const user = await deleteUser_DAL(id);
-    console.log(user)
-
+    await deleteUser_DAL(id);
+    revalidatePath("/admin/users/");
     return { message: `User with ID ${id} deleted.` };
 }

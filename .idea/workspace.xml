@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**DATABASE**&#10;Database corrected and seeded">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/users/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/users/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/admin/users/DeleteUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/users/DeleteUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/admin/users/UsersTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/users/UsersTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/actions/admin/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/actions/admin/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dal/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +43,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Abdul-Muhaiman"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Abdul-Muhaiman/ecom-nextjs-sqlite.git",
+    "accountId": "4b79de5c-767b-4a32-ac52-fd83ba81211b"
+  }
+}]]></component>
   <component name="JsbtTreeLayoutManager">
     <layout place="tools.popupGrunt">
       <scroll-view-position x="0" y="0" />
@@ -103,23 +121,6 @@
       <command value="pnpm install swr" />
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="db:seed" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="db:seed" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="npm.db:seed" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -165,7 +166,7 @@
       <workItem from="1743855836087" duration="36000" />
       <workItem from="1743855882595" duration="9233000" />
       <workItem from="1743934205917" duration="26559000" />
-      <workItem from="1744013846061" duration="1413000" />
+      <workItem from="1744013846061" duration="2482000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -495,7 +496,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744015239927</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="**DATABASE**&#10;Database corrected and seeded">
+      <option name="closed" value="true" />
+      <created>1744015434861</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1744015434861</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
