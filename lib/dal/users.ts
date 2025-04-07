@@ -1,7 +1,7 @@
 import "server-only"
 import {requireAdmin} from "@/lib/dal/auth";
 import prisma from "@/lib/prisma";
-import {User} from "@/types/user";
+import {revalidatePath} from "next/cache";
 
 export const getAllUsers_DAL = async () => {
     await requireAdmin();
@@ -63,13 +63,27 @@ export const editUserDetails_DAL = async (editedUser : {id: number, name: string
 }
 
 export const deleteUser_DAL = async (id: number) => {
+    // Ensure user has admin privileges
     await requireAdmin();
-    const user : User = await prisma.user.update({
-        where: {id: id},
+
+    // Mark the user as deleted
+    const result = await prisma.user.update({
+        where: { id },
         data: {
             deleted: true,
             deletedAt: new Date(),
-        }
-    })
-    return user;
-}
+        },
+    });
+
+    if (!result) {
+        throw new Error(`Failed to mark user with ID ${id} as deleted.`);
+    }
+
+    // Delete associated cart items for the user
+    await prisma.cartItem.deleteMany({
+        where: { userId: id }, // Use the correct association field (e.g., userId)
+    });
+
+    revalidatePath("/admin/users");
+    return { message: `User with ID ${id} deleted successfully.` };
+};

@@ -4,16 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**ADMIN, PRODUCTS**&#10;Getting products from DB set">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/11a26cc2-a54b-4705-a5c5-e42e51bd8bf5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/11a26cc2-a54b-4705-a5c5-e42e51bd8bf5.xml" afterDir="false" />
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**ADMIN, PRODUCTS**&#10;Add product set">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/products/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/products/new/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/products/ProductCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/products/ProductCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/actions/admin/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/actions/admin/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/products/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/products/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/products/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/products/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/admin/products/ProductsTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/products/ProductsTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/actions/admin/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/actions/admin/product.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/dal/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/product.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dal/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/seed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/seed.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,18 +47,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Abdul-Muhaiman"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Abdul-Muhaiman&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Abdul-Muhaiman/ecom-nextjs-sqlite.git",
-    "accountId": "4b79de5c-767b-4a32-ac52-fd83ba81211b"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Abdul-Muhaiman/ecom-nextjs-sqlite.git&quot;,
+    &quot;accountId&quot;: &quot;4b79de5c-767b-4a32-ac52-fd83ba81211b&quot;
   }
-}]]></component>
+}</component>
   <component name="JsbtTreeLayoutManager">
     <layout place="tools.popupGrunt">
       <scroll-view-position x="0" y="0" />
@@ -76,28 +78,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Node.js.route.ts.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/NODE JS/nextJS/ecommerce-next-app/prisma",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "npm.db:seed.executor": "Run",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.completion",
-    "ts.external.directory.path": "C:\\NODE JS\\nextJS\\ecommerce-next-app\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.route.ts.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/NODE JS/nextJS/ecommerce-next-app/prisma&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.db:seed.executor&quot;: &quot;Run&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\NODE JS\\nextJS\\ecommerce-next-app\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="C:\Users\MUHAIM~1\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="3d39454a-dc80-43ae-9547-797d463d46a2" reportId="ecommerce-next-app/qodana/2025-04-05" />
@@ -168,7 +170,8 @@
       <workItem from="1743855836087" duration="36000" />
       <workItem from="1743855882595" duration="9233000" />
       <workItem from="1743934205917" duration="26559000" />
-      <workItem from="1744013846061" duration="8230000" />
+      <workItem from="1744013846061" duration="13720000" />
+      <workItem from="1744030661573" duration="2701000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -522,7 +525,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744018050079</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="**ADMIN, PRODUCTS**&#10;Add product set">
+      <option name="closed" value="true" />
+      <created>1744022375939</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1744022375939</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -540,7 +551,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="**NEW CART**&#10;Remove all items added" />
     <MESSAGE value="**NEW CART**&#10;Change qty on cart page working" />
     <MESSAGE value="**CHECKOUT**&#10;initialized ContextAPI for address" />
     <MESSAGE value="**CHECKOUT**&#10;address and order summary page working completely." />
@@ -565,6 +575,7 @@
     <MESSAGE value="**DATABASE**&#10;Database corrected and seeded" />
     <MESSAGE value="**ADMIN, USER**&#10;Implemented completely" />
     <MESSAGE value="**ADMIN, PRODUCTS**&#10;Getting products from DB set" />
-    <option name="LAST_COMMIT_MESSAGE" value="**ADMIN, PRODUCTS**&#10;Getting products from DB set" />
+    <MESSAGE value="**ADMIN, PRODUCTS**&#10;Add product set" />
+    <option name="LAST_COMMIT_MESSAGE" value="**ADMIN, PRODUCTS**&#10;Add product set" />
   </component>
 </project>

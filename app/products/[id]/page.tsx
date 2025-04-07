@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getProductById } from "@/lib/dal/product";
+import { getProductById_DAL } from "@/lib/dal/product";
 import { Product } from "@/types/product";
 import Image from "next/image";
 import React from "react";
@@ -9,7 +9,7 @@ import {AddToCartButton} from "@/components/AddToCartButton";
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
 
-    const product = await getProductById(parseInt(id, 10));
+    const product = await getProductById_DAL(parseInt(id, 10));
 
     if (!product) {
         return (

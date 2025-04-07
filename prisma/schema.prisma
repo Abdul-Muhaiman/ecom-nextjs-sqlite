@@ -21,14 +21,17 @@ model User {
   referredUsers User[]       @relation("Referral")
   cart          CartItem[]
 
-  deleted       Boolean      @default(false)
-  deletedAt     DateTime?
+  deleted   Boolean   @default(false)
+  deletedAt DateTime?
 }
 
 model Category {
   id       Int       @id @default(autoincrement())
   name     String    @unique
   products Product[]
+
+  deleted   Boolean   @default(false)
+  deletedAt DateTime?
 }
 
 model Product {
@@ -42,6 +45,9 @@ model Product {
   orders      OrderItem[]
   category    Category?   @relation(fields: [categoryId], references: [id])
   cart        CartItem[]
+
+  deleted   Boolean   @default(false)
+  deletedAt DateTime?
 }
 
 model Order {
@@ -80,16 +86,14 @@ model Commission {
 }
 
 model CartItem {
-  id          Int      @id @default(autoincrement())
-  user        User?    @relation(fields: [userId], references: [id]) // Nullable for guest carts
-  userId      Int?
-  product     Product  @relation(fields: [productId], references: [id])
-  productId   Int
-  productName String   // Product name snapshot
-  productPrice Float   // Product price snapshot
+  id           Int      @id @default(autoincrement())
+  user         User?    @relation(fields: [userId], references: [id]) // Nullable for guest carts
+  userId       Int?
+  product      Product  @relation(fields: [productId], references: [id])
+  productId    Int
+  productName  String // Product name snapshot
+  productPrice Float // Product price snapshot
   productImage String? // Optional product image snapshot
-  quantity    Int
-  addedAt     DateTime @default(now())
+  quantity     Int
+  addedAt      DateTime @default(now())
 }
-
-

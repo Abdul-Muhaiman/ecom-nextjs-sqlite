@@ -1,13 +1,15 @@
 import Image from "next/image";
 import Placeholder from "@/public/placeholder.png";
 import Link from "next/link";
-import {Edit, Trash} from "lucide-react";
+import {Edit} from "lucide-react";
 import React from "react";
-import {getProducts_DAL} from "@/lib/dal/product";
+import {getAllProducts_DAL} from "@/lib/dal/product";
+import DeleteProductBtn from "@/components/admin/products/DeleteProductBtn";
 
 export default async function ProductsTable() {
     await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulating delay
-    const {products} = await getProducts_DAL();
+    const allProducts = await getAllProducts_DAL();
+    const products = allProducts.filter((val) => !val.deleted);
 
     return (
         <div className="overflow-x-auto bg-white shadow-md rounded-lg border border-gray-200">
@@ -77,12 +79,7 @@ export default async function ProductsTable() {
                                 <Edit className="w-5 h-5"/>
                                 Edit
                             </Link>
-                            <button
-                                className="flex items-center gap-2 text-red-600 hover:text-red-800 transition"
-                            >
-                                <Trash className="w-5 h-5"/>
-                                Delete
-                            </button>
+                            <DeleteProductBtn id={product.id} />
                         </td>
                     </tr>
                 ))}

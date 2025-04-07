@@ -10,6 +10,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
                 stock: 113,
                 categoryId: 1, // Assuming Men category ID is 1
+                deleted: false,
             },
             {
                 name: "Men's Slim Fit T-Shirts (3-Pack)",
@@ -18,6 +19,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
                 stock: 246,
                 categoryId: 1, // Assuming Men category ID is 1
+                deleted: false,
             },
             {
                 name: "Men's Cotton Jacket",
@@ -26,6 +28,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
                 stock: 487,
                 categoryId: 1, // Assuming Men category ID is 1
+                deleted: false,
             },
             {
                 name: "Men's Slim Fit Casual Shirt",
@@ -34,6 +37,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
                 stock: 427,
                 categoryId: 1, // Assuming Men category ID is 1
+                deleted: false,
             },
             {
                 name: "John Hardy Women's Legends Naga Bracelet",
@@ -42,6 +46,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
                 stock: 400,
                 categoryId: 4, // Assuming Jewelry category ID is 4
+                deleted: false,
             },
             {
                 name: "Solid Gold Petite Micropave Ring",
@@ -50,6 +55,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
                 stock: 70,
                 categoryId: 4, // Assuming Jewelry category ID is 4
+                deleted: false,
             },
             {
                 name: "White Gold Plated Princess Ring",
@@ -58,6 +64,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
                 stock: 399,
                 categoryId: 4, // Assuming Jewelry category ID is 4
+                deleted: false,
             },
             {
                 name: "Rose Gold Plated Tunnel Plug Earrings",
@@ -66,6 +73,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
                 stock: 99,
                 categoryId: 4, // Assuming Jewelry category ID is 4
+                deleted: false,
             },
             {
                 name: "WD 2TB Portable External Hard Drive",
@@ -74,6 +82,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
                 stock: 203,
                 categoryId: 3, // Assuming Electronics category ID is 3
+                deleted: false,
             },
             {
                 name: "SanDisk 1TB Internal SSD",
@@ -82,6 +91,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
                 stock: 466,
                 categoryId: 3, // Assuming Electronics category ID is 3
+                deleted: false,
             },
             {
                 name: "Silicon Power 256GB Internal SSD",
@@ -90,6 +100,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
                 stock: 315,
                 categoryId: 3, // Assuming Electronics category ID is 3
+                deleted: false,
             },
             {
                 name: "WD 4TB Gaming External Hard Drive",
@@ -98,6 +109,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg",
                 stock: 396,
                 categoryId: 3, // Assuming Electronics category ID is 3
+                deleted: false,
             },
             {
                 name: "Acer 21.5-inch Full HD IPS Monitor",
@@ -106,6 +118,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
                 stock: 250,
                 categoryId: 3, // Assuming Electronics category ID is 3
+                deleted: false,
             },
             {
                 name: "Samsung 49-Inch Curved Gaming Monitor",
@@ -114,6 +127,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
                 stock: 140,
                 categoryId: 3, // Assuming Electronics category ID is 3
+                deleted: false,
             },
             {
                 name: "Women's 3-in-1 Snowboard Jacket",
@@ -122,6 +136,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
                 stock: 235,
                 categoryId: 2, // Assuming Women category ID is 2
+                deleted: false,
             },
             {
                 name: "Women's Faux Leather Moto Biker Jacket",
@@ -130,6 +145,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
                 stock: 340,
                 categoryId: 2, // Assuming Women category ID is 2
+                deleted: false,
             },
             {
                 name: "Women's Rain Jacket Windbreaker",
@@ -138,6 +154,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
                 stock: 679,
                 categoryId: 2, // Assuming Women category ID is 2
+                deleted: false,
             },
             {
                 name: "Women's Solid Short Sleeve Boat Neck Top",
@@ -146,6 +163,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
                 stock: 128,
                 categoryId: 2, // Assuming Women category ID is 2
+                deleted: false,
             },
             {
                 name: "Women's Short Sleeve Moisture-Wicking Shirt",
@@ -154,6 +172,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
                 stock: 135,
                 categoryId: 2, // Assuming Women category ID is 2
+                deleted: false,
             },
             {
                 name: "Women's Casual Cotton Short Sleeve T-Shirt",
@@ -162,6 +181,7 @@ async function main() {
                 image: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
                 stock: 140,
                 categoryId: 2, // Assuming Women category ID is 2
+                deleted: false,
             },
         ],
     });

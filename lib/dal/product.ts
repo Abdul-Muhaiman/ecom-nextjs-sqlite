@@ -5,27 +5,27 @@ import {requireAdmin} from './auth';
 
 // Public: Get all products (no auth required)
 export async function getProducts_DAL({
-                                      page = 1,
-                                      limit = 10,
-                                      categoryId
-                                  }: {
+                                          page = 1,
+                                          limit = 10,
+                                          categoryId
+                                      }: {
     page?: number;
     limit?: number;
     categoryId?: number;
 } = {}) {
     const skip = (page - 1) * limit;
 
-    const where = categoryId ? { categoryId } : {};
+    const where = categoryId ? {categoryId} : {};
 
     const [products, total] = await Promise.all([
         prisma.product.findMany({
             where,
-            include: { category: true },
+            include: {category: true},
             skip,
             take: limit,
-            orderBy: { id: 'desc' }
+            orderBy: {id: 'desc'}
         }),
-        prisma.product.count({ where })
+        prisma.product.count({where})
     ]);
 
     return {
@@ -40,11 +40,18 @@ export async function getProducts_DAL({
 }
 
 // Public: Get product by ID (no auth required)
-export const getProductById = cache(async (id: number) => {
+export const getProductById_DAL = cache(async (id: number) => {
     return prisma.product.findUnique({
         where: {id},
         include: {category: true}
     });
+});
+
+// Admin only: Get all products
+export const getAllProducts_DAL = cache(async () => {
+   return prisma.product.findMany({
+       include: {category: true}
+   });
 });
 
 // Admin only: Create product
@@ -66,22 +73,22 @@ export const createProduct_DAL = async (data: {
             description: data.description,
             price: data.price,
             stock: data.stock,
-            image: data.image? data.image : "",
+            image: data.image ? data.image : "",
             categoryId: data.categoryId,
         }
     });
 };
 
 // Admin only: Update product
-export const updateProduct = async (
+export const editProductDetails_DAL = async (
     id: number,
     data: Partial<{
         name: string;
-        description: string;
+        description: string | null | undefined;
         price: number;
         stock: number;
-        image: string;
-        categoryId: number;
+        image: string | null | undefined;
+        categoryId: number | null;
     }>
 ) => {
     // Ensure user is admin
@@ -89,12 +96,19 @@ export const updateProduct = async (
 
     return prisma.product.update({
         where: {id},
-        data
+        data: {
+            name: data.name,
+            description: data.description,
+            price: data.price,
+            stock: data.stock,
+            image: data.image ? data.image : "",
+            categoryId: data.categoryId,
+        }
     });
 };
 
 // Admin only: Delete product
-export const deleteProduct = async (id: number) => {
+export const deleteProduct_DAL = async (id: number) => {
     // Ensure user is admin
     await requireAdmin();
 
@@ -107,7 +121,11 @@ export const deleteProduct = async (id: number) => {
         throw new Error('Cannot delete product that has been ordered');
     }
 
-    return prisma.product.delete({
-        where: {id}
+    return prisma.product.update({
+        where: {id: id},
+        data: {
+            deleted: true,
+            deletedAt: new Date(),
+        },
     });
 };
