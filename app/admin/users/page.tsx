@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import TableLoadingSkeleton from "@/components/admin/users/TableLoadingSkeletion";
+import TableLoadingSkeleton from "@/components/admin/users/TableLoadingSkeleton";
 import UserTable from "@/components/admin/users/UsersTable";
 
 export default function UserPage() {

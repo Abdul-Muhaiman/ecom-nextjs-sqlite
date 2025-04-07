@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import {NextResponse} from "next/server";
-import { getProducts } from "@/lib/dal/product";
+import { getProducts_DAL } from "@/lib/dal/product";
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
@@ -9,7 +9,7 @@ export async function GET(request: Request) {
     const categoryId = searchParams.get("category") ? parseInt(searchParams.get("category")!, 10) : undefined;
 
     try {
-        const result = await getProducts({ page, limit, categoryId });
+        const result = await getProducts_DAL({ page, limit, categoryId });
         return NextResponse.json(result);
     } catch (error) {
         console.error("Error fetching products:", error);

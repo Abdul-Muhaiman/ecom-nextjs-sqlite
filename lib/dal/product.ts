@@ -4,7 +4,7 @@ import prisma from '@/lib/prisma';
 import {requireAdmin} from './auth';
 
 // Public: Get all products (no auth required)
-export async function getProducts({
+export async function getProducts_DAL({
                                       page = 1,
                                       limit = 10,
                                       categoryId
