@@ -2,7 +2,6 @@
 
 import {createCategory_DAL, deleteCategory_DAL, editCategoryDetails_DAL, getCategoryById_DAL} from "@/lib/dal/category";
 import {redirect} from "next/navigation";
-import {deleteProduct_DAL} from "@/lib/dal/product";
 import {revalidatePath} from "next/cache";
 
 

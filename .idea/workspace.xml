@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**ADMIN, CATEGORY**&#10;Category section set" />
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**ADMIN, CATEGORY**&#10;Category section set">
+      <change afterPath="$PROJECT_DIR$/app/admin/orders/ppage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/orders/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/orders/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/orders/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/admin/products/AddNewProductForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/products/AddNewProductForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/actions/admin/category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/actions/admin/category.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dal/category.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/category.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dal/order.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/order.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,11 +114,11 @@
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\admin\users" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\admin\order" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\admin\ui" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\admin" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\ui\navbar" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components" />
-      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\products" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -161,7 +173,7 @@
       <workItem from="1743934205917" duration="26559000" />
       <workItem from="1744013846061" duration="13720000" />
       <workItem from="1744030661573" duration="5945000" />
-      <workItem from="1744043763821" duration="1431000" />
+      <workItem from="1744043763821" duration="15984000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -539,7 +551,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744044619806</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="**ADMIN, CATEGORY**&#10;Category section set">
+      <option name="closed" value="true" />
+      <created>1744100621154</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1744100621154</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

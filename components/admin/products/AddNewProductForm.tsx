@@ -138,6 +138,7 @@ export default function AddNewProductForm() {
                 />
             </div>
 
+
             {/* Error or Success Message */}
             {state.message && (
                 <p className={`text-sm ${state.error ? "text-red-600" : "text-green-600"}`}>
