@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**ADMIN, CATEGORY**&#10;Category section set">
-      <change afterPath="$PROJECT_DIR$/app/admin/orders/ppage.tsx" afterDir="false" />
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**ADMIN, ORDERS**&#10;orders set with filter through searchparams and test image uploader added">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/orders/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/orders/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/orders/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/admin/products/AddNewProductForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/products/AddNewProductForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/actions/admin/category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/actions/admin/category.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dal/category.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/category.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dal/order.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dal/order.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/navbar/LoginNRole.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/navbar/LoginNRole.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/navbar/Navbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,28 +77,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Node.js.route.ts.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/NODE JS/nextJS/ecommerce-next-app/components/admin/category",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "npm.db:seed.executor": "Run",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.completion",
-    "ts.external.directory.path": "C:\\NODE JS\\nextJS\\ecommerce-next-app\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.route.ts.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/dev/nextJS/ecommerce-next-app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.db:seed.executor&quot;: &quot;Run&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\dev\\nextJS\\ecommerce-next-app\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="C:\Users\MUHAIM~1\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="3d39454a-dc80-43ae-9547-797d463d46a2" reportId="ecommerce-next-app/qodana/2025-04-05" />
@@ -114,11 +117,11 @@
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\admin\users" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\nextJS\ecommerce-next-app\components" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\admin\order" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\admin\ui" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\admin" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\ui\navbar" />
-      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -126,10 +129,25 @@
       <command value="pnpm install swr" />
     </option>
   </component>
+  <component name="RunManager" selected="npm.Next.js: server-side">
+    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="Next.js: server-side" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.25659.40" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.117" />
       </set>
     </attachedChunks>
   </component>
@@ -174,6 +192,21 @@
       <workItem from="1744013846061" duration="13720000" />
       <workItem from="1744030661573" duration="5945000" />
       <workItem from="1744043763821" duration="15984000" />
+      <workItem from="1744185311297" duration="358000" />
+      <workItem from="1744186060469" duration="925000" />
+      <workItem from="1744267975344" duration="264000" />
+      <workItem from="1745064974059" duration="56000" />
+      <workItem from="1745220745739" duration="62000" />
+      <workItem from="1745309403571" duration="2076000" />
+      <workItem from="1745313565250" duration="35000" />
+      <workItem from="1745320710751" duration="295000" />
+      <workItem from="1745321225068" duration="21000" />
+      <workItem from="1745322040622" duration="660000" />
+      <workItem from="1745324591215" duration="660000" />
+      <workItem from="1745741023606" duration="1614000" />
+      <workItem from="1745826209137" duration="83000" />
+      <workItem from="1749030799161" duration="530000" />
+      <workItem from="1749031812819" duration="1628000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -559,7 +592,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744100621154</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="**ADMIN, ORDERS**&#10;orders set with filter through searchparams and test image uploader added">
+      <option name="closed" value="true" />
+      <created>1744185651462</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1744185651462</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +618,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="**CHECKOUT**&#10;address and order summary page working completely." />
     <MESSAGE value="**CHECKOUT**&#10;order placing successfully" />
     <MESSAGE value="**CHECKOUT**&#10;User profile added basic info page" />
     <MESSAGE value="**PROFILE**&#10;commission page added with details showing" />
@@ -602,6 +642,7 @@
     <MESSAGE value="**ADMIN, PRODUCTS**&#10;Add product set" />
     <MESSAGE value="**ADMIN, PRODUCTS**&#10;Products section set" />
     <MESSAGE value="**ADMIN, CATEGORY**&#10;Category section set" />
-    <option name="LAST_COMMIT_MESSAGE" value="**ADMIN, CATEGORY**&#10;Category section set" />
+    <MESSAGE value="**ADMIN, ORDERS**&#10;orders set with filter through searchparams and test image uploader added" />
+    <option name="LAST_COMMIT_MESSAGE" value="**ADMIN, ORDERS**&#10;orders set with filter through searchparams and test image uploader added" />
   </component>
 </project>
