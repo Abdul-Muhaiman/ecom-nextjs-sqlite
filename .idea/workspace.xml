@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="**ADMIN, ORDERS**&#10;orders set with filter through searchparams and test image uploader added">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="9182bf0c-6f2b-45c9-8d4a-76e7aea66325" name="Changes" comment="** REFACTORING CODE **">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/navbar/LoginNRole.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/navbar/LoginNRole.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/navbar/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/dev.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/image-upload/action/action.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/image-upload/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/register/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/navbar/Navbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,13 +26,6 @@
         <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
       </list>
-    </option>
-  </component>
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="false" />
-    <option name="myAllFileTypesSelected" value="true" />
-    <option name="mySelectedFileTypes">
-      <set />
     </option>
   </component>
   <component name="Git.Settings">
@@ -117,11 +108,11 @@
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\app\admin\users" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\nextJS\ecommerce-next-app\app\(auth)" />
       <recent name="C:\dev\nextJS\ecommerce-next-app\components" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\admin\order" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\admin\ui" />
       <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\admin" />
-      <recent name="C:\NODE JS\nextJS\ecommerce-next-app\components\ui\navbar" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -206,15 +197,10 @@
       <workItem from="1745741023606" duration="1614000" />
       <workItem from="1745826209137" duration="83000" />
       <workItem from="1749030799161" duration="530000" />
-      <workItem from="1749031812819" duration="1628000" />
-    </task>
-    <task id="LOCAL-00001" summary="First commit, initial app">
-      <option name="closed" value="true" />
-      <created>1742983961461</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1742983961461</updated>
+      <workItem from="1749031812819" duration="4000000" />
+      <workItem from="1749109947562" duration="13000" />
+      <workItem from="1750073805314" duration="1658000" />
+      <workItem from="1750168622351" duration="4000" />
     </task>
     <task id="LOCAL-00002" summary="First commit, initial app">
       <option name="closed" value="true" />
@@ -600,7 +586,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744185651462</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="** REFACTORING CODE **">
+      <option name="closed" value="true" />
+      <created>1749033469711</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1749033469712</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -618,7 +612,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="**CHECKOUT**&#10;order placing successfully" />
     <MESSAGE value="**CHECKOUT**&#10;User profile added basic info page" />
     <MESSAGE value="**PROFILE**&#10;commission page added with details showing" />
     <MESSAGE value="**PROFILE**&#10;Order details page added successfully" />
@@ -643,6 +636,7 @@
     <MESSAGE value="**ADMIN, PRODUCTS**&#10;Products section set" />
     <MESSAGE value="**ADMIN, CATEGORY**&#10;Category section set" />
     <MESSAGE value="**ADMIN, ORDERS**&#10;orders set with filter through searchparams and test image uploader added" />
-    <option name="LAST_COMMIT_MESSAGE" value="**ADMIN, ORDERS**&#10;orders set with filter through searchparams and test image uploader added" />
+    <MESSAGE value="** REFACTORING CODE **" />
+    <option name="LAST_COMMIT_MESSAGE" value="** REFACTORING CODE **" />
   </component>
 </project>
